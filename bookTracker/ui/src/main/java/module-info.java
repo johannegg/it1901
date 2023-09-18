@@ -1,4 +1,4 @@
-module calc.ui {
+module bookTracker.ui {
     requires calc.core;
     requires javafx.controls;
     requires javafx.fxml;
