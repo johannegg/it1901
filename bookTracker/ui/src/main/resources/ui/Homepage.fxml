@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppController">
+   <children>
+      <Label layoutX="47.0" layoutY="28.0" prefHeight="23.0" prefWidth="143.0" text="Booktracker">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="label1" layoutX="217.0" layoutY="101.0" mnemonicParsing="false" prefWidth="53.0" text="Add" />
+      <TextField layoutX="47.0" layoutY="102.0" />
+      <ListView layoutX="45.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="48.0" layoutY="71.0" prefHeight="18.0" prefWidth="160.0" text="Enter book title" />
+   </children>
+</Pane>
