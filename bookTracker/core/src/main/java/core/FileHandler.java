@@ -5,9 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+
 public class FileHandler {
+    private List<String> bookList = new ArrayList<>();
 
     public void writeToFile(String title, String filePath) throws IOException {
         try {
@@ -21,15 +25,15 @@ public class FileHandler {
         }
     }
 
-    public String readFromFile(String filePath) {
+    public List<String> readFromFile(String filePath) {
         try {
             Scanner scanner = new Scanner(new File(filePath));
-            StringBuilder stringBuilder = new StringBuilder();
             while (scanner.hasNextLine()) {
-                stringBuilder.append(scanner.nextLine()).append("\n");
+                String bookTitle = scanner.nextLine();
+                this.bookList.add(bookTitle);
             }
             scanner.close();
-            return stringBuilder.toString();
+            return bookList;
         } catch (FileNotFoundException e) {
             System.err.println("Error: file " + filePath + " not found.");
             return null;
