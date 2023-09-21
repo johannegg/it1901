@@ -24,4 +24,9 @@ public class AppController {
         System.out.println("here");
     }
 
+    @FXML
+    public void handleAddBtn(){
+        
+    }
+
 }

@@ -13,8 +13,8 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="label1" layoutX="217.0" layoutY="101.0" mnemonicParsing="false" prefWidth="53.0" text="Add" />
-      <TextField layoutX="47.0" layoutY="102.0" />
+      <Button fx:id="addBtn" layoutX="217.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleAddBtn" prefWidth="53.0" text="Add" />
+      <TextField fx:id="titleField" layoutX="47.0" layoutY="102.0" />
       <ListView layoutX="45.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="48.0" layoutY="71.0" prefHeight="18.0" prefWidth="160.0" text="Enter book title" />
    </children>
