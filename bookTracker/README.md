@@ -9,3 +9,4 @@ Booktracker er en Goodreads-inspirert applikasjon. Applikasjonen fungerer som et
 ## Brukerhistorier 
 Her har vi skrevet ned brukerhistorier som 
 1. Som en bruker, ønsker jeg en funksjon slik at jeg kan legge til en bok i en bokhylle.
+2. Som bruker, ønsker jeg en funksjon slik at jeg kan logge meg inn.

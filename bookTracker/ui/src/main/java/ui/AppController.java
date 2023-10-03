@@ -36,7 +36,7 @@ public class AppController {
     }
 
     public List<String> getBookList() {
-        return fileHandler.readFromFile("bookTracker/core/src/main/java/core/bookTitles.txt");
+        return fileHandler.readFromFile("C:\\Users\\madug\\Documents\\NTNU\\Datateknologi\\ITP\\gr2323\\bookTracker\\ui\\src\\main\\resources\\ui\\Homepage.fxml");
     }
 
     @FXML
@@ -44,7 +44,7 @@ public class AppController {
         String title = titleField.getText();
         try {
             if (!title.isEmpty()) {
-                fileHandler.writeToFile(title, "bookTracker/core/src/main/java/core/bookTitles.txt");
+                fileHandler.writeToFile(title, "C:\\Users\\madug\\Documents\\NTNU\\Datateknologi\\ITP\\gr2323\\bookTracker\\ui\\src\\main\\resources\\ui\\Homepage.fxml");
                 titleField.clear();
                 listView.getItems().clear();
                 listView.getItems().addAll(getBookList());
