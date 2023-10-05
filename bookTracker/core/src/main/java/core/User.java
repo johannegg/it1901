@@ -1,13 +1,15 @@
 package core;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class User {
     private String email;
     private String username;
     private String password;
+
+    public User(){
+        
+    }
 
     public User(String email, String username, String password) {
         setEmail(email);
@@ -38,6 +40,7 @@ public class User {
         if (numberOfDigits < 1 || numberOfDigits == password.length()){
             throw new IllegalArgumentException("You need at least one character or one digit");
         }
+        this.password = password;
     }
 
     
@@ -52,6 +55,11 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+    return "(username: " + username + ", email: " + email + ")";
     }
 
     public static void main(String[] args) {
