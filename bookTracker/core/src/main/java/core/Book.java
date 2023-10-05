@@ -5,6 +5,7 @@ public class Book {
     private String title;
     private String author;
     private int bookId;
+    private String imageSrc;
 
 
     public Book(String title, String author) {
@@ -29,6 +30,14 @@ public class Book {
     }
     public void setBookId(int bookId) {
         this.bookId = bookId;
+    }
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
     }
 
     public boolean checkAuthor(Book other) {
