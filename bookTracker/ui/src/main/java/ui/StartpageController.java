@@ -13,24 +13,7 @@ public class StartpageController {
     
     private List<String> imageSrcPop = new ArrayList<>(Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney"));
 
-    @FXML
-    private ImageView img1; 
     
-    @FXML
-    private ImageView img2; 
-
-    @FXML
-    private ImageView img3; 
-
-    @FXML
-    private ImageView img4; 
-
-    @FXML
-    private ImageView img5;
-    
-    @FXML
-    private ImageView img6;
-
     @FXML
     private HBox PopHBox;
 
@@ -39,7 +22,8 @@ public class StartpageController {
 
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
-            Image image = new Image("File:ui/src/main/resources/ui/BookImages/" + img + ".jpg");
+            //Image image = new Image("File:ui/src/main/resources/ui/BookImages/" + img + ".jpg");
+            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpg"));
             imageView.setImage(image);
 
             PopHBox.getChildren().add(imageView);
