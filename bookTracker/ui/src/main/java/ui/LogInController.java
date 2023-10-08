@@ -3,7 +3,6 @@ package ui;
 import java.io.IOException;
 import java.util.List;
 
-import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
+import json.UsersPersistence;
+
 public class LogInController {
-    Users users = new Users();
+
+    private UsersPersistence usersPersistence;
 
     @FXML
     TextField usernameField;
@@ -33,10 +35,11 @@ public class LogInController {
     @FXML
     Label feedbackLabel;
 
+    String filePath;
 
     @FXML
     void initialize() {
-
+        usersPersistence = new UsersPersistence();
     }
 
     public void handleRegisterButton(ActionEvent event) throws IOException {
@@ -45,13 +48,25 @@ public class LogInController {
 
     public void handleLogInButton(ActionEvent event) throws IOException {
         String username = usernameField.getText();
-        List<String> usernames = users.readFromUsers();
+        List<String> usernames = usersPersistence.readFromUsers();
+        boolean usernameExists = false;
         for (String u : usernames) {
             if (username.equals(u)) {
-                String filePath = "bookTracker/core/src/main/java/resources/" + u + ".json";
-                feedbackLabel.setText("Username is found");
+                usernameExists = true;
+                filePath = "../core/src/main/java/resources/" + u + ".json";
+                // feedbackLabel.setText("Username is found");
             }
 
+        }
+        if (usernameExists) {
+            String password = usersPersistence.readFromUser(filePath);
+            if (password.equals(passwordField.getText())) {
+                changeScene("Startpage.fxml", event);
+            } else {
+                feedbackLabel.setText("Wrong username or password");
+            }
+        } else {
+            feedbackLabel.setText("Wrong username or password");
         }
     }
 
