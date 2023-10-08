@@ -3,7 +3,6 @@ package ui;
 import java.io.IOException;
 import java.util.List;
 
-import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,12 +54,19 @@ public class LogInController {
             if (username.equals(u)) {
                 usernameExists = true;
                 filePath = "../core/src/main/java/resources/" + u + ".json";
-                feedbackLabel.setText("Username is found");
+                // feedbackLabel.setText("Username is found");
             }
 
         }
-        if (usernameExists){
-            
+        if (usernameExists) {
+            String password = usersPersistence.readFromUser(filePath);
+            if (password.equals(passwordField.getText())) {
+                changeScene("Startpage.fxml", event);
+            } else {
+                feedbackLabel.setText("Wrong username or password");
+            }
+        } else {
+            feedbackLabel.setText("Wrong username or password");
         }
     }
 

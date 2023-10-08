@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -19,8 +21,20 @@ public class UsersPersistence {
     public UsersPersistence() {
         objectMapper = new ObjectMapper();
     }
-    
 
+    public String readFromUser(String filePath){
+        File jsonFile = new File(filePath);
+        JsonNode jsonNode;
+        try {
+            jsonNode = objectMapper.readTree(jsonFile);
+            JsonNode usersString = jsonNode.get("password");
+            return usersString.asText();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public List<String> readFromUsers() {
         File jsonFile = new File(filePath);
         JsonNode jsonNode;
@@ -38,6 +52,11 @@ public class UsersPersistence {
             e.printStackTrace();
             return new ArrayList<>();
         }
+    }
+
+    public void createNewUser(User user) throws StreamWriteException, DatabindException, IOException{
+        String username = user.getUsername();
+        objectMapper.writeValue(new File("../core/src/main/java/resources/" + username + ".json"), user);
     }
 
     public void writeToUsers(User user) throws IOException {

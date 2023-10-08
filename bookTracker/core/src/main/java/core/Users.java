@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import json.UserSerializer;
 import json.UsersPersistence;
 
 public class Users {
@@ -15,7 +14,7 @@ public class Users {
     public void addUser(User user) throws IOException {
         checkUsername(user);
         this.users.add(user);
-        UserSerializer.serialize(user);
+        usersPersistence.createNewUser(user);
         usersPersistence.writeToUsers(user);
     }
 
