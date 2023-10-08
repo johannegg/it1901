@@ -1,6 +1,5 @@
 package core;
 
-import java.util.stream.Collectors;
 
 public class User {
     private String email;
@@ -44,7 +43,6 @@ public class User {
     }
 
     
-
     public String getEmail() {
         return email;
     }

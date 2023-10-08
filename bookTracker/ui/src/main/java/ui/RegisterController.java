@@ -42,7 +42,8 @@ public class RegisterController {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Successfull registration");
             alert.setHeaderText("The registration was var Successfull");
-            alert.setContentText("The registration of a new user was successfull. Log in to get the full Book Tracker experience");
+            alert.setContentText(
+                    "The registration of a new user was successfull. Log in to get the full Book Tracker experience");
             alert.showAndWait();
 
             changeScene(event);
@@ -71,6 +72,5 @@ public class RegisterController {
         window.setScene(registerUserScene);
         window.show();
     }
-
 
 }
