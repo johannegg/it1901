@@ -1,8 +1,8 @@
 schemaVersion: 2.1.0
 metadata:
-  name: bookTracker
+  name: booktracker
 components:
-  - name: bookTracker
+  - name: booktracker
     container:
       image: adrianstoica/it1901:latest
       memoryLimit: 3Gi
@@ -34,6 +34,6 @@ components:
 commands:
   - id: changedir
     exec:
-      component: bookTracker
-      commandLine: cd bookTracker
+      component: booktracker
+      commandLine: cd booktracker
       label: change directory
