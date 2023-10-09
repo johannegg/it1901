@@ -1,4 +1,4 @@
-[![Contribute](https://eclipse.dev/che/docs/_/img/icon-eclips-che.svg)open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323?new)
+[open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323?new)
 
 # BookTracker - Oversikt og Struktur
 Prosjektet er konfigurert med **maven** som byggesystem. Prosjektet har i hovedssak de tre modulene core, ui og .vscode. Brukergrensesnittet befinner seg i modulen ui. Prosjektet benytter javafx version 17.0.8 og Apache Maven 3.9.4.
