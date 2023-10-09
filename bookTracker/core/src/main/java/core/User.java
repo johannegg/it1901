@@ -57,12 +57,12 @@ public class User {
 
     @Override
     public String toString() {
-    return "(username: " + username + ", email: " + email + ")";
+    return "username: " + username + ", email: " + email + "password: " + password;
     }
 
-    public static void main(String[] args) {
-        User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
-        System.out.println(u1.getPassword());
-    }
+    // public static void main(String[] args) {
+    //     User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
+    //     System.out.println(u1.getPassword());
+    // }
 
 }

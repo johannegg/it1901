@@ -44,4 +44,24 @@ public class BookTest {
         assertTrue(book1.checkAuthor(book1)); // Samme forfatter
         assertFalse(book1.checkAuthor(book2)); // Forskjellige forfattere
     }
+
+    @Test
+    public void testSetTitle() {
+        book1.setTitle("Title Test");
+        assertEquals("Title Test", book1.getTitle());
+    }
+
+    @Test
+    public void testSetAuthor() {
+        book1.setAuthor("Navn Navnesen");
+        assertEquals("Navn Navnesen", book1.getAuthor());
+    }
+
+    @Test
+    public void testSetImageSrc() {
+        book1.setImageSrc("/ui/BookImages/gilmore.jpg");
+        assertEquals("/ui/BookImages/gilmore.jpg", book1.getImageSrc());
+    }
+
+    
 }

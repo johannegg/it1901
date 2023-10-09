@@ -18,6 +18,17 @@ public class Users {
         usersPersistence.writeToUsers(user);
     }
 
+    /**
+     * Method to add users without actually saving them in json.
+     * It is only here temporary until we move the persistence elsewhere
+     * 
+     * @param user User user
+     */
+    public void addUserForTest(User user) throws IOException {
+        checkUsername(user);
+        this.users.add(user);
+    }
+
     private void checkUsername(User user) throws IOException {
         List<String> userList = usersPersistence.readFromUsers();
 
@@ -54,8 +65,8 @@ public class Users {
         // Users users = new Users();
         // User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
         // User u2 = new User("per@ntnu.no", "per123", "1234569l");
-        // //users.addUser(u1);
-        // //users.addUser(u2);
+        // users.addUser(u1);
+        // users.addUser(u2);
         // System.out.println(users.getUsers());
     }
 
