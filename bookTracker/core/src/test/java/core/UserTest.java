@@ -57,4 +57,5 @@ public class UserTest {
         Assertions.assertThrows(IllegalArgumentException.class, 
         () -> new User("camilla@ntnu.no", "camilla123", "12345678"));
     }
+
 }

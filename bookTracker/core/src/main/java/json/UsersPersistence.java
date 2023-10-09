@@ -16,6 +16,7 @@ import core.User;
 public class UsersPersistence {
 
     private String filePath = "../core/src/main/java/resources/users.json";
+    private String startFilePath = "../core/src/main/java/resources/";
     private ObjectMapper objectMapper;
 
     public UsersPersistence() {
@@ -56,7 +57,7 @@ public class UsersPersistence {
 
     public void createNewUser(User user) throws StreamWriteException, DatabindException, IOException{
         String username = user.getUsername();
-        objectMapper.writeValue(new File("../core/src/main/java/resources/" + username + ".json"), user);
+        objectMapper.writeValue(new File(startFilePath + username + ".json"), user);
     }
 
     public void writeToUsers(User user) throws IOException {
@@ -65,5 +66,10 @@ public class UsersPersistence {
         String newUser = user.getUsername();
         usersNode.add(newUser);
         objectMapper.writeValue(new File(filePath), rootNode);
+    }
+
+    public void setFilePath(String testFilePath, String startTestFilePath){
+        this.filePath = testFilePath;
+        this.startFilePath = startTestFilePath;
     }
 }
