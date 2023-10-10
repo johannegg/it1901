@@ -58,4 +58,20 @@ public class UserTest {
         () -> new User("camilla@ntnu.no", "camilla123", "12345678"));
     }
 
+    @Test
+    public void testFailsWhenSetUsername() {
+        Assertions.assertThrows(IllegalArgumentException.class, 
+        () -> new User("camilla@ntnu.no", "", "passord1234"));
+    }
+
+    @Test
+    public void testFailsWhenSetEmail() {
+        Assertions.assertThrows(IllegalArgumentException.class, 
+        () -> new User("camilla", "camilla123", "passord1234"));
+        Assertions.assertThrows(IllegalArgumentException.class, 
+        () -> new User("camilla@ntnuno", "camilla123", "passord1234"));
+        Assertions.assertThrows(IllegalArgumentException.class, 
+        () -> new User("camillantnu.no", "camilla123", "passord1234"));
+    }
+
 }

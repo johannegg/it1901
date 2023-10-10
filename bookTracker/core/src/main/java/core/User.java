@@ -18,14 +18,29 @@ public class User {
     }
 
     public void setEmail(String email) {
+        checkEmail(email);
         this.email = email;
     }
 
+    public void checkEmail(String email){
+        if(!(email.contains("@") && email.contains(".")) || email.isEmpty()){
+            throw new IllegalArgumentException("The email is invalid");
+        }
+    }
+
     public void setUsername(String username) {
+        if (username.isEmpty()){
+            throw new IllegalArgumentException("You need an username");
+        }
         this.username = username;
     }
 
     public void setPassword(String password) {
+        checkPassword(password);
+        this.password = password;
+    }
+
+    public void checkPassword(String password){
         if (password.length() < 8) {
             throw new IllegalArgumentException("Password requires at least 8 characters");
         }
@@ -37,11 +52,9 @@ public class User {
                 }
             }
         if (numberOfDigits < 1 || numberOfDigits == password.length()){
-            throw new IllegalArgumentException("You need at least one character or one digit");
+            throw new IllegalArgumentException("Password requires at least one character or one digit");
         }
-        this.password = password;
     }
-
     
     public String getEmail() {
         return email;
