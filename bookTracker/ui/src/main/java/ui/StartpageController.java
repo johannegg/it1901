@@ -50,7 +50,11 @@ public class StartpageController {
             imageView.setFitWidth(110);
             imageView.setPreserveRatio(true);
 
-            PopHBox.getChildren().add(imageView);
+            try {
+                PopHBox.getChildren().add(imageView);
+            } catch (Exception e) {
+                System.out.println("test");
+            }
         }
 
         for (String img : imageSrcPul) {
@@ -63,7 +67,11 @@ public class StartpageController {
             imageView.setFitWidth(110);
             imageView.setPreserveRatio(true);
 
-            PulHBox.getChildren().add(imageView);
+            try {
+                PulHBox.getChildren().add(imageView);
+            } catch (Exception e) {
+                System.out.println("test");
+            }
         }
 
     }
@@ -77,4 +85,6 @@ public class StartpageController {
         window.setScene(registerUserScene);
         window.show();
     }
+
+    
 }
