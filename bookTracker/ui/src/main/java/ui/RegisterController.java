@@ -36,12 +36,13 @@ public class RegisterController {
 
     @FXML
     public void handleRegisterButton(ActionEvent event) throws IOException {
+        feedbackLabel.setText("");
         try {
             createNewUser();
 
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Successfull registration");
-            alert.setHeaderText("The registration was var Successfull");
+            alert.setHeaderText("The registration was Successfull");
             alert.setContentText(
                     "The registration of a new user was successfull. Log in to get the full Book Tracker experience");
             alert.showAndWait();
