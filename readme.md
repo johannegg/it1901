@@ -1,14 +1,26 @@
 [open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323?new)
 
 # BookTracker - Oversikt og Struktur
-Prosjektet er konfigurert med **maven** som byggesystem. Prosjektet har i hovedssak de tre modulene core, ui og .vscode. Brukergrensesnittet befinner seg i modulen ui. Prosjektet benytter javafx version 17.0.8 og Apache Maven 3.9.4.
+Prosjektet er konfigurert med **maven** som byggesystem. Prosjektet har i hovedssak de to modulene core og ui. Brukergrensesnittet befinner seg i modulen ui. Prosjektet benytter javafx version 17.0.8 og Apache Maven 3.9.4.
 
-Kodingsprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen inneholder også en **[readme-fil](bookTracker/README.md)** som fungerer som en mer forklarende fil om hvordan selve applikasjonen er bygget opp og fungerer, og brukerhistorier som beskriver litt av prosjektfremgangen. 
+Kodeprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen inneholder også en **[readme-fil](bookTracker/README.md)** som fungerer som en mer forklarende fil om hvordan selve applikasjonen er bygget opp og fungerer, samt brukerhistorier som beskriver litt av prosjektfremgangen. 
 
 ## Bygging og kjøring av prosjekt 
+Til bygging og kjøring av prosjektet benyttes maven. For å kunne kjøre prosjektet må man først kjøre `mvn clean install` i bookTracker-mappen for å rense, bygge og installere prosjektet lokalt. Etter dette kan man gå inn i ui-mappen og kjøre `mvn javafx:run` for å kjøre applikasjonen og `mvn test` for å for å kjøre testene.
+
 ## Organisering 
 ## core 
+core-moduelen er delt inn i to packages:
+- **[core](bookTracker/core)** 
+- **[json](bookTracker/json)** (ikke helt i mål her ennå - se punkt om filhåndtering i realese2.md)
+
+**[core](bookTracker/core)** inneholder alle klasser for logikk til applikasjonen vår. I vårt prosjekt skal en bruker kunne registrere en profil for så å kunne søke etter, legge til og rangere bøker. Klassene danner til sammen logikk som håndterer dette.
+
+
 ## ui
+**[ui](bookTracker/ui)** inneholder én pacage, **[ui](bookTracker/ui/src/main/java/ui)**. Denne inneholder alle kontrollerne til brukergrensesnitett i applikasjonen vår. Vi har i prosjektet benyttet JavaFX og FXML. Hver scene i appen vår har en tilhørende FXML-fil med en tilhørende kontroller. FXML-filene er plassert i en egen resources-mappe i ui-modulen.
+
+
 ## testdekningsgrad 
 
 
@@ -17,5 +29,5 @@ byggesystemet vårt har tillegg for:
 - oppsett av java (**maven-compiler-plugin**)
 - testing (**maven-surefire-plugin**)
 - kjøring av javafx (**javafx-maven-plugin**)
-
-
+- testdekningsgrad med jacoco (**jacoco-maven-plugin**)
+- sjekking av kodekvalitet med checkstyle (**maven-checkstyle-plugin**) og spotbugs (**spotbugs-maven-plugin**)
