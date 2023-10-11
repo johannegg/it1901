@@ -1,12 +1,14 @@
-# Oppdateringer 
+## Oppdateringer 
 
 Siden forrige innlevering har vi har utvidet appen med følgende funksjonalitet:
 - En bruker kan opprette en profil og logge inn
 - En bruker får opp en liste med "Popular reads" og "Pulitzer winners" når den befinner seg på startsiden
 
-Vi har fjernet muligheten for å legge til bøker i en liste, som vi hadde med i forrige innlevering, ettersom denne funksjonaliteten må utvikles ordentlig på et senere tidspunkt. 
+Vi har fjernet muligheten for å legge til bøker i en liste, som vi hadde med i forrige innlevering, ettersom vi må endre denne til å passe bedre med strukturen vår, og vi tenker dermed å utvikle denne funksjonaliteten på nytt på et senere tidspunkt. 
 
-Problemet med relativ filsti er også løst, og applikasjonen kjører uten plugin-feil når man kjører `mvn javafx:run` i ui-mappen.
+## Kjøring av prosjekt
+Problemet med at vi ikke klarte å bruke relativ filsti i forrige innlevering er nå løst, og applikasjonen kjører uten plugin-feil når man kjører `mvn javafx:run` i ui-mappen.
+
 
 ## Filhåndtering
 
@@ -41,7 +43,7 @@ Dette gjør at spotbugs bare gir tilbakemelding for “mvn spotbugs:gui”. Chec
 
 
 ## UI
-
+Vi har siden sist opprettet nye FXML-filer for innlogging, registrering, startsiden og profilsiden. Disse har tilhørende kontrollere i ui-packagen.
 
 
 
