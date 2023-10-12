@@ -19,6 +19,11 @@ core-moduelen er delt inn i to packages:
 ## ui
 **[ui](bookTracker/ui)** inneholder én pacage, **[ui](bookTracker/ui/src/main/java/ui)**. Denne inneholder alle kontrollerne til brukergrensesnitett i applikasjonen vår. Vi har i prosjektet benyttet JavaFX og FXML. Hver scene i appen vår har en tilhørende FXML-fil med en tilhørende kontroller. FXML-filene er plassert i en egen resources-mappe i ui-modulen.
 
+## arkitektur oversikt
+Her er diagram som viser arkitekturen til prosjektet vårt. Diagrammet illustrere modulene i prosjektet og hvordan de avhenger av hverandre 
+
+![Componentdiagram](bookTracker/images/componentdiagram.png)
+
 
 ## testdekningsgrad 
 ### jacoco
