@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 /**
  * Controller connected to StartPage.fxml
  */
-public class StartPageController {
+public class StartpageController {
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney"));

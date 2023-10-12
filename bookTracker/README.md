@@ -5,7 +5,3 @@ Booktracker er en Goodreads-inspirert applikasjon. Applikasjonen fungerer som et
 
 **Innholdet i denne readme-filen**
 * Brukerhistorier 
-
-## Brukerhistorier 
-Her har vi skrevet ned brukerhistorier som 
-1. Som en bruker, ønsker jeg en funksjon slik at jeg kan legge til en bok i en bokhylle.
