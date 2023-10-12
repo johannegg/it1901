@@ -58,7 +58,11 @@ public class RegisterController {
 
             changeScene(event);
         } catch (IllegalArgumentException e) {
-            feedbackLabel.setText(e.getMessage());
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Unsuccessfull registration");
+            alert.setHeaderText("The registration was unsuccessfull");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
     }
 

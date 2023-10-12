@@ -22,6 +22,9 @@ public class LogInControllerTest extends ApplicationTest {
 
   private LogInController controller;
 
+  /**
+   * Set up for testing LogInController.java
+   */
   @Override
   public void start(final Stage stage) throws Exception {
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
@@ -46,6 +49,9 @@ public class LogInControllerTest extends ApplicationTest {
     Thread.sleep(500);
   }
 
+  /**
+   * Test to check if the UI changes Window and Scene when the "Log in"-button in UI is pushed.
+   */
   @Test
   public void testLogInButton() {
     List<Window> before = Window.getWindows();
@@ -67,6 +73,9 @@ public class LogInControllerTest extends ApplicationTest {
     assertNotEquals(afterRoot, beforeRoot);
   }
 
+  /**
+   * Test to check if the UI changes Window and Scene when the "Register"-button in UI is pushed.
+   */
   @Test
   public void testRegisterButton() {
     List<Window> before = Window.getWindows();
@@ -87,5 +96,4 @@ public class LogInControllerTest extends ApplicationTest {
     }
     assertNotEquals(afterRoot, beforeRoot);
   }
-
 }

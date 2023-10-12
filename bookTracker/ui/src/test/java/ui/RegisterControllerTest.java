@@ -6,12 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import core.User;
 import core.Users;
@@ -23,13 +26,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class RegisterControllerTest extends ApplicationTest{
+public class RegisterControllerTest extends ApplicationTest {
 
   private RegisterController controller;
   private User user;
   private Stage stage;
 
-
+  /**
+   * Set up for testing RegisterController.java
+   */
+  @Override
   public void start(final Stage stage) throws Exception {
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("RegistrationPage.fxml"));
     final Parent root = loader.load();
@@ -44,9 +50,12 @@ public class RegisterControllerTest extends ApplicationTest{
     clickOn("#emailField").write("test1@mail.com");
     clickOn("#usernameField").write("Usertwo");
     clickOn("#passwordField").write("password2");
-    //Thread.sleep(500);
+    // Thread.sleep(500);
   }
 
+  /**
+   * Test to check if the UI changes Window and Scene when the "Register"-button in UI is pushed.
+   */
   @Test
   public void testRegisterButton() {
     List<Window> before = Window.getWindows();
@@ -66,6 +75,6 @@ public class RegisterControllerTest extends ApplicationTest{
       afterRoot = window.getScene().getRoot();
     }
     assertNotEquals(afterRoot, beforeRoot);
-    //assertTrue(alert.getScene().getWindow().isShowing());
+    // assertTrue(alert.getScene().getWindow().isShowing());
   }
 }
