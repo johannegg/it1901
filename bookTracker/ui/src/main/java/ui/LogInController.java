@@ -75,7 +75,7 @@ public class LogInController {
         if (usernameExists) {
             String password = usersPersistence.readFromUser(filePath);
             if (password.equals(passwordField.getText())) {
-                changeScene("StartPage.fxml", event);
+                changeScene("Startpage.fxml", event);
             } else {
                 feedbackLabel.setText("Wrong username or password");
             }
