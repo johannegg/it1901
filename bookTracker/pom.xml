@@ -103,7 +103,8 @@
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>4.7.1.1</version>
                     <configuration>
-                        <xmlOutput>true</xmlOutput>
+                        <xmlOutput>false</xmlOutput>
+                        <htmlOutput>true</htmlOutput>
                         <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
                     </configuration>
                     <dependencies>

@@ -50,11 +50,12 @@
         		<artifactId>maven-surefire-plugin</artifactId>
 	        </plugin>
 
-             <!-- Run the checkstyle code quality tool -->
+              <!-- Run the spotbugs code quality tool -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
             </plugin>
+
 
             <!-- Configure jacoco code coverage -->
             <plugin>
