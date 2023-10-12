@@ -16,6 +16,9 @@ import javafx.scene.Node;
 
 import json.UsersPersistence;
 
+/**
+ * Controller connectet to LogInPage.fxml
+ */
 public class LogInController {
 
     private UsersPersistence usersPersistence;
@@ -42,10 +45,21 @@ public class LogInController {
         usersPersistence = new UsersPersistence();
     }
 
+    /**
+     * Changes scene to the registration page
+     * 
+     * @param event         click on registerButton
+     * @throws IOException  if it cannot find the fxml file
+     */
     public void handleRegisterButton(ActionEvent event) throws IOException {
         changeScene("RegistrationPage.fxml", event);
     }
 
+    /**
+     * Checks if the user exists and changes the scene to StartPage.fxml if it does
+     * @param event         click on logInButton
+     * @throws IOException  if it cannot find the fxml file 
+     */
     public void handleLogInButton(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         List<String> usernames = usersPersistence.readFromUsers();
@@ -61,7 +75,7 @@ public class LogInController {
         if (usernameExists) {
             String password = usersPersistence.readFromUser(filePath);
             if (password.equals(passwordField.getText())) {
-                changeScene("Startpage.fxml", event);
+                changeScene("StartPage.fxml", event);
             } else {
                 feedbackLabel.setText("Wrong username or password");
             }
@@ -70,13 +84,19 @@ public class LogInController {
         }
     }
 
+    /**
+     * Changes the scene
+     * @param filePath      the scene to change to
+     * @param event         the click
+     * @throws IOException  if it cannot find the fxml file
+     */
     private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource(filePath));
-        Parent registerUserParent = fxmlLoader.load();
-        Scene registerUserScene = new Scene(registerUserParent);
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(registerUserScene);
+        window.setScene(scene);
         window.show();
     }
 }

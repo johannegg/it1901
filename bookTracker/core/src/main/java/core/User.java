@@ -94,29 +94,15 @@ public class User {
         }
     }
     
-    /**
-     * Gets the email address
-     * 
-     * @return email
-     */
+
     public String getEmail() {
         return email;
     }
 
-    /**
-     * Gets the username
-     * 
-     * @return username
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * Gets the password
-     * 
-     * @return password
-     */
     public String getPassword() {
         return password;
     }
