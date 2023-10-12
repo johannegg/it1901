@@ -3,6 +3,7 @@ package ui;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
@@ -47,16 +48,6 @@ public class RegisterControllerTest extends ApplicationTest{
   }
 
   @Test
-  public void checkSuccessfullRegister() {
-    //fill in later
-  }
-
-  @Test
-  public void checkUnsuccsessfullRegister() {
-    //fill in later
-  }
-
-  @Test
   public void testRegisterButton() {
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
@@ -75,5 +66,6 @@ public class RegisterControllerTest extends ApplicationTest{
       afterRoot = window.getScene().getRoot();
     }
     assertNotEquals(afterRoot, beforeRoot);
+    //assertTrue(alert.getScene().getWindow().isShowing());
   }
 }

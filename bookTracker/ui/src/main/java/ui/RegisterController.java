@@ -73,7 +73,6 @@ public class RegisterController {
         user.setEmail(emailField.getText());
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
-
         Users users = new Users();
         users.addUser(user);
         return user;
