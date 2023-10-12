@@ -15,7 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import core.User;
 
-
+/**
+ * Test class for testing UsersPersistence
+ */
 public class UsersPersistenceTest {
     private UsersPersistence usersPersistence;
     private String testUsersFilePath = "../core/src/test/resources/testUsers.json";
@@ -25,6 +27,11 @@ public class UsersPersistenceTest {
     private ObjectMapper objectMapper;
     private User user;
 
+    /**
+     * Method for setting up the test correctly before running each test.
+     * 
+     * @throws IOException if createTestJsonFile fails
+     */
     @BeforeEach
     public void setUp() throws IOException{
         usersPersistence = new UsersPersistence();
@@ -35,7 +42,8 @@ public class UsersPersistenceTest {
     }
 
     /**
-     * Help method to create a test persistence class
+     * Help method to create a test persistence class.
+     * 
      * @param jsonContent
      * @throws IOException
      */
@@ -44,24 +52,40 @@ public class UsersPersistenceTest {
         objectMapper.writeValue(testFile, objectMapper.readTree(jsonContent));
     }
 
+    /**
+     * Tests ReadFromUsers()
+     */
     @Test
     public void testReadFromUser(){
         String password = usersPersistence.readFromUser(testFilePath);
         assertEquals("test123", password);
     }
 
+    /**
+     * Tests that ReadFromUsers() is null if given an ivalid file path
+     */
     @Test
     public void testReadFromUserWithInvalidPath() {
         String password = usersPersistence.readFromUser(invalidFilePath);
         assertNull(password);
     }
 
+    /**
+     * Tests createNewUser() 
+     * @throws StreamWriteException
+     * @throws DatabindException
+     * @throws IOException
+     */
     @Test
     public void testCreateNewUser() throws StreamWriteException, DatabindException, IOException{
         usersPersistence.createNewUser(user);
         assertEquals("jegerkul123", usersPersistence.readFromUser(startTestFilePath + user.getUsername() + ".json"));
     }
 
+    /**
+     * Tests writeToUsers()
+     * @throws IOException
+     */
     @Test
     public void testWriteToUsers() throws IOException{
         createTestJsonFile("{\"users\":[\"test1\",\"test2\"]}", "../core/src/test/resources/testUsers.json");

@@ -17,6 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Controller connected to RegistrationPage.fxml
+ */
 public class RegisterController {
 
     @FXML
@@ -34,6 +37,12 @@ public class RegisterController {
     @FXML
     Button RegisterButton;
 
+    /**
+     * Creates a new user if createNewUser() does not throw an IllegalArgumentException. If the registration is successfull 
+     * an allert appears.
+     * @param event         click on registerButton
+     * @throws IOException  if fxml file cannot be found
+     */
     @FXML
     public void handleRegisterButton(ActionEvent event) throws IOException {
         feedbackLabel.setText("");
@@ -53,6 +62,12 @@ public class RegisterController {
         }
     }
 
+    /**
+     * Creates a new User by using info from the email, username and password fields. 
+     * @return a user
+     * @throws IllegalArgumentException if one of the fields is invalid
+     * @throws IOException if something goes wrong when reading from users.json
+     */
     private User createNewUser() throws IllegalArgumentException, IOException {
         User user = new User();
         user.setEmail(emailField.getText());
@@ -64,6 +79,11 @@ public class RegisterController {
         return user;
     }
 
+    /**
+     * Changes the scene to LogIn after the registration of a new user is successfull
+     * @param event click on registerButton
+     * @throws IOException if fxml fiel cannot be found
+     */
     private void changeScene(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("LogInPage.fxml"));
