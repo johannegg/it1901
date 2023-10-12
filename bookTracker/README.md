@@ -4,4 +4,4 @@ Booktracker er en Goodreads-inspirert applikasjon. Applikasjonen fungerer som et
 
 
 **Innholdet i denne readme-filen**
-* Brukerhistorier 
+* 
