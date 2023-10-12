@@ -41,8 +41,8 @@ public class LogInControllerTest extends ApplicationTest {
   @BeforeEach
   public void setupUsers() throws InterruptedException {
     Thread.sleep(1500);
-    clickOn("#usernameField").write("TestUser");
-    clickOn("#passwordField").write("password1");
+    clickOn("#usernameField").write("Usertwo");
+    clickOn("#passwordField").write("password2");
     Thread.sleep(500);
   }
 
