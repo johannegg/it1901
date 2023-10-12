@@ -82,7 +82,6 @@
                     </dependencies>
                     <configuration>
                         <configLocation>google_checks.xml</configLocation>
-                        <encoding>UTF-8</encoding>
                         <consoleOutput>true</consoleOutput>
                         <failsOnError>true</failsOnError>
                         <linkXRef>false</linkXRef>
@@ -106,7 +105,7 @@
                     <configuration>
                         <xmlOutput>false</xmlOutput>
                         <htmlOutput>true</htmlOutput>
-                        <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
+                        <excludeFilterFile>..\config\spotbugs\exclude.xml</excludeFilterFile>
                     </configuration>
                     <dependencies>
                         <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
