@@ -23,10 +23,10 @@ import javafx.stage.Stage;
 public class StartpageController {
 
     private List<String> imageSrcPop = new ArrayList<>(
-            Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney"));
+            Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett", "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
 
     private List<String> imageSrcPul = new ArrayList<>(
-            Arrays.asList("cowie.jpg", "diaz.jpeg", "gage.jpeg", "hsu.jpeg", "kingslover.png", "olorunnipa.jpg", "phillips.jpeg"));
+            Arrays.asList("cowie.jpg", "diaz.jpeg", "gage.jpeg", "hsu.jpeg", "kingslover.png", "olorunnipa.jpg", "phillips.jpeg", "cohen.jpeg", "elliott.jpeg", "eustace.jpeg", "ferrer.jpeg", "rembert.jpeg", "seuss.jpeg"));
 
     @FXML
     private HBox PopHBox;
