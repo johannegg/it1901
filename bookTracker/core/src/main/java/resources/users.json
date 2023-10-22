@@ -1,1 +1,27 @@
-{"users":["Anniken","kløver","test"]}
+{
+  "users" : [ {
+    "username" : "liv",
+    "email" : "liv@ntnu.no",
+    "password" : "livliv123"
+  }, {
+    "username" : "lars",
+    "email" : "lars@osloskolen.no",
+    "password" : "larslars123"
+  }, {
+    "username" : "tusj",
+    "email" : "tusj@ntnu.no",
+    "password" : "rødtusj123"
+  }, {
+    "username" : "kvakkkvakk",
+    "email" : "and@ntnu.no",
+    "password" : "kkkkkkk123"
+  }, {
+    "username" : "bokbok",
+    "email" : "bok@ntnu.no",
+    "password" : "bokbok123"
+  }, {
+    "username" : "suzannemaduga",
+    "email" : "suzanne@gmail.com",
+    "password" : "suzsuz123"
+  } ]
+}

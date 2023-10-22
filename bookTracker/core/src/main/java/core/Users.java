@@ -2,31 +2,29 @@ package core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import json.UsersPersistence;
 
 /**
  * Class to handle the users.The users are saved in an ArrayList as
  * User-objects. The class has methods to save, add, remove and get users.
  */
-public class Users {
+public class Users implements Iterable<User> {
     private List<User> users = new ArrayList<>();
-    private UsersPersistence usersPersistence = new UsersPersistence();
 
     /**
      * Method to add user
      * 
      * @param user the user to add
      * @throws IOException if checkUsername, createUser or writeToUsers throws
-     *  an exception
+     *                     an exception
      */
     public void addUser(User user) throws IOException {
-        checkUsername(user);
+        // checkUsername(user);
         this.users.add(user);
-        usersPersistence.createNewUser(user);
-        usersPersistence.writeToUsers(user);
+        // usersPersistence.createNewUser(user);
+        // usersPersistence.writeToUsers(user);
     }
 
     /**
@@ -36,24 +34,8 @@ public class Users {
      * @param user User user
      */
     public void addUserForTest(User user) throws IOException {
-        checkUsername(user);
+        // checkUsername(user);
         this.users.add(user);
-    }
-
-    /**
-     * Checks if an username is already taken
-     * 
-     * @param user the user to check
-     * @throws IOException if the readFromUsers fail
-     */
-    private void checkUsername(User user) throws IOException {
-        List<String> userList = usersPersistence.readFromUsers();
-
-        for (String u : userList) {
-            if (u.equals(user.getUsername())) {
-                throw new IllegalArgumentException("Username already exists");
-            }
-        }
     }
 
     /**
@@ -95,6 +77,11 @@ public class Users {
      */
     public List<User> getUsers() {
         return this.users;
+    }
+
+    @Override
+    public Iterator<User> iterator() {
+        return users.iterator();
     }
 
     public static void main(String[] args) {
