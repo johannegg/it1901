@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import json.UsersPersistence;
 
 /**
  * Controller connected to RegistrationPage.fxml
@@ -37,11 +38,15 @@ public class RegisterController {
     @FXML
     Button RegisterButton;
 
+    UsersPersistence usersPersistence = new UsersPersistence();
+
     /**
-     * Creates a new user if createNewUser() does not throw an IllegalArgumentException. If the registration is successfull 
+     * Creates a new user if createNewUser() does not throw an
+     * IllegalArgumentException. If the registration is successfull
      * an allert appears.
-     * @param event         click on registerButton
-     * @throws IOException  if fxml file cannot be found
+     * 
+     * @param event click on registerButton
+     * @throws IOException if fxml file cannot be found
      */
     @FXML
     public void handleRegisterButton(ActionEvent event) throws IOException {
@@ -67,23 +72,31 @@ public class RegisterController {
     }
 
     /**
-     * Creates a new User by using info from the email, username and password fields. 
+     * Creates a new User by using info from the email, username and password
+     * fields.
+     * 
      * @return a user
      * @throws IllegalArgumentException if one of the fields is invalid
-     * @throws IOException if something goes wrong when reading from users.json
+     * @throws IOException              if something goes wrong when reading from
+     *                                  users.json
      */
-    private User createNewUser() throws IllegalArgumentException, IOException {
+    private void createNewUser() throws IllegalArgumentException, IOException {
         User user = new User();
         user.setEmail(emailField.getText());
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
-        Users users = new Users();
+        Users users = usersPersistence.readFromUsers();
+        // User user2 = new User("lars@osloskolen.no", "lars", "larslars123");
+        // Users users = new Users();
         users.addUser(user);
-        return user;
+        // users.addUser(user2);
+        usersPersistence.writeToUsers(users);
     }
 
     /**
-     * Changes the scene to LogIn after the registration of a new user is successfull
+     * Changes the scene to LogIn after the registration of a new user is
+     * successfull
+     * 
      * @param event click on registerButton
      * @throws IOException if fxml fiel cannot be found
      */

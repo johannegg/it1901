@@ -1,6 +1,6 @@
 module calc.core {
     exports core;
-    requires com.fasterxml.jackson.databind;
-    requires com.fasterxml.jackson.core;
+    requires transitive com.fasterxml.jackson.databind;
+    requires transitive com.fasterxml.jackson.core;
     exports json;
 }
