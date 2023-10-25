@@ -1,0 +1,158 @@
+{
+"books": [{
+    "title": "Trust",
+    "author":"Hernan Diaz",
+    "pages":"416",
+    "description": "PulFiction 2023"
+},{
+    "title": "Demon Copperhead",
+    "author":"Barbara Kingslover",
+    "pages":"560",
+    "description": "Pulitzer winner in Fiction 2023"
+}, {
+    "title": "Freedom’s Dominion: A Saga of White Resistance to Federal Power",
+    "author":"Jefferson Cowie",
+    "pages":"512",
+    "description": "Pulitzer winner in History 2023"
+},{
+    "title": "G-Man: J. Edgar Hoover and the Making of the American Century",
+    "author":"Beverly Gage",
+    "pages":"864",
+    "description": "Pulitzer winner in Biography 2023"
+},{
+    "title": "Stay True",
+    "author":"Hua Hsu",
+    "pages":"208",
+    "description": "Pulitzer winner in Memoir or autobiography 2023"
+},{
+    "title": "Then the War: And Selected Poems, 2007-2020,",
+    "author":"Carl Phillips",
+    "pages":"224",
+    "description": "Pulitzer winner in Poetry 2023"
+},{
+    "title": "His Name Is George Floyd: One Man’s Life and the Struggle for Racial Justice",
+    "author":"Robert Samuels and Toluse Olorunnipa ",
+    "pages":"432",
+    "description": "Pulitzer winner in General NonFiction 2023"  
+},{
+    "tittel": "The Netanyahus: An Account of a Minor and Ultimately Even Negligible Episode in the History of a Very Famous Family",
+    "author": "Joshua Cohen",
+    "pages": "248",
+    "description": "Pulitzer winner in Fiction 2022"
+},{
+    "tittel": "Covered with Night: A Story of Murder and Indigenous Justice in Early America",
+    "author": "Nicole Eustace",
+    "pages": "464",
+    "description": "Pulitzer winner in History 2022"
+},{
+    "tittel": "Cuba: An American History",
+    "author": "Ada Ferrer",
+    "pages": "592",
+    "description": "Pulitzer winner in History 2022"
+},{
+    "tittel": "Chasing Me to My Grave: An Artist's Memoir of the Jim Crow South",
+    "author": "the late Winfred Rembert as told to Erin I. Kelly",
+    "pages": "304",
+    "description": "Pulitzer winner in Biography 2022"
+},{
+    "tittel": "frank: sonnets",
+    "author": "Diane Seuss ",
+    "pages": "154",
+    "description": "Pulitzer winner in Poetry 2022"
+},{
+    "tittel": "Invisible Child: Poverty, Survival & Hope in an American City",
+    "author": "Andrea Elliott",
+    "pages": "640",
+    "description": "Pulitzer winner in General NonFiction 2022"
+}, {
+    "title": "The Survivalist",
+    "author": "Kashana Cauley",
+    "pages": "288",
+    "description": ""
+  },
+  {
+    "title": "Small Pleasures",
+    "author": "Clare Chambers Chambers",
+    "pages": "368",
+    "description": ""
+  },
+  {
+    "title": "The Pumpkin Spice Café",
+    "author": "Laurie Gilmore",
+    "pages": "384",
+    "description": ""
+  },
+  {
+    "title": "The Paper Palace",
+    "author": "Miranda Cowley Heller",
+    "pages": "",
+    "description": ""
+  },
+  {
+    "title": "Before the Coffee Gets Cold",
+    "author": "Toshikazu Kawaguchi",
+    "pages": "272 ",
+    "description": ""
+  },
+  {
+    "title": "Heaven",
+    "author": "Mieko Kawakami",
+    "pages": "176",
+    "description": ""
+  },
+  {
+    "title": "The Half Moon",
+    "author": "Mary Beth Keane",
+    "pages": "304",
+    "description": ""
+  },
+  {
+    "title": "Cleopatra and Frankenstein",
+    "author": "Coco Mellors",
+    "pages": "384",
+    "description": ""
+  },
+  {
+    "title": "My Year of Rest and Relaxation",
+    "author": "Ottessa Moshfegh",
+    "pages": "304",
+    "description": ""
+  },
+  {
+    "title": "Tom Lake",
+    "author": "Ann Patchette",
+    "pages": "320",
+    "description": ""
+  },
+  {
+    "title": "Beautiful World, Where Are You",
+    "author": "Sally Rooney",
+    "pages": "368",
+    "description": ""
+  },
+  {
+    "title": "The Celebrants",
+    "author": "Steven Rowley",
+    "pages": "320",
+    "description": ""
+  },
+  {
+    "title": "How to Say Babylon",
+    "author": "Safiya Sinclair",
+    "pages": "352",
+    "description": ""
+  },
+  {
+    "title": "Romantic Comedy",
+    "author": "Curtis Sittenfeld",
+    "pages": "320",
+    "description": ""
+  },
+  {
+    "title": "The Covenant of Water",
+    "author": "Abraham Verghese",
+    "pages": "736",
+    "description": ""
+  }
+]
+}
