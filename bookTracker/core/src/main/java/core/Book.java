@@ -21,6 +21,13 @@ public class Book {
         this.author = author;
     }
 
+    /**
+     * Creates a new Book object and sets every parameter to null.
+     */
+    public Book() {
+
+    }
+
     public String getTitle() {
         return title;
     }
