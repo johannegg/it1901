@@ -36,6 +36,9 @@ public class StartpageController {
     @FXML
     private Label ProfileButton;
 
+    @FXML
+    private Label ShelfButton;
+
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
@@ -90,7 +93,11 @@ public class StartpageController {
     }
 
     public void handleProfileButton(MouseEvent event) throws IOException {
-        changeScene("Profile.fxml", event);
+        changeScene("/ui/Profile.fxml", event);
+    }
+
+     public void handleShelfButton(MouseEvent event) throws IOException {
+        changeScene("/ui/ShelfPage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) {
