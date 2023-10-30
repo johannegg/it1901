@@ -20,7 +20,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox onMouseClicked="#handleHomePageButton" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
                      <font>
