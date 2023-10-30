@@ -31,7 +31,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox onMouseClicked="#handleProfileButton" prefHeight="100.0" prefWidth="200.0">
+            <HBox onMouseClicked="#handleShelfButton" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="shelf_button" mnemonicParsing="false" onAction="#handleShelfButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="SHELF">
                      <font>
