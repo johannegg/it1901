@@ -47,7 +47,7 @@ public class StartpageController {
             Arrays.asList("cowie.jpg", "diaz.jpeg", "gage.jpeg", "hsu.jpeg", "kingslover.png", "olorunnipa.jpg",
                     "phillips.jpeg", "cohen.jpeg", "elliott.jpeg", "eustace.jpeg", "ferrer.jpeg", "rembert.jpeg",
                     "seuss.jpeg"));
-   
+
     /**
      * Sets up the Start Page by showing the book images
      */
@@ -60,7 +60,7 @@ public class StartpageController {
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
-            imageView.setFitWidth(110);
+            imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
 
             imageView.setId(img);
@@ -81,7 +81,7 @@ public class StartpageController {
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
-            imageView.setFitWidth(110);
+            imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
 
             try {
@@ -96,12 +96,12 @@ public class StartpageController {
         changeScene("/ui/Profile.fxml", event);
     }
 
-     public void handleShelfButton(MouseEvent event) throws IOException {
+    public void handleShelfButton(MouseEvent event) throws IOException {
         changeScene("/ui/ShelfPage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) {
-        //sjekk med if setning om bok finnes
+        // sjekk med if setning om bok finnes
         displayBookPopup();
     }
 
@@ -115,7 +115,7 @@ public class StartpageController {
         Button addButton = new Button("Add book");
         addButton.setOnAction(e -> {
             System.out.println("Book added to shelf");
-            //bok legges til i shelf
+            // bok legges til i shelf
         });
 
         Button doneButton = new Button("Done");
@@ -125,7 +125,7 @@ public class StartpageController {
 
         VBox labels = new VBox(10, title, author);
         labels.setPadding(new Insets(10));
-        
+
         GridPane layout = new GridPane();
         layout.setHgap(10);
         layout.setVgap(10);
