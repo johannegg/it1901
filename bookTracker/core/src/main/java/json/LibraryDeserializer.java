@@ -32,6 +32,14 @@ public class LibraryDeserializer extends JsonDeserializer<Book> {
             if (authorNode instanceof TextNode) {
                 book.setAuthor(authorNode.asText());
             }
+            JsonNode pagesNode = objectNode.get("pages");
+            if (pagesNode instanceof TextNode) {
+                book.setPages(pagesNode.asText());
+            }
+            JsonNode descriptionNode = objectNode.get("description");
+            if (descriptionNode instanceof TextNode) {
+                book.setDescription(descriptionNode.asText());
+            }
             return book;
         }
         return null;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import core.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -21,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import json.LibraryPersistence;
 
 /**
  * Controller connected to Startpage.fxml
@@ -36,6 +38,9 @@ public class StartpageController {
     @FXML
     private Label ProfileButton;
 
+    private LibraryPersistence libraryPersistence;
+    private Book book;
+
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
@@ -49,6 +54,7 @@ public class StartpageController {
      * Sets up the Start Page by showing the book images
      */
     public void initialize() {
+        libraryPersistence = new LibraryPersistence();
 
         for (String img : imageSrcPop) {
 
@@ -61,6 +67,7 @@ public class StartpageController {
             imageView.setPreserveRatio(true);
 
             imageView.setId(img);
+            book = new Book(img);
             imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> handleImgClicked(imageView));
 
             try {
@@ -95,6 +102,7 @@ public class StartpageController {
 
     private void handleImgClicked(ImageView imageView) {
         //sjekk med if setning om bok finnes
+        String bookId = imageView.getId();
         displayBookPopup();
     }
 
@@ -109,6 +117,8 @@ public class StartpageController {
         addButton.setOnAction(e -> {
             System.out.println("Book added to shelf");
             //bok legges til i shelf
+            
+
         });
 
         Button doneButton = new Button("Done");

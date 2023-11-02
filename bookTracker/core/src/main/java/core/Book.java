@@ -7,8 +7,10 @@ public class Book {
 
     private String title;
     private String author;
-    private int bookId;
+    private String bookId;
     private String imageSrc;
+    private String pages;
+    private String description;
 
     /**
      * Creates a new instance with the given title and author
@@ -28,6 +30,10 @@ public class Book {
 
     }
 
+    public Book(String bookId) {
+        this.bookId = bookId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -43,15 +49,31 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-    public int getBookId() {
+    public String getBookId() {
         return bookId;
     }
-    public void setBookId(int bookId) {
+    public void setBookId(String bookId) {
         this.bookId = bookId;
     }
 
     public String getImageSrc() {
         return imageSrc;
+    }
+
+    public String getPages() {
+        return pages;
+    }
+
+    public void setPages(String pages) {
+        this.pages = pages;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setImageSrc(String imageSrc) {
