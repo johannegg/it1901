@@ -21,10 +21,9 @@ public class Users implements Iterable<User> {
      *                     an exception
      */
     public void addUser(User user) throws IOException {
+        // TODO:
         // checkUsername(user);
         this.users.add(user);
-        // usersPersistence.createNewUser(user);
-        // usersPersistence.writeToUsers(user);
     }
 
     /**
@@ -34,6 +33,7 @@ public class Users implements Iterable<User> {
      * @param user User user
      */
     public void addUserForTest(User user) throws IOException {
+        // TODO:
         // checkUsername(user);
         this.users.add(user);
     }
