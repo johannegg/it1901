@@ -5,14 +5,14 @@ import java.util.List;
 
 public class BookShelf {
     
-    private User user;
-    private Book book;
+    //private User user;
+    //private Book book;
     private List<Book> books = new ArrayList<>();
 
     
 
     public BookShelf(Book book) {
-        this.book = book;
+        //this.book = book;
     }
     
     public void addBook(Book book) {
