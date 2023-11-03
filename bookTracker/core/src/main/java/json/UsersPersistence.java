@@ -33,7 +33,6 @@ public class UsersPersistence {
         try (Writer writer = new FileWriter(file, StandardCharsets.UTF_8)) {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(writer, users);
         }
-        // objectMapper.writeValue(file, users);
     }
 
 }

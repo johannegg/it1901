@@ -1,5 +1,7 @@
 package bookTracker.restserver;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +20,31 @@ import core.Users;
  */
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/users")
 public class BookTrackerController {
 
+  @Autowired
+  private UsersService usersService;
 
-  @GetMapping("/hello")
-  public User hello(){
-    return new User("elias@gmail.com", "elias2", "12345gasuciaa");
+  // @GetMapping("/hello")
+  // public User hello(){
+  //   return new User("elias@gmail.com", "elias2", "12345gasuciaa");
+  // }
+  
+  @GetMapping
+  public Users getUsers() throws IOException {
+    return usersService.getUsers();
+  }
+
+  @GetMapping(path = "/{username}")
+  public User getUser(@PathVariable("username") String username) throws IOException {
+    User user = getUsers().getUser(username);
+    return user;
+  }
+
+  @PutMapping("/{username}")
+  public void putUser(@PathVariable("username") String username, @RequestBody User user) throws IOException {
+    usersService.putUser(user);
   }
   
 }
