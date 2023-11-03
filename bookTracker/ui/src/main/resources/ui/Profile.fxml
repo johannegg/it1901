@@ -59,6 +59,19 @@
          </children>
       </HBox>
       <Separator layoutX="-8.0" layoutY="73.0" prefHeight="0.0" prefWidth="1013.0" />
-      <Label layoutX="83.0" layoutY="132.0" prefHeight="17.0" prefWidth="55.0" text="Profile" />
+      <Label layoutX="83.0" layoutY="132.0" prefHeight="17.0" prefWidth="83.0" text="Username:">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="85.0" layoutY="169.0" prefHeight="19.0" prefWidth="102.0" text="E-mail:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="logoutButton" layoutX="89.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #abb1cf;" text="Log out" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
