@@ -1,5 +1,4 @@
 package ui;
-
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -21,6 +20,8 @@ public class ShelfController {
     @FXML
     private Button homePageButton;
 
+    @FXML
+    private Label HomePageButton;
 
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/Profile.fxml", event);
