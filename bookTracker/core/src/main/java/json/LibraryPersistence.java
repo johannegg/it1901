@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import core.Book;
+import core.BookShelf;
 
 /**
  * Persistence class for reading from library
@@ -21,10 +21,12 @@ public class LibraryPersistence {
      */
     public LibraryPersistence() {
         objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new SimpleModule().addDeserializer(Book.class, new LibraryDeserializer()));
+        LibraryModule mod = new LibraryModule();
+        objectMapper.registerModule(mod);
     }
 
-    public Book readFromLibrary() throws IOException {
-        return objectMapper.readerFor(Book.class).readValue(file);
+    public BookShelf readFromLibrary() throws IOException {
+        return objectMapper.readerFor(BookShelf.class).readValue(file);
     }
+    
 }

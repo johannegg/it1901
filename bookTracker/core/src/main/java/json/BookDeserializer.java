@@ -12,14 +12,20 @@ import com.fasterxml.jackson.databind.node.TextNode;
 
 import core.Book;
 
-public class LibraryDeserializer extends JsonDeserializer<Book> {
+public class BookDeserializer extends JsonDeserializer<Book> {
 
     @Override
     public Book deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
         final JsonNode node = p.getCodec().readTree(p);
         return deserialize(node);
     }
-
+  /**
+   * Takes in an inseance of JsonNode, and deserializes it. Returns an instance of
+   * Book.
+   *
+   * @param node node to be deserialized
+   * @return Book object
+   */
     Book deserialize(JsonNode node) {
         if (node instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) node;
@@ -34,7 +40,11 @@ public class LibraryDeserializer extends JsonDeserializer<Book> {
             }
             JsonNode pagesNode = objectNode.get("pages");
             if (pagesNode instanceof TextNode) {
-                book.setPages(pagesNode.asText());
+                book.setPages(pagesNode.asInt());
+            }
+            JsonNode bookIdNode = objectNode.get("bookId");
+            if (bookIdNode instanceof TextNode) {
+                book.setBookId(bookIdNode.asText());
             }
             JsonNode descriptionNode = objectNode.get("description");
             if (descriptionNode instanceof TextNode) {

@@ -7,10 +7,11 @@ public class Book {
 
     private String title;
     private String author;
+    private int pages;
     private String bookId;
-    private String imageSrc;
-    private String pages;
     private String description;
+
+    private String imageSrc;
 
     /**
      * Creates a new instance with the given title and author
@@ -60,11 +61,11 @@ public class Book {
         return imageSrc;
     }
 
-    public String getPages() {
+    public int getPages() {
         return pages;
     }
 
-    public void setPages(String pages) {
+    public void setPages(int pages) {
         this.pages = pages;
     }
 
