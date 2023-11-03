@@ -47,8 +47,8 @@ public class BookTest {
      */
     @Test
     public void testSetAndGetBookId() {
-        book1.setBookId(1);
-        book2.setBookId(2);
+        book1.setBookId("test1");
+        book2.setBookId("test2");
 
         assertEquals(1, book1.getBookId());
         assertEquals(2, book2.getBookId());
