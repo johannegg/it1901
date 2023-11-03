@@ -71,6 +71,7 @@ public class LogInController {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 if (user.getPassword().equals(password)) {
+                    user.setLoggedIn(true);
                     changeScene("Startpage.fxml", event);
                     return;
                 }

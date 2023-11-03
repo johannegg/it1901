@@ -7,6 +7,7 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private boolean loggedIn;
 
     /**
      * Creates a new User object and sets every parameter to null.
@@ -105,6 +106,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
 
     @Override

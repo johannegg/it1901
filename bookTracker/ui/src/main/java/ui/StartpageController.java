@@ -1,10 +1,13 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import core.Book;
+import core.BookShelf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import json.BookDeserializer;
+import json.LibraryPersistence;
 
 /**
  * Controller connected to Startpage.fxml
@@ -43,6 +48,10 @@ public class StartpageController {
     @FXML
     private Button homePageButton;
 
+    private LibraryPersistence libraryPersistence;
+    private String bookId;
+    //private List<Book> books;
+
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
@@ -56,9 +65,9 @@ public class StartpageController {
      * Sets up the Start Page by showing the book images
      */
     public void initialize() {
+        libraryPersistence = new LibraryPersistence();
 
         for (String img : imageSrcPop) {
-
             ImageView imageView = new ImageView();
             Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpg"));
             imageView.setImage(image);
@@ -66,10 +75,10 @@ public class StartpageController {
             imageView.setY(10);
             imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
-
             imageView.setId(img);
+            // book = new Book(img);
             imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> handleImgClicked(imageView));
-
+            
             try {
                 PopHBox.getChildren().add(imageView);
             } catch (Exception e) {
@@ -78,10 +87,8 @@ public class StartpageController {
         }
 
         for (String img : imageSrcPul) {
-
             ImageView imageView = new ImageView();
             Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img));
-
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
@@ -110,6 +117,7 @@ public class StartpageController {
 
     private void handleImgClicked(ImageView imageView) {
         // sjekk med if setning om bok finnes
+        this.bookId = imageView.getId();
         displayBookPopup();
     }
 
@@ -124,6 +132,19 @@ public class StartpageController {
         addButton.setOnAction(e -> {
             System.out.println("Book added to shelf");
             // bok legges til i shelf
+            //for (Book book : books) {
+              //  if (book.getBookId().equals(this.bookId)) {
+                //    Book shelfBook = new Book(book.getTitle(), book.getAuthor());
+                    //hente riktig bruker
+                    //add to shelf
+                //}
+            //}
+        try {
+            addBookToShelf();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
         });
 
         Button doneButton = new Button("Done");
@@ -146,6 +167,15 @@ public class StartpageController {
         Scene scene = new Scene(layout, 500, 300);
         stage.setScene(scene);
         stage.showAndWait();
+    }
+
+    public void addBookToShelf() throws IOException {
+        BookShelf bookShelf = libraryPersistence.readFromLibrary();
+        for (Book book : bookShelf) {
+            if (this.bookId.equals(book.getBookId())) {
+                System.out.println(book);
+            }
+        }
     }
 
     /**

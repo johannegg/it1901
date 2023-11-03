@@ -7,7 +7,10 @@ public class Book {
 
     private String title;
     private String author;
-    private int bookId;
+    private int pages;
+    private String bookId;
+    private String description;
+
     private String imageSrc;
 
     /**
@@ -19,6 +22,17 @@ public class Book {
     public Book(String title, String author) {
         this.title = title;
         this.author = author;
+    }
+
+    /**
+     * Creates a new Book object and sets every parameter to null.
+     */
+    public Book() {
+
+    }
+
+    public Book(String bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
@@ -36,15 +50,31 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-    public int getBookId() {
+    public String getBookId() {
         return bookId;
     }
-    public void setBookId(int bookId) {
+    public void setBookId(String bookId) {
         this.bookId = bookId;
     }
 
     public String getImageSrc() {
         return imageSrc;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setImageSrc(String imageSrc) {

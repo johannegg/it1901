@@ -1,9 +1,10 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class BookShelf {
+public class BookShelf implements Iterable<Book>{
     
     //private User user;
     //private Book book;
@@ -15,6 +16,9 @@ public class BookShelf {
         //this.book = book;
     }
     
+    public BookShelf() {
+    }
+
     public void addBook(Book book) {
         if (!books.contains(book)) {
             books.add(book);
@@ -28,6 +32,11 @@ public class BookShelf {
         if (books.contains(book)) {
             books.remove(book);
         }
+    }
+
+    @Override
+    public Iterator<Book> iterator() {
+        return books.iterator();
     }
     
     /*
