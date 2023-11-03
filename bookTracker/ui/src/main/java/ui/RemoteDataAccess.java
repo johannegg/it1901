@@ -13,7 +13,6 @@ import json.UsersModule;
 
 public class RemoteDataAccess {
     private URI baseURI;
-    private User user;
     private ObjectMapper objectMapper;
 
     public RemoteDataAccess() {

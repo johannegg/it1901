@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -34,10 +35,13 @@ public class StartpageController {
     private HBox PulHBox;
 
     @FXML
-    private Label ProfileButton;
+    private Button profileButton;
 
     @FXML
-    private Label ShelfButton;
+    private Button shelfButton;
+
+    @FXML
+    private Button homePageButton;
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
@@ -92,12 +96,16 @@ public class StartpageController {
         }
     }
 
-    public void handleProfileButton(MouseEvent event) throws IOException {
+    public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/Profile.fxml", event);
     }
 
-    public void handleShelfButton(MouseEvent event) throws IOException {
+    public void handleShelfButton(ActionEvent event) throws IOException {
         changeScene("/ui/ShelfPage.fxml", event);
+    }
+
+    public void handleHomePageButton(ActionEvent event) throws IOException {
+        changeScene("/ui/HomePage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) {
@@ -147,7 +155,7 @@ public class StartpageController {
      * @param event    the mouse click
      * @throws IOException if the file cannot be found
      */
-    private void changeScene(String filePath, MouseEvent event) throws IOException {
+    private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource(filePath));
         Parent parent = fxmlLoader.load();

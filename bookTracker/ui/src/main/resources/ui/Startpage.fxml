@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.StartpageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.StartpageController">
    <children>
       <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0">
          <children>
@@ -24,29 +24,29 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="HOME PAGE">
+                  <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
                      <font>
                         <Font size="18.0" />
                      </font>
-                  </Label>
+                  </Button>
                </children>
             </HBox>
             <HBox onMouseClicked="#handleProfileButton" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="ShelfButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleShelfButton" prefHeight="100.0" prefWidth="200.0" text="SHELF">
+                  <Button fx:id="shelf_button" mnemonicParsing="false" onAction="#handleShelfButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="SHELF">
                      <font>
                         <Font size="18.0" />
                      </font>
-                  </Label>
+                  </Button>
                </children>
             </HBox>
             <HBox onMouseClicked="#handleProfileButton" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="ProfileButton" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleProfileButton" prefHeight="100.0" prefWidth="200.0" text="PROFILE">
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="PROFILE">
                      <font>
                         <Font size="18.0" />
                      </font>
-                  </Label>
+                  </Button>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -72,13 +72,13 @@
             <HBox fx:id="PopHBox" prefHeight="140.0" prefWidth="881.0" />
          </content>
       </ScrollPane>
-      <Label layoutX="54.0" layoutY="193.0" prefHeight="17.0" prefWidth="113.0" text="Top 15 Popular Reads" />
+      <Label layoutX="54.0" layoutY="193.0" prefHeight="17.0" prefWidth="124.0" text="Top 15 Popular Reads" />
       <ScrollPane layoutX="51.0" layoutY="417.0" prefHeight="180.0" prefWidth="880.0">
          <content>
             <HBox fx:id="PulHBox" prefHeight="140.0" prefWidth="881.0" />
          </content>
       </ScrollPane>
       <HBox layoutX="-1.0" layoutY="76.0" prefHeight="97.0" prefWidth="1003.0" />
-      <Label layoutX="54.0" layoutY="400.0" prefHeight="17.0" prefWidth="113.0" text="Pulitzer winners 2022 and 2023" />
+      <Label layoutX="54.0" layoutY="400.0" prefHeight="17.0" prefWidth="192.0" text="Pulitzer winners 2022 and 2023" />
    </children>
 </AnchorPane>

@@ -23,7 +23,6 @@ import json.UsersPersistence;
 public class LogInController {
 
     private UsersPersistence usersPersistence;
-    private User user;
     // private RemoteDataAccess dataAccess;
 
     @FXML
