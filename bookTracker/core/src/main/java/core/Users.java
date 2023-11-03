@@ -39,14 +39,14 @@ public class Users implements Iterable<User> {
     }
 
     /**
-     * Gets an User object using an email address
+     * Gets an User object using an username
      * 
-     * @param email the email address to use
+     * @param username the username to use
      * @return the user, or null if it does not exist
      */
-    public User getUser(String email) {
+    public User getUser(String username) {
         for (User user : this.users) {
-            if (user.getEmail().equals(email)) {
+            if (user.getUsername().equals(username)) {
                 return user;
             }
         }
