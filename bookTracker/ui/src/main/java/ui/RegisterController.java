@@ -71,6 +71,11 @@ public class RegisterController {
         }
     }
 
+    @FXML
+    public void handleBackButton(ActionEvent event) throws IOException {
+        changeScene(event);
+    }
+
     /**
      * Creates a new User by using info from the email, username and password
      * fields.
