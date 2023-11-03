@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class ProfileController {
-    
+
     @FXML
     private Button profileButton;
 
@@ -22,6 +22,8 @@ public class ProfileController {
     @FXML
     private Button homePageButton;
 
+    @FXML
+    private Button logoutButton;
 
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/Profile.fxml", event);
@@ -33,6 +35,10 @@ public class ProfileController {
 
     public void handleHomePageButton(ActionEvent event) throws IOException {
         changeScene("/ui/Startpage.fxml", event);
+    }
+
+    public void handleLogoutButton(ActionEvent event) throws IOException {
+        changeScene("/ui/LogInPage.fxml", event);
     }
 
     /**
