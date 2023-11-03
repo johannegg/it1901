@@ -11,8 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class ProfileController {
-    
+public class ShelfController {
     @FXML
     private Button profileButton;
 

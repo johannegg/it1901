@@ -23,6 +23,7 @@ import json.UsersPersistence;
 public class LogInController {
 
     private UsersPersistence usersPersistence;
+    // private RemoteDataAccess dataAccess;
 
     @FXML
     TextField usernameField;
@@ -44,6 +45,7 @@ public class LogInController {
     @FXML
     void initialize() {
         usersPersistence = new UsersPersistence();
+        // this.dataAccess = new RemoteDataAccess();
     }
 
     /**
@@ -77,7 +79,25 @@ public class LogInController {
         }
         feedbackLabel.setText("Wrong username or password");
 
+        // try {
+        // this.user = this.logIn(usernameField.getText(), passwordField.getText());
+        // feedbackLabel.setText("Successfull log in");
+        // changeScene("Startpage.fxml", event);
+        // } catch (IllegalArgumentException e) {
+        // feedbackLabel.setText(e.getMessage());
+        // }
+
     }
+
+    // private User logIn(String username, String passwordInput) throws
+    // IllegalArgumentException {
+    // User user = dataAccess.getUserByUsername(username);
+    // String password = user.getPassword();
+    // if (!passwordInput.equals(password)) {
+    // throw new IllegalArgumentException("Feil passord");
+    // }
+    // return dataAccess.getUserByUsername(username);
+    // }
 
     /**
      * Changes the scene

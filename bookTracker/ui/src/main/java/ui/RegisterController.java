@@ -71,6 +71,11 @@ public class RegisterController {
         }
     }
 
+    @FXML
+    public void handleBackButton(ActionEvent event) throws IOException {
+        changeScene(event);
+    }
+
     /**
      * Creates a new User by using info from the email, username and password
      * fields.
@@ -86,10 +91,7 @@ public class RegisterController {
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
         Users users = usersPersistence.readFromUsers();
-        // User user2 = new User("lars@osloskolen.no", "lars", "larslars123");
-        // Users users = new Users();
         users.addUser(user);
-        // users.addUser(user2);
         usersPersistence.writeToUsers(users);
     }
 

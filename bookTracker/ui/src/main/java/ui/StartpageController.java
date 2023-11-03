@@ -8,6 +8,7 @@ import java.util.List;
 
 import core.Book;
 import core.BookShelf;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -39,7 +40,13 @@ public class StartpageController {
     private HBox PulHBox;
 
     @FXML
-    private Label ProfileButton;
+    private Button profileButton;
+
+    @FXML
+    private Button shelfButton;
+
+    @FXML
+    private Button homePageButton;
 
     private LibraryPersistence libraryPersistence;
     private String bookId;
@@ -54,7 +61,6 @@ public class StartpageController {
                     "phillips.jpeg", "cohen.jpeg", "elliott.jpeg", "eustace.jpeg", "ferrer.jpeg", "rembert.jpeg",
                     "seuss.jpeg"));
 
-
     /**
      * Sets up the Start Page by showing the book images
      */
@@ -67,7 +73,7 @@ public class StartpageController {
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
-            imageView.setFitWidth(110);
+            imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
             imageView.setId(img);
             // book = new Book(img);
@@ -86,7 +92,7 @@ public class StartpageController {
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
-            imageView.setFitWidth(110);
+            imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
 
             try {
@@ -97,8 +103,16 @@ public class StartpageController {
         }
     }
 
-    public void handleProfileButton(MouseEvent event) throws IOException {
-        changeScene("Profile.fxml", event);
+    public void handleProfileButton(ActionEvent event) throws IOException {
+        changeScene("/ui/Profile.fxml", event);
+    }
+
+    public void handleShelfButton(ActionEvent event) throws IOException {
+        changeScene("/ui/ShelfPage.fxml", event);
+    }
+
+    public void handleHomePageButton(ActionEvent event) throws IOException {
+        changeScene("/ui/HomePage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) {
@@ -130,8 +144,6 @@ public class StartpageController {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-
-
 
         });
 
@@ -173,7 +185,7 @@ public class StartpageController {
      * @param event    the mouse click
      * @throws IOException if the file cannot be found
      */
-    private void changeScene(String filePath, MouseEvent event) throws IOException {
+    private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource(filePath));
         Parent parent = fxmlLoader.load();
