@@ -3,7 +3,6 @@ package ui;
 import java.io.IOException;
 
 import core.User;
-import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,15 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
-import json.UsersPersistence;
 
 /**
  * Controller connectet to LogInPage.fxml
  */
 public class LogInController {
 
-    private UsersPersistence usersPersistence;
-    // private RemoteDataAccess dataAccess;
+    private RemoteDataAccess dataAccess = new RemoteDataAccess();
+    private User user;
 
     @FXML
     TextField usernameField;
@@ -42,11 +40,6 @@ public class LogInController {
 
     String filePath;
 
-    @FXML
-    void initialize() {
-        usersPersistence = new UsersPersistence();
-        // this.dataAccess = new RemoteDataAccess();
-    }
 
     /**
      * Changes scene to the registration page
@@ -65,39 +58,24 @@ public class LogInController {
      * @throws IOException if it cannot find the fxml file
      */
     public void handleLogInButton(ActionEvent event) throws IOException {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        Users users = usersPersistence.readFromUsers();
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                if (user.getPassword().equals(password)) {
-                    user.setLoggedIn(true);
-                    changeScene("Startpage.fxml", event);
-                    return;
-                }
-            }
+        try {
+            this.user = this.logIn(usernameField.getText(), passwordField.getText());
+            feedbackLabel.setText("Successfull log in");
+            changeScene("Startpage.fxml", event);
+        } catch (IllegalArgumentException e) {
+            feedbackLabel.setText(e.getMessage());
         }
-        feedbackLabel.setText("Wrong username or password");
-
-        // try {
-        // this.user = this.logIn(usernameField.getText(), passwordField.getText());
-        // feedbackLabel.setText("Successfull log in");
-        // changeScene("Startpage.fxml", event);
-        // } catch (IllegalArgumentException e) {
-        // feedbackLabel.setText(e.getMessage());
-        // }
 
     }
 
-    // private User logIn(String username, String passwordInput) throws
-    // IllegalArgumentException {
-    // User user = dataAccess.getUserByUsername(username);
-    // String password = user.getPassword();
-    // if (!passwordInput.equals(password)) {
-    // throw new IllegalArgumentException("Feil passord");
-    // }
-    // return dataAccess.getUserByUsername(username);
-    // }
+    private User logIn(String username, String passwordInput){
+        User user = dataAccess.getUserByUsername(username);
+        String password = user.getPassword();
+        if (!passwordInput.equals(password)) {
+            throw new IllegalArgumentException("Wrong username or password");
+        }
+        return dataAccess.getUserByUsername(username);
+    }
 
     /**
      * Changes the scene

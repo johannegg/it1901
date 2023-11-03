@@ -3,7 +3,6 @@ package ui;
 import java.io.IOException;
 
 import core.User;
-import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +38,7 @@ public class RegisterController {
     Button RegisterButton;
 
     UsersPersistence usersPersistence = new UsersPersistence();
+    RemoteDataAccess dataAccess = new RemoteDataAccess();
 
     /**
      * Creates a new user if createNewUser() does not throw an
@@ -79,20 +79,13 @@ public class RegisterController {
     /**
      * Creates a new User by using info from the email, username and password
      * fields.
-     * 
-     * @return a user
-     * @throws IllegalArgumentException if one of the fields is invalid
-     * @throws IOException              if something goes wrong when reading from
-     *                                  users.json
      */
-    private void createNewUser() throws IllegalArgumentException, IOException {
+    private void createNewUser() {
         User user = new User();
         user.setEmail(emailField.getText());
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
-        Users users = usersPersistence.readFromUsers();
-        users.addUser(user);
-        usersPersistence.writeToUsers(users);
+        dataAccess.postUser(user);
     }
 
     /**
