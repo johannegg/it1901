@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.BooleanNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
@@ -50,6 +51,10 @@ public class UserDeserializer extends JsonDeserializer<User> {
       JsonNode passwordNode = objectNode.get("password");
       if (passwordNode instanceof TextNode) {
         user.setPassword(passwordNode.asText());
+      }
+      JsonNode loggedInNode = objectNode.get("loggedIn");
+      if (loggedInNode instanceof BooleanNode) {
+        user.setLoggedIn(loggedInNode.asBoolean());
       }
       return user;
     }
