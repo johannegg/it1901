@@ -25,5 +25,23 @@ public class UsersService {
         usersPersistence.writeToUsers(users);
     }
 
+    public void putUser(User user) throws IOException{
+        checkUser(user);
+        this.users = usersPersistence.readFromUsers();
+        User oldUser = users.getUser(user.getUsername());
+        this.users.removeUser(oldUser);
+        this.users.addUser(user);
+        usersPersistence.writeToUsers(users);
+    }
+
+    private void checkUser(User user){
+        for (User u : this.users) {
+            if (u == user){
+                return;
+            }
+        }
+        throw new IllegalArgumentException("This user object does not exist");
+    }
+
   }
 
