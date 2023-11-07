@@ -184,12 +184,16 @@ public class StartpageController {
         Users users = usersPersistence.readFromUsers();
         for (User user : users) {
             if (user.isLoggedIn()) {
-                user.getBookShelf().add(this.book);
+                //Create new user and add to users with new book
+                User newUser = new User(user.getEmail(), user.getUsername(), user.getPassword());
+                users.removeUser(user);
+                newUser.getBookShelf().add(this.book);
+                users.addUser(newUser);
+                usersPersistence.writeToUsers(users);
                 System.out.println(book.getTitle() + "added to book shelf");
             } else {
                 System.out.println("No user logged in");
             }
-
         }
     }
 
