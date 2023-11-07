@@ -17,6 +17,7 @@ public class UserSerializer extends JsonSerializer<User> {
         gen.writeStringField("email", user.getEmail());
         gen.writeStringField("password", user.getPassword());
         gen.writeBooleanField("loggedIn", user.isLoggedIn());
+        gen.writeObjectField("bookShelf", user.getBookShelf());
 
         gen.writeEndObject();
     }
