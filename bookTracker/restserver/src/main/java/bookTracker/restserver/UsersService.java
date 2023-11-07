@@ -23,4 +23,13 @@ public class UsersService {
         usersPersistence.writeToUsers(users);
     }
 
-}
+    public void putUser(User user) throws IOException{
+        this.users = usersPersistence.readFromUsers();
+        User oldUser = users.getUser(user.getUsername());
+        this.users.removeUser(oldUser);
+        this.users.addUser(user);
+        usersPersistence.writeToUsers(users);
+    }
+
+  }
+

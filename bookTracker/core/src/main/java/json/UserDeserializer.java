@@ -2,27 +2,31 @@ package json;
 
 import java.io.IOException;
 
+import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.BooleanNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
+import core.BookShelf;
 import core.User;
 
 public class UserDeserializer extends JsonDeserializer<User> {
 
-     /**
+  /**
    * Method for deserializing from a json string to a User object. Returns an
    * instance of User.
    *
-   * @param p     JsonParser for parsing in json format
-   * @param ctxt  context for the deserialization
+   * @param p    JsonParser for parsing in json format
+   * @param ctxt context for the deserialization
    */
   @Override
-  public User deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, 
+  public User deserialize(JsonParser p, DeserializationContext ctxt) throws IOException,
       JsonProcessingException {
     final JsonNode node = p.getCodec().readTree(p);
     return deserialize(node);
@@ -34,8 +38,10 @@ public class UserDeserializer extends JsonDeserializer<User> {
    *
    * @param node node to be deserialized
    * @return User object
+   * @throws IOException
+   * @throws JacksonException
    */
-  User deserialize(JsonNode node) {
+  User deserialize(JsonNode node) throws JacksonException, IOException {
     if (node instanceof ObjectNode) {
       ObjectNode objectNode = (ObjectNode) node;
       User user = new User();
@@ -50,6 +56,18 @@ public class UserDeserializer extends JsonDeserializer<User> {
       JsonNode passwordNode = objectNode.get("password");
       if (passwordNode instanceof TextNode) {
         user.setPassword(passwordNode.asText());
+      }
+      JsonNode loggedInNode = objectNode.get("loggedIn");
+      if (loggedInNode instanceof BooleanNode) {
+        user.setLoggedIn(loggedInNode.asBoolean());
+      }
+      JsonNode bookShelfNode = objectNode.get("bookShelf");
+      if (bookShelfNode instanceof ObjectNode) {
+        ObjectMapper mapper = new ObjectMapper(); // Reuse your existing ObjectMapper or create a new one if needed
+        BookShelfDeserializer deserializer = new BookShelfDeserializer(); // Your custom deserializer
+        BookShelf bookshelf = deserializer.deserialize(bookShelfNode.traverse(mapper),
+            mapper.getDeserializationContext());
+        user.setBookShelf(bookshelf);
       }
       return user;
     }

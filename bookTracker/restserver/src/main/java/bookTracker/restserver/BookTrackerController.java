@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,12 @@ public class BookTrackerController {
   public ResponseEntity<Object> postUser(@PathVariable("username") String username, @RequestBody User user) throws IOException {
     usersService.postUser(user);
     return new ResponseEntity<>("Bruker lagt til", HttpStatus.CREATED);
+  }
+
+  @PutMapping(path = "/{username}")
+  public ResponseEntity<Object> putUser(@PathVariable("username") String username, @RequestBody User user) throws IOException {
+    usersService.putUser(user);
+    return new ResponseEntity<>("Bruker endret", HttpStatus.OK);
   }
 
 }
