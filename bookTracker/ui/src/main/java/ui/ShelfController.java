@@ -26,7 +26,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import json.LibraryPersistence;
+
 
 public class ShelfController {
     @FXML
@@ -47,16 +47,19 @@ public class ShelfController {
     @FXML
     private ScrollPane scrollPane;
 
-    private User user; 
+
     private TilePane shelfTilePane;
     private double lastX = 0;
-    private LibraryPersistence libraryPersistence;
+    private User loggedInUser;
+    private RemoteDataAccess dataAccess;
     
 
 
      public void initialize() {
         shelfTilePane = createShelfTilePane();
         scrollPane.setContent(shelfTilePane);
+
+        this.loggedInUser = dataAccess.getLoggedInUser();
 
         shelfTilePane.setOnMousePressed(event -> lastX = event.getSceneX());
         shelfTilePane.setOnMouseDragged(event -> {
@@ -77,7 +80,7 @@ public class ShelfController {
         TilePane tilePane = new TilePane();
         tilePane.setVgap(70); // Adjust the vertical gap as needed
         tilePane.setHgap(50);
-        tilePane.setPrefColumns(4); // Display 5 books in a row
+        tilePane.setPrefColumns(4); // Display 4 books in a row
         tilePane.setPrefWidth(1000); // Set the width of the TilePane
 
         return tilePane;
@@ -85,7 +88,7 @@ public class ShelfController {
     }
 
     public void addBookShelf(TilePane tilePane) throws IOException{
-        BookShelf bookShelf = libraryPersistence.readFromLibrary();
+        BookShelf bookShelf = loggedInUser.getBookShelf();
         for(Book book: bookShelf){
             Node bookInfoView = createBookInfoView(book);
             tilePane.getChildren().add(bookInfoView);
@@ -94,8 +97,8 @@ public class ShelfController {
 
     private Node createBookInfoView(Book book){
         ImageView imageView = createBookImageView();
-        Label titleLabel = new Label("Book Title");
-        Label authorLabel = new Label("Author");
+        Label titleLabel = new Label(book.getTitle());
+        Label authorLabel = new Label(book.getAuthor());
 
         titleLabel.setFont(new Font(16));
         titleLabel.setStyle("-fx-font-weight: bold"); 
@@ -158,4 +161,6 @@ public class ShelfController {
     }
 
     //mangler evnen til å fjerene bok fra shelf. 
+    //kan lese informasjon om boka, popup. 
+    // må bruke bookid, for å lese om boka 
 }
