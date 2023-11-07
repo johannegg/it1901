@@ -1,10 +1,9 @@
 package ui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
+import core.Book;
+import core.BookShelf;
 import core.User;
 import javafx.scene.effect.DropShadow;
 import javafx.event.ActionEvent;
@@ -27,6 +26,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import json.LibraryPersistence;
 
 public class ShelfController {
     @FXML
@@ -50,10 +50,9 @@ public class ShelfController {
     private User user; 
     private TilePane shelfTilePane;
     private double lastX = 0;
+    private LibraryPersistence libraryPersistence;
+    
 
-    private List<String> shelf = new ArrayList<>(
-            Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
-                    "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
 
      public void initialize() {
         shelfTilePane = createShelfTilePane();
@@ -67,6 +66,11 @@ public class ShelfController {
             lastX = event.getSceneX();
         });
 
+        try{
+            addBookShelf(shelfTilePane);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private TilePane createShelfTilePane() {
@@ -76,16 +80,19 @@ public class ShelfController {
         tilePane.setPrefColumns(4); // Display 5 books in a row
         tilePane.setPrefWidth(1000); // Set the width of the TilePane
 
-        for (String book : shelf) {
-            //ImageView imageView = createBookImageView();
+        return tilePane;
+
+    }
+
+    public void addBookShelf(TilePane tilePane) throws IOException{
+        BookShelf bookShelf = libraryPersistence.readFromLibrary();
+        for(Book book: bookShelf){
             Node bookInfoView = createBookInfoView(book);
             tilePane.getChildren().add(bookInfoView);
         }
-
-        return tilePane;
     }
 
-    private Node createBookInfoView(String book){
+    private Node createBookInfoView(Book book){
         ImageView imageView = createBookImageView();
         Label titleLabel = new Label("Book Title");
         Label authorLabel = new Label("Author");
@@ -100,7 +107,6 @@ public class ShelfController {
 
         StackPane bookInfoView = new StackPane();
         bookInfoView.getChildren().addAll(imageView,labelContainer);
-        //bookInfoView.setAlignment(Pos.CENTER);
 
         Insets margin = new Insets(0,0,0,25);
         StackPane.setMargin(labelContainer, margin);
@@ -114,7 +120,6 @@ public class ShelfController {
         imageView.setImage(image);
         imageView.setFitWidth(180); // Adjust the width as needed
         imageView.setPreserveRatio(true);
-        // You can add event handling here if needed
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(5);
         dropShadow.setOffsetX(3);
@@ -151,4 +156,6 @@ public class ShelfController {
         window.setScene(scene);
         window.show();
     }
+
+    //mangler evnen til å fjerene bok fra shelf. 
 }
