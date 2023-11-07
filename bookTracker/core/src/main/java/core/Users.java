@@ -21,9 +21,6 @@ public class Users implements Iterable<User> {
      *                     an exception
      */
     public void addUser(User user) throws IOException {
-        // TODO:
-        System.out.println("test3");
-        checkUsername(user.getUsername());
         this.users.add(user);
     }
 
@@ -34,16 +31,12 @@ public class Users implements Iterable<User> {
      * @param user User user
      */
     public void addUserForTest(User user) throws IOException {
-        // TODO:
-        checkUsername(user.getUsername());
         this.users.add(user);
     }
 
     public void checkUsername(String username) {
-        System.out.println("test1");
         for (User u : this.users) {
             if (u.getUsername().equals(username)) {
-                System.out.println("test2");
                 throw new IllegalArgumentException("Username already exists");
             }
         }

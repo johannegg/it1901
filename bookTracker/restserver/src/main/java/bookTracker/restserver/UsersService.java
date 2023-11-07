@@ -19,7 +19,6 @@ public class UsersService {
 
     public void postUser(User user) throws IOException {
         this.users = usersPersistence.readFromUsers();
-        System.out.println("test");
         this.users.addUser(user);
         usersPersistence.writeToUsers(users);
     }
