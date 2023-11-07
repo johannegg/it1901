@@ -3,31 +3,37 @@
     "username" : "lars",
     "email" : "lars@osloskolen.no",
     "password" : "larslars123",
-    "loggedIn" : false
+    "loggedIn" : false,
+    "bookShelf" : null
   }, {
     "username" : "tusj",
     "email" : "tusj@ntnu.no",
     "password" : "rødtusj123",
-    "loggedIn" : false
+    "loggedIn" : false,
+    "bookShelf" : null
   }, {
     "username" : "kvakkkvakk",
     "email" : "and@ntnu.no",
     "password" : "kkkkkkk123",
-    "loggedIn" : false
+    "loggedIn" : false,
+    "bookShelf" : null
   }, {
     "username" : "bokbok",
     "email" : "bok@ntnu.no",
     "password" : "bokbok123",
-    "loggedIn" : false
+    "loggedIn" : false,
+    "bookShelf" : null
   }, {
     "username" : "suzannemaduga",
     "email" : "suzanne@gmail.com",
     "password" : "suzsuz123",
-    "loggedIn" : false
+    "loggedIn" : false,
+    "bookShelf" : null
   }, {
     "username" : "liv",
     "email" : "liv@ntnu.no",
     "password" : "livliv123",
-    "loggedIn" : false
+    "loggedIn" : false,
+    "bookShelf" : null
   } ]
 }

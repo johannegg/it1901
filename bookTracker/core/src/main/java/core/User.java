@@ -1,5 +1,6 @@
 package core;
 
+
 /**
  * User class. Each User has an email, username and password.
  */
@@ -8,6 +9,7 @@ public class User {
     private String username;
     private String password;
     private boolean loggedIn;
+    private BookShelf bookShelf;
 
     /**
      * Creates a new User object and sets every parameter to null.
@@ -116,6 +118,14 @@ public class User {
         this.loggedIn = loggedIn;
     }
 
+    public BookShelf getBookShelf() {
+        return bookShelf;
+    }
+
+    public void setBookShelf(BookShelf bookShelf) {
+        this.bookShelf = bookShelf;
+    }
+
     @Override
     public String toString() {
     return "username: " + username + ", email: " + email + "password: " + password;
@@ -123,8 +133,13 @@ public class User {
 
     // public static void main(String[] args) {
     //     User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
-    //     User u2 = new User();
-    //     System.out.println(u1.getPassword());
+    //     BookShelf b1 = new BookShelf();
+    //     Book book = new Book("book", "austin");
+    //     Book book2 = new Book("book2", "ally");
+    //     b1.addBook(book);
+    //     b1.addBook(book2);
+    //     u1.setBookShelf(b1);
+    //     System.out.println(u1.getBookShelf());
     // }
 
 }
