@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 
 import core.User;
+import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,12 +80,15 @@ public class RegisterController {
     /**
      * Creates a new User by using info from the email, username and password
      * fields.
+     * @throws IOException
      */
-    private void createNewUser() {
+    private void createNewUser() throws IOException {
         User user = new User();
         user.setEmail(emailField.getText());
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
+        Users users = usersPersistence.readFromUsers();
+        users.checkUsername(user.getUsername());
         dataAccess.postUser(user);
     }
 
