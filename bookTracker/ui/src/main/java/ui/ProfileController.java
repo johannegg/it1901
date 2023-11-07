@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 
+import core.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class ProfileController {
+    private RemoteDataAccess dataAccess = new RemoteDataAccess();
+    private User loggedInUser;
 
     @FXML
     private Button profileButton;
@@ -24,6 +27,10 @@ public class ProfileController {
 
     @FXML
     private Button logoutButton;
+
+    public void initialize(){
+        this.loggedInUser = dataAccess.getLoggedInUser();
+    }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/Profile.fxml", event);
@@ -38,6 +45,8 @@ public class ProfileController {
     }
 
     public void handleLogoutButton(ActionEvent event) throws IOException {
+        loggedInUser.setLoggedIn(false);
+        dataAccess.putUser(loggedInUser);
         changeScene("/ui/LogInPage.fxml", event);
     }
 
