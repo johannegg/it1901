@@ -64,8 +64,7 @@ public class RemoteDataAccess {
                     return user;
                 }
             }
-            throw new IllegalStateException("No user is logged in");
-            // TODO: Maybe throw en exception if several people are logged in?
+            return null;
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

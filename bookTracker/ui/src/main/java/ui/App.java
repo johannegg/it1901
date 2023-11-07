@@ -27,10 +27,11 @@ public class App extends Application {
     }
 
     private void shutdown(RemoteDataAccess dataAccess) {
-        System.out.println("Applikasjonen lukkes, utfører opprydding...");
-        User user = dataAccess.getLoggedInUser();
-        user.setLoggedIn(false);
-        dataAccess.putUser(user);
+        if (dataAccess.getLoggedInUser() != null) {
+            User user = dataAccess.getLoggedInUser();
+            user.setLoggedIn(false);
+            dataAccess.putUser(user);
+        }
     }
 
     public static void main(String[] args) {
