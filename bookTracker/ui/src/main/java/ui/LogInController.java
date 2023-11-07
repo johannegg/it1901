@@ -60,6 +60,8 @@ public class LogInController {
     public void handleLogInButton(ActionEvent event) throws IOException {
         try {
             this.user = this.logIn(usernameField.getText(), passwordField.getText());
+            this.user.setLoggedIn(true);
+            dataAccess.putUser(user);
             feedbackLabel.setText("Successfull log in");
             changeScene("Startpage.fxml", event);
         } catch (IllegalArgumentException e) {
