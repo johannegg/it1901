@@ -80,6 +80,7 @@ public class RegisterController {
     /**
      * Creates a new User by using info from the email, username and password
      * fields.
+     * 
      * @throws IOException
      */
     private void createNewUser() throws IOException {
@@ -87,7 +88,7 @@ public class RegisterController {
         user.setEmail(emailField.getText());
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
-        Users users = usersPersistence.readFromUsers();
+        Users users = dataAccess.getUsers();
         users.checkUsername(user.getUsername());
         dataAccess.postUser(user);
     }
