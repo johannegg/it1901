@@ -2,13 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController">
    <children>
+      <Pane fx:id="pane" layoutX="23.0" layoutY="100.0" prefHeight="510.0" prefWidth="957.0" AnchorPane.topAnchor="92.0">
+         <children>
+            <ScrollPane fx:id="scrollPane" prefHeight="510.0" prefWidth="957.0" />
+         </children></Pane>
       <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
@@ -20,7 +26,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox onMouseClicked="#handleHomePageButton" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
                      <font>
@@ -59,6 +65,5 @@
          </children>
       </HBox>
       <Separator layoutX="-8.0" layoutY="73.0" prefHeight="0.0" prefWidth="1013.0" />
-      <Label layoutX="83.0" layoutY="132.0" prefHeight="17.0" prefWidth="55.0" text="Shelf" />
    </children>
 </AnchorPane>

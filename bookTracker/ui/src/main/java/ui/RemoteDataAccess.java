@@ -39,35 +39,59 @@ public class RemoteDataAccess {
             return objectMapper.readValue(response.body(), User.class);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            throw new IllegalArgumentException("Could not getUserByUsername(" + username + "). Something wrong with the server.", e);
+            throw new IllegalArgumentException(
+                    "Could not getUserByUsername(" + username + "). Something wrong with the server.", e);
         }
     }
 
-    public User getLoggedInUser(){
+    public User getLoggedInUser() {
         try {
-        HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("/users")) // Adjust the URI to point to the users' collection endpoint
-                .header("Accept", "application/json").GET().build();
-        HttpResponse<String> response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-        
-        if (response.statusCode() == 404) {
-            throw new IllegalArgumentException("Users not found");
-        } else if (response.statusCode() != 200) {
-            throw new RuntimeException("Failed to get users: HTTP error code: " + response.statusCode());
-        }
+            HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("/users")) // Adjust the URI to point to the
+                                                                                    // users' collection endpoint
+                    .header("Accept", "application/json").GET().build();
+            HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+                    HttpResponse.BodyHandlers.ofString());
 
-        Users users = objectMapper.readValue(response.body(), Users.class);
-        for (User user : users) {
-            if (user.isLoggedIn()){
-                return user;
+            if (response.statusCode() == 404) {
+                throw new IllegalArgumentException("Users not found");
+            } else if (response.statusCode() != 200) {
+                throw new RuntimeException("Failed to get users: HTTP error code: " + response.statusCode());
             }
-        }
-        throw new IllegalStateException("No user is logged in");
-        //TODO: Maybe throw en exception if several people are logged in?
 
-    } catch (IOException | InterruptedException e) {
-        e.printStackTrace();
-        throw new RuntimeException("Could not getAllUsers(). Something went wrong with the server.", e);
+            Users users = objectMapper.readValue(response.body(), Users.class);
+            for (User user : users) {
+                if (user.isLoggedIn()) {
+                    return user;
+                }
+            }
+            return null;
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Could not getAllUsers(). Something went wrong with the server.", e);
+        }
     }
+
+    public Users getUsers() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("/users")) // Adjust the URI to point to the
+                                                                                    // users' collection endpoint
+                    .header("Accept", "application/json").GET().build();
+            HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
+                    HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 404) {
+                throw new IllegalArgumentException("Users not found");
+            } else if (response.statusCode() != 200) {
+                throw new RuntimeException("Failed to get users: HTTP error code: " + response.statusCode());
+            }
+
+            Users users = objectMapper.readValue(response.body(), Users.class);
+            return users;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Could not getAllUsers(). Something went wrong with the server.", e);
+        }
     }
 
     public void postUser(User user) {

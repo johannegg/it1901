@@ -8,9 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
+import core.User;
+
 public class App extends Application {
 
     @Override
@@ -21,7 +20,21 @@ public class App extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop() {
+        RemoteDataAccess dataAccess = new RemoteDataAccess();
+        shutdown(dataAccess);
+    }
+
+    private void shutdown(RemoteDataAccess dataAccess) {
+        if (dataAccess.getLoggedInUser() != null) {
+            User user = dataAccess.getLoggedInUser();
+            user.setLoggedIn(false);
+            dataAccess.putUser(user);
+        }
+    }
+
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
