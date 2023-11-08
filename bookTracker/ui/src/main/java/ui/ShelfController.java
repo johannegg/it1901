@@ -51,7 +51,7 @@ public class ShelfController {
     private TilePane shelfTilePane;
     private double lastX = 0;
     private User loggedInUser;
-    private RemoteDataAccess dataAccess;
+    private RemoteDataAccess dataAccess = new RemoteDataAccess();
     
 
 
