@@ -54,16 +54,16 @@ public class ProfileController {
     }
 
     public void handleChangePassword() {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Change password");
+        alert.setHeaderText("Are you sure you want to change your password?");
+        alert.showAndWait();
+
         loggedInUser.setPassword(passwordField.getText());
         dataAccess.putUser(loggedInUser);
     }
 
     public void handleLogoutButton(ActionEvent event) throws IOException {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Are you sure you want to change your password?");
-        alert.setHeaderText("Are you sure you want to change your password?");
-        alert.showAndWait();
-
         loggedInUser.setLoggedIn(false);
         dataAccess.putUser(loggedInUser);
         changeScene("/ui/LogInPage.fxml", event);
