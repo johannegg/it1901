@@ -50,9 +50,11 @@ public class StartpageController {
     private Button homePageButton;
 
     private LibraryPersistence libraryPersistence;
-    private UsersPersistence usersPersistence;
+    //private UsersPersistence usersPersistence;
     private String bookId;
     private Book book;
+    private RemoteDataAccess dataAccess;
+    private User loggedInUser;
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
@@ -68,7 +70,8 @@ public class StartpageController {
      */
     public void initialize() {
         libraryPersistence = new LibraryPersistence();
-        usersPersistence = new UsersPersistence();
+        dataAccess = new RemoteDataAccess();
+        this.loggedInUser = dataAccess.getLoggedInUser();
 
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
@@ -143,7 +146,6 @@ public class StartpageController {
         Label pages = new Label("Pages: " + this.book.getPages());
         Label description = new Label("Description: " + this.book.getDescription());
 
-
         Button addButton = new Button("Add book");
         addButton.setOnAction(e -> {
             System.out.println("Book added to shelf");
@@ -174,28 +176,20 @@ public class StartpageController {
         layout.add(addButton, 0, 4);
         layout.add(doneButton, 0, 5);
 
-
         Scene scene = new Scene(layout, 500, 300);
         stage.setScene(scene);
         stage.showAndWait();
     }
 
     public void addBookToShelf() throws IOException {
-        Users users = usersPersistence.readFromUsers();
-        for (User user : users) {
-            if (user.isLoggedIn()) {
-                //Create new user and add to users with new book
-                User newUser = new User(user.getEmail(), user.getUsername(), user.getPassword());
-                users.removeUser(user);
-                newUser.getBookShelf().add(this.book);
-                users.addUser(newUser);
-                usersPersistence.writeToUsers(users);
-                System.out.println(book.getTitle() + "added to book shelf");
-            } else {
-                System.out.println("No user logged in");
-            }
-        }
+
+        // Create new user and add to users with new book
+        User newUser = this.loggedInUser;
+        newUser.getBookShelf().addBook(this.book);
+        dataAccess.putUser(newUser);
+        System.out.println(book.getTitle() + "added to book shelf");
     }
+    // kunne legge bookShelf i users
 
     /**
      * Changes the scne to the given file path

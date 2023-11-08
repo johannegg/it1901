@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 
+import core.BookShelf;
 import core.User;
 import core.Users;
 import javafx.event.ActionEvent;
@@ -87,6 +88,7 @@ public class RegisterController {
         user.setEmail(emailField.getText());
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
+        user.setBookShelf(new BookShelf());
         Users users = usersPersistence.readFromUsers();
         users.checkUsername(user.getUsername());
         dataAccess.postUser(user);
