@@ -1,7 +1,7 @@
 [open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323?new)
 
 # BookTracker - Oversikt og Struktur
-Prosjektet er konfigurert med **maven** som byggesystem. Prosjektet har i hovedssak de to modulene core og ui. Brukergrensesnittet befinner seg i modulen ui. Prosjektet benytter javafx version 17.0.8 og Apache Maven 3.9.4.
+Prosjektet er konfigurert med **maven** som byggesystem. Det har i hovedssak de tre modulene core, ui og restserver. Brukergrensesnittet befinner seg i modulen ui. Prosjektet benytter javafx version 17.0.8 og Apache Maven 3.9.4.
 
 Kodeprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen inneholder også en **[readme-fil](bookTracker/README.md)** som fungerer som en mer forklarende fil om hvordan selve applikasjonen er bygget opp og fungerer, samt brukerhistorier som beskriver litt av prosjektfremgangen. 
 
@@ -10,17 +10,22 @@ Til bygging og kjøring av prosjektet benyttes maven. For å kunne kjøre prosje
 
 ## Organisering 
 ## core 
-core-moduelen er delt inn i to packages:
+core-moduelen er delt inn i tre packages:
 - **[core](bookTracker/core/src/main/java/core/)** 
-- **[json](bookTracker/core/src/main/java/json/)** (ikke helt i mål her ennå - se punkt om filhåndtering i realese2.md)
+- **[json](bookTracker/core/src/main/java/json/)** 
 
-**[core](bookTracker/core)** inneholder alle klasser for logikk til applikasjonen vår. I vårt prosjekt skal en bruker kunne registrere en profil for så å kunne søke etter, legge til og rangere bøker. Klassene danner til sammen logikk som håndterer dette.
+**[core](bookTracker/core)** inneholder alle klasser for logikk til applikasjonen vår. I vårt prosjekt skal en bruker kunne registrere en profil, logge inn med denne, og videre ha mulighet til å legge til og slette bøker i en personlig bokhylle. Klassene danner til sammen logikk som håndterer dette.
+
+**[json](bookTracker/json)** inneholder klasser som brukes til å serialisere og deserialisere java-objekter til og fra json. Til dette har vi benyttet oss av Jackson-biblioteket.
 
 ## ui
 **[ui](bookTracker/ui)** inneholder én pacage, **[ui](bookTracker/ui/src/main/java/ui)**. Denne inneholder alle kontrollerne til brukergrensesnitett i applikasjonen vår. Vi har i prosjektet benyttet JavaFX og FXML. Hver scene i appen vår har en tilhørende FXML-fil med en tilhørende kontroller. FXML-filene er plassert i en egen resources-mappe i ui-modulen.
 
-## arkitektur oversikt
-Her er diagram som viser arkitekturen til prosjektet vårt. Diagrammet illustrere modulene i prosjektet og hvordan de avhenger av hverandre 
+## restserver
+Prosjektet er konfigurert med Spring Boot og inneholder en restserver-modul. **[restserver](bookTracker/restserver)**  inneholder én package med klasser som er ansvarlige for å håndtere de forskjellige HTTP-forespørslene til og fra serveren. I ui-modulen befinner det seg en RemoteDataAccess-klasse som inneholder metoder for å utføre HTTP-kall. Serveren kjøres på `localhost:8080`
+
+## arkitektur-oversikt
+Her er pakkediagram som viser arkitekturen til prosjektet vårt. Diagrammet illustrere modulene i prosjektet og hvordan de avhenger av hverandre 
 
 ![Componentdiagram](bookTracker/images/componentdiagram.png)
 
@@ -49,3 +54,8 @@ byggesystemet vårt har tillegg for:
 - kjøring av javafx (**javafx-maven-plugin**)
 - testdekningsgrad med jacoco (**jacoco-maven-plugin**)
 - sjekking av kodekvalitet med checkstyle (**maven-checkstyle-plugin**) og spotbugs (**spotbugs-maven-plugin**)
+- oppsett av server med spring-boot (**spring-boot-maven-plugin**)
+
+## Klassediagram
+
+## Sekvensdiagram
