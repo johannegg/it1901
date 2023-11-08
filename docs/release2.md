@@ -1,8 +1,8 @@
 ## Oppdateringer 
 
 Siden forrige innlevering har vi har utvidet appen med følgende funksjonalitet:
-- En bruker kan opprette en profil og logge inn
-- En bruker får opp en liste med "Popular reads" og "Pulitzer winners" når den befinner seg på startsiden
+- En bruker kan opprette en profil og logge inn **brukerhistorie 1**
+- En bruker får opp en liste med "Popular reads" og "Pulitzer winners" når den befinner seg på startsiden **brukerhistorie 2**
 
 Vi har fjernet muligheten for å legge til bøker i en liste, som vi hadde med i forrige innlevering, ettersom vi må endre denne til å passe bedre med strukturen vår, og vi tenker dermed å utvikle denne funksjonaliteten på nytt på et senere tidspunkt. 
 
