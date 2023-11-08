@@ -11,17 +11,17 @@ import core.BookShelf;
 
 public class BookShelfSerializer extends JsonSerializer<BookShelf> {
 
+    private final BookSerializer bookSerializer = new BookSerializer(); // Create an instance of BookSerializer
+
     @Override
     public void serialize(BookShelf bookShelf, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeStartObject();
+        gen.writeStartArray(); // Start an array for bookShelf
 
-        gen.writeArrayFieldStart("books");
         for (Book book : bookShelf) {
-            gen.writeObject(book);
+            // Use the existing BookSerializer to serialize each book
+            bookSerializer.serialize(book, gen, serializers);
         }
-        gen.writeEndArray();
 
-        gen.writeEndObject();
+        gen.writeEndArray(); // End the array for bookShelf
     }
-    
 }

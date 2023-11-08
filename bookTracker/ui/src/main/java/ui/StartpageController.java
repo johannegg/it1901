@@ -1,6 +1,5 @@
 package ui;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,6 +7,8 @@ import java.util.List;
 
 import core.Book;
 import core.BookShelf;
+import core.User;
+import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +26,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import json.BookDeserializer;
 import json.LibraryPersistence;
+import json.UsersPersistence;
 
 /**
  * Controller connected to Startpage.fxml
@@ -49,8 +50,11 @@ public class StartpageController {
     private Button homePageButton;
 
     private LibraryPersistence libraryPersistence;
+    //private UsersPersistence usersPersistence;
     private String bookId;
-    //private List<Book> books;
+    private Book book;
+    private RemoteDataAccess dataAccess;
+    private User loggedInUser;
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
@@ -66,6 +70,8 @@ public class StartpageController {
      */
     public void initialize() {
         libraryPersistence = new LibraryPersistence();
+        dataAccess = new RemoteDataAccess();
+        this.loggedInUser = dataAccess.getLoggedInUser();
 
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
@@ -76,9 +82,14 @@ public class StartpageController {
             imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
             imageView.setId(img);
-            // book = new Book(img);
-            imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> handleImgClicked(imageView));
-            
+            imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                try {
+                    handleImgClicked(imageView);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
             try {
                 PopHBox.getChildren().add(imageView);
             } catch (Exception e) {
@@ -115,9 +126,14 @@ public class StartpageController {
         changeScene("/ui/HomePage.fxml", event);
     }
 
-    private void handleImgClicked(ImageView imageView) {
-        // sjekk med if setning om bok finnes
+    private void handleImgClicked(ImageView imageView) throws IOException {
         this.bookId = imageView.getId();
+        BookShelf bookShelf = libraryPersistence.readFromLibrary();
+        for (Book book : bookShelf) {
+            if (this.bookId.equals(book.getBookId())) {
+                this.book = book;
+            }
+        }
         displayBookPopup();
     }
 
@@ -125,25 +141,19 @@ public class StartpageController {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
 
-        Label title = new Label("Title:");
-        Label author = new Label("Author:");
+        Label title = new Label("Title: " + this.book.getTitle());
+        Label author = new Label("Author: " + this.book.getAuthor());
+        Label pages = new Label("Pages: " + this.book.getPages());
+        Label description = new Label("Description: " + this.book.getDescription());
 
         Button addButton = new Button("Add book");
         addButton.setOnAction(e -> {
             System.out.println("Book added to shelf");
-            // bok legges til i shelf
-            //for (Book book : books) {
-              //  if (book.getBookId().equals(this.bookId)) {
-                //    Book shelfBook = new Book(book.getTitle(), book.getAuthor());
-                    //hente riktig bruker
-                    //add to shelf
-                //}
-            //}
-        try {
-            addBookToShelf();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
+            try {
+                addBookToShelf();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
 
         });
 
@@ -152,7 +162,7 @@ public class StartpageController {
             stage.close();
         });
 
-        VBox labels = new VBox(10, title, author);
+        VBox labels = new VBox(10, title, author, pages, description);
         labels.setPadding(new Insets(10));
 
         GridPane layout = new GridPane();
@@ -161,8 +171,10 @@ public class StartpageController {
         layout.setPadding(new Insets(10));
         layout.add(title, 0, 0);
         layout.add(author, 0, 1);
-        layout.add(addButton, 0, 2);
-        layout.add(doneButton, 0, 3);
+        layout.add(pages, 0, 2);
+        layout.add(description, 0, 3);
+        layout.add(addButton, 0, 4);
+        layout.add(doneButton, 0, 5);
 
         Scene scene = new Scene(layout, 500, 300);
         stage.setScene(scene);
@@ -170,13 +182,14 @@ public class StartpageController {
     }
 
     public void addBookToShelf() throws IOException {
-        BookShelf bookShelf = libraryPersistence.readFromLibrary();
-        for (Book book : bookShelf) {
-            if (this.bookId.equals(book.getBookId())) {
-                System.out.println(book);
-            }
-        }
+
+        // Create new user and add to users with new book
+        User newUser = this.loggedInUser;
+        newUser.getBookShelf().addBook(this.book);
+        dataAccess.putUser(newUser);
+        System.out.println(book.getTitle() + "added to book shelf");
     }
+    // kunne legge bookShelf i users
 
     /**
      * Changes the scne to the given file path

@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import core.Book;
 import core.BookShelf;
 
-
-
+@SuppressWarnings("serial")
 public class LibraryModule extends SimpleModule {
 
     private static final String NAME = "SalonModule";
