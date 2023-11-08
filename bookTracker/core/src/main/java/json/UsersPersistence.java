@@ -21,8 +21,8 @@ public class UsersPersistence {
      */
     public UsersPersistence() {
         objectMapper = new ObjectMapper();
-        UsersModule mod = new UsersModule();
-        objectMapper.registerModule(mod);
+        objectMapper.registerModule(new UsersModule());
+        objectMapper.registerModule(new LibraryModule());
     }
 
     public Users readFromUsers() throws IOException {

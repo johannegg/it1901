@@ -8,10 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.BooleanNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
 
 import core.BookShelf;
 import core.User;
@@ -41,33 +38,19 @@ public class UserDeserializer extends JsonDeserializer<User> {
    * @throws IOException
    * @throws JacksonException
    */
-  User deserialize(JsonNode node) throws JacksonException, IOException {
+  User deserialize(JsonNode node) throws IOException {
     if (node instanceof ObjectNode) {
       ObjectNode objectNode = (ObjectNode) node;
       User user = new User();
-      JsonNode usernameNode = objectNode.get("username");
-      if (usernameNode instanceof TextNode) {
-        user.setUsername(usernameNode.asText());
-      }
-      JsonNode emailNode = objectNode.get("email");
-      if (emailNode instanceof TextNode) {
-        user.setEmail(emailNode.asText());
-      }
-      JsonNode passwordNode = objectNode.get("password");
-      if (passwordNode instanceof TextNode) {
-        user.setPassword(passwordNode.asText());
-      }
-      JsonNode loggedInNode = objectNode.get("loggedIn");
-      if (loggedInNode instanceof BooleanNode) {
-        user.setLoggedIn(loggedInNode.asBoolean());
-      }
+      user.setUsername(objectNode.get("username").asText());
+      user.setEmail(objectNode.get("email").asText());
+      user.setPassword(objectNode.get("password").asText());
+      user.setLoggedIn(objectNode.get("loggedIn").asBoolean());
+
       JsonNode bookShelfNode = objectNode.get("bookShelf");
       if (bookShelfNode instanceof ObjectNode) {
-        ObjectMapper mapper = new ObjectMapper(); // Reuse your existing ObjectMapper or create a new one if needed
-        BookShelfDeserializer deserializer = new BookShelfDeserializer(); // Your custom deserializer
-        BookShelf bookshelf = deserializer.deserialize(bookShelfNode.traverse(mapper),
-            mapper.getDeserializationContext());
-        user.setBookShelf(bookshelf);
+        BookShelf bookShelf = new BookShelfDeserializer().deserialize(bookShelfNode);
+        user.setBookShelf(bookShelf);
       }
       return user;
     }

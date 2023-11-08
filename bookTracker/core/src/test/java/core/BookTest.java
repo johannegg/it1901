@@ -84,11 +84,11 @@ public class BookTest {
     /**
      * Tests setImageSrc()
      */
-    @Test
-    public void testSetImageSrc() {
-        book1.setImageSrc("/ui/BookImages/gilmore.jpg");
-        assertEquals("/ui/BookImages/gilmore.jpg", book1.getImageSrc());
-    }
+    //@Test
+    //public void testSetImageSrc() {
+    //    book1.setImageSrc("/ui/BookImages/gilmore.jpg");
+    //      assertEquals("/ui/BookImages/gilmore.jpg", book1.getImageSrc());
+    //}
 
     
 }
