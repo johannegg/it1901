@@ -1,4 +1,4 @@
-package bookTracker.restserver;
+package restserver;
 
 import java.io.IOException;
 

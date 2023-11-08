@@ -9,5 +9,5 @@ module bookTracker.restserver{
 
     requires calc.core;
 
-    opens bookTracker.restserver to spring.beans, spring.context, spring.web;
+    opens restserver to spring.beans, spring.context, spring.web;
 }
