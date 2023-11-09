@@ -9,7 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ProfileController {
@@ -26,14 +29,20 @@ public class ProfileController {
     private Button homePageButton;
 
     @FXML
+    private TextField passwordField;
+
+    @FXML
+    private Button passwordButton;
+
+    @FXML
     private Button logoutButton;
 
-    public void initialize(){
+    public void initialize() {
         this.loggedInUser = dataAccess.getLoggedInUser();
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
-        changeScene("/ui/Profile.fxml", event);
+        changeScene("/ui/ProfilePage.fxml", event);
     }
 
     public void handleShelfButton(ActionEvent event) throws IOException {
@@ -42,6 +51,16 @@ public class ProfileController {
 
     public void handleHomePageButton(ActionEvent event) throws IOException {
         changeScene("/ui/Startpage.fxml", event);
+    }
+
+    public void handleChangePassword() {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Change password");
+        alert.setHeaderText("Are you sure you want to change your password?");
+        alert.showAndWait();
+
+        loggedInUser.setPassword(passwordField.getText());
+        dataAccess.putUser(loggedInUser);
     }
 
     public void handleLogoutButton(ActionEvent event) throws IOException {
