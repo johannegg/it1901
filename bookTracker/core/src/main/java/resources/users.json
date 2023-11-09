@@ -1,5 +1,25 @@
 {
   "users" : [ {
+    "username" : "exampleUser",
+    "email" : "user@example.com",
+    "password" : "password123",
+    "loggedIn" : false,
+    "bookShelf" : {
+      "books" : [ {
+        "title" : "Book Title",
+        "author" : "Author Name",
+        "pages" : 0,
+        "bookId" : "123456",
+        "description" : "Description of the book"
+      }, {
+        "title" : "Book2 Title",
+        "author" : "Author2 Name",
+        "pages" : 0,
+        "bookId" : "12",
+        "description" : "Description of the book"
+      } ]
+    }
+  }, {
     "username" : "suzie",
     "email" : "suzie@ntnu.no",
     "password" : "suzie123",
@@ -39,6 +59,18 @@
         "pages" : 0,
         "bookId" : "heller",
         "description" : "Dive into a story of secrets and revelations in the scenic Paper Palace."
+      }, {
+        "title" : "Cleopatra and Frankenstein",
+        "author" : "Coco Mellors",
+        "pages" : 0,
+        "bookId" : "mellors",
+        "description" : "An intriguing blend of history and science fiction that takes readers on an unexpected journey."
+      }, {
+        "title" : "Romantic Comedy",
+        "author" : "Curtis Sittenfeld",
+        "pages" : 0,
+        "bookId" : "sittenfeld",
+        "description" : "A humorous and touching exploration of the ups and downs of romance in the modern world."
       } ]
     }
   } ]

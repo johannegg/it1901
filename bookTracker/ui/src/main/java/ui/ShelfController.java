@@ -20,11 +20,13 @@ import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ShelfController {
@@ -37,8 +39,6 @@ public class ShelfController {
     @FXML
     private Button homePageButton;
 
-    @FXML
-    private ScrollBar scroll;
 
     @FXML
     private Pane pane;
@@ -57,16 +57,20 @@ public class ShelfController {
     public void initialize() {
         shelfTilePane = createShelfTilePane();
         scrollPane.setContent(shelfTilePane);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Disable horizontal scrollbar
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Enable vertical scrollbar if needed
+        scrollPane.setContent(shelfTilePane);
         this.loggedInUser = dataAccess.getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
+        //scrollPane.setMouseTransparent(true);
 
-        shelfTilePane.setOnMousePressed(event -> lastX = event.getSceneX());
+       /*  shelfTilePane.setOnMousePressed(event -> lastX = event.getSceneX());
         shelfTilePane.setOnMouseDragged(event -> {
             double deltaX = event.getSceneX() - lastX;
             double newX = shelfTilePane.getLayoutX() + deltaX;
             shelfTilePane.setLayoutX(newX);
             lastX = event.getSceneX();
-        });
+        });*/ 
 
         try {
             addBookShelf(shelfTilePane);
@@ -79,23 +83,28 @@ public class ShelfController {
         TilePane tilePane = new TilePane();
         tilePane.setVgap(70); // Adjust the vertical gap as needed
         tilePane.setHgap(50);
-        tilePane.setPrefColumns(4); // Display 4 books in a row
+        tilePane.setPrefColumns(3); // Display 5 books in a row
         tilePane.setPrefWidth(1000); // Set the width of the TilePane
 
         return tilePane;
 
     }
 
+    //SAMME NAVN, MÅ FIKSE 
+    public void addBookShelf(TilePane tilePane) throws IOException{
     public void addBookShelf(TilePane tilePane) throws IOException {
         BookShelf bookShelf = loggedInUser.getBookShelf();
         for (Book book : bookShelf) {
-            Node bookInfoView = createBookInfoView(book);
+            ImageView bookImageView = createBookImageView(book);
+            Node bookInfoView = createBookInfoView(book, bookImageView);
             tilePane.getChildren().add(bookInfoView);
         }
     }
 
     private Node createBookInfoView(Book book) {
         ImageView imageView = createBookImageView();
+    private Node createBookInfoView(Book book, ImageView imageView){
+        imageView = createBookImageView(book);
         Label titleLabel = new Label(book.getTitle());
         Label authorLabel = new Label(book.getAuthor());
 
@@ -116,22 +125,36 @@ public class ShelfController {
         return bookInfoView;
     }
 
-    private ImageView createBookImageView() {
+    private ImageView createBookImageView(Book book) {
         ImageView imageView = new ImageView();
         Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/bookDefault.png"));
         imageView.setImage(image);
         imageView.setFitWidth(180); // Adjust the width as needed
         imageView.setPreserveRatio(true);
+        imageView.setPickOnBounds(true);
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(5);
         dropShadow.setOffsetX(3);
         dropShadow.setOffsetY(3);
         imageView.setEffect(dropShadow);
+
+        imageView.setId(book.getBookId());
+
+        imageView.setOnMouseClicked(event -> {
+            System.out.println("click on image");
+            try {
+                handleImgClicked(imageView);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            event.consume();
+        });
+
         return imageView;
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
-        changeScene("/ui/ProfilePage.fxml", event);
+        changeScene("/ui/Profile.fxml", event);
     }
 
     public void handleShelfButton(ActionEvent event) throws IOException {
@@ -142,6 +165,81 @@ public class ShelfController {
         changeScene("/ui/Startpage.fxml", event);
     }
 
+    private void handleImgClicked(ImageView imageView) throws IOException {
+        String bookId = imageView.getId();
+
+        Book clickedBook = getBookId(bookId);
+
+        if(clickedBook != null){
+            displayBookPopup(clickedBook);
+            System.out.println("the book whas clicked on");
+        }
+
+    }
+
+    private Book getBookId(String bookId){
+        BookShelf bookShelf = loggedInUser.getBookShelf();
+        for (Book book : bookShelf) {
+            if (bookId.equals(book.getBookId())) {
+                return book;
+            }
+        }
+        return null; 
+
+    }
+
+    private void displayBookPopup(Book book) {
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        Label title = new Label("Title: " + book.getTitle());
+        Label author = new Label("Author: " + book.getAuthor());
+        Label pages = new Label("Pages: " + book.getPages());
+        Label description = new Label("Description: " + book.getDescription());
+
+        Button removeButton = new Button("Remove book");
+        removeButton.setOnAction(e -> {
+            System.out.println("Book removed from shelf");
+            try {
+                removeBookFromShelf(book);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+        });
+
+        Button doneButton = new Button("Done");
+        doneButton.setOnAction(e -> {
+            stage.close();
+        });
+
+        VBox labels = new VBox(10, title, author, pages, description);
+        labels.setPadding(new Insets(10));
+
+        GridPane layout = new GridPane();
+        layout.setHgap(10);
+        layout.setVgap(10);
+        layout.setPadding(new Insets(10));
+        layout.add(title, 0, 0);
+        layout.add(author, 0, 1);
+        layout.add(pages, 0, 2);
+        layout.add(description, 0, 3);
+        layout.add(removeButton, 0, 4);
+        layout.add(doneButton, 0, 5);
+
+        Scene scene = new Scene(layout, 500, 300);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
+    public void removeBookFromShelf(Book book) throws IOException {
+
+        // Create new user and add to users with new book
+        User newUser = this.loggedInUser;
+        newUser.getBookShelf().removeBook(book);
+        dataAccess.putUser(newUser);
+        System.out.println(book.getTitle() + "added to book shelf");
+    }
     /**
      * Changes the scene to the given file path
      * 
