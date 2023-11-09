@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 
 import core.User;
+import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-
 
 /**
  * Controller connectet to LogInPage.fxml
@@ -39,7 +39,6 @@ public class LogInController {
     Label feedbackLabel;
 
     String filePath;
-
 
     /**
      * Changes scene to the registration page
@@ -70,7 +69,11 @@ public class LogInController {
 
     }
 
-    private User logIn(String username, String passwordInput){
+    private User logIn(String username, String passwordInput) {
+        Users users = dataAccess.getUsers();
+        if (users.getUser(username) == null) {
+            throw new IllegalArgumentException("Wrong username or password");
+        }
         User user = dataAccess.getUserByUsername(username);
         String password = user.getPassword();
         if (!passwordInput.equals(password)) {
