@@ -49,8 +49,11 @@ public class StartpageController {
     @FXML
     private Button homePageButton;
 
+    @FXML
+    private Label usernameTag;
+
     private LibraryPersistence libraryPersistence;
-    //private UsersPersistence usersPersistence;
+    // private UsersPersistence usersPersistence;
     private String bookId;
     private Book book;
     private RemoteDataAccess dataAccess;
@@ -72,6 +75,7 @@ public class StartpageController {
         libraryPersistence = new LibraryPersistence();
         dataAccess = new RemoteDataAccess();
         this.loggedInUser = dataAccess.getLoggedInUser();
+        usernameTag.setText(loggedInUser.getUsername());
 
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
