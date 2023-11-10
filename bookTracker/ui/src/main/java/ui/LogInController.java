@@ -38,8 +38,6 @@ public class LogInController {
     @FXML
     Label feedbackLabel;
 
-    String filePath;
-
     /**
      * Changes scene to the registration page
      * 
