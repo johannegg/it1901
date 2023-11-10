@@ -8,7 +8,6 @@ import java.util.List;
 import core.Book;
 import core.BookShelf;
 import core.User;
-import core.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +26,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import json.LibraryPersistence;
-import json.UsersPersistence;
 
 /**
  * Controller connected to Startpage.fxml

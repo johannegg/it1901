@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import json.UsersPersistence;
 
 /**
  * Controller connected to RegistrationPage.fxml
@@ -39,7 +38,6 @@ public class RegisterController {
     @FXML
     Button RegisterButton;
 
-    UsersPersistence usersPersistence = new UsersPersistence();
     RemoteDataAccess dataAccess = new RemoteDataAccess();
 
     /**
