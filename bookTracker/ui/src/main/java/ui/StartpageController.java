@@ -16,6 +16,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -109,6 +111,14 @@ public class StartpageController {
             imageView.setY(10);
             imageView.setFitHeight(160);
             imageView.setPreserveRatio(true);
+            imageView.setId(img);
+            imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                try {
+                    handleImgClicked(imageView);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
 
             try {
                 PulHBox.getChildren().add(imageView);
@@ -152,7 +162,6 @@ public class StartpageController {
 
         Button addButton = new Button("Add book");
         addButton.setOnAction(e -> {
-            System.out.println("Book added to shelf");
             try {
                 addBookToShelf();
             } catch (IOException e1) {
@@ -186,12 +195,22 @@ public class StartpageController {
     }
 
     public void addBookToShelf() throws IOException {
-
-        // Create new user and add to users with new book
-        User newUser = this.loggedInUser;
-        newUser.getBookShelf().addBook(this.book);
-        dataAccess.putUser(newUser);
-        System.out.println(book.getTitle() + "added to book shelf");
+        this.loggedInUser = dataAccess.getLoggedInUser();
+        try {
+            loggedInUser.getBookShelf().addBook(this.book);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText("Book successfully added");
+            alert.setContentText("You can find all your added books under SHELF");
+            alert.showAndWait();
+            dataAccess.putUser(loggedInUser);
+        } catch (IllegalStateException e) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("Could not add book");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
     // kunne legge bookShelf i users
 
