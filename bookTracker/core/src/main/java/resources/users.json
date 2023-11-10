@@ -1,25 +1,5 @@
 {
   "users" : [ {
-    "username" : "exampleUser",
-    "email" : "user@example.com",
-    "password" : "password123",
-    "loggedIn" : false,
-    "bookShelf" : {
-      "books" : [ {
-        "title" : "Book Title",
-        "author" : "Author Name",
-        "pages" : 200,
-        "bookId" : "123456",
-        "description" : "Description of the book"
-      }, {
-        "title" : "Book2 Title",
-        "author" : "Author2 Name",
-        "pages" : 300,
-        "bookId" : "12",
-        "description" : "Description of the book"
-      } ]
-    }
-  }, {
     "username" : "suzie",
     "email" : "suzie@ntnu.no",
     "password" : "suzie123",
