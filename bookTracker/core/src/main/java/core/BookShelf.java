@@ -35,6 +35,15 @@ public class BookShelf implements Iterable<Book> {
         }
     }
 
+    public Book getBook(String bookId){
+        for (Book book : books) {
+            if (book.getBookId().equals(bookId)){
+                return book;
+            }
+        }
+        throw new IllegalArgumentException("bookId is invalid");
+    }
+
     @Override
     public Iterator<Book> iterator() {
         return books.iterator();
