@@ -20,7 +20,7 @@ public class Users implements Iterable<User> {
      * @throws IOException if checkUsername, createUser or writeToUsers throws
      *                     an exception
      */
-    public void addUser(User user) throws IOException {
+    public void addUser(User user) {
         this.users.add(user);
     }
 
