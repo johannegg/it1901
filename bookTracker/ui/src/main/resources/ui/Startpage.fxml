@@ -22,33 +22,21 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox onMouseClicked="#handleShelfButton" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="shelf_button" mnemonicParsing="false" onAction="#handleShelfButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="SHELF">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox onMouseClicked="#handleProfileButton" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="PROFILE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
+            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="shelf_button" mnemonicParsing="false" onAction="#handleShelfButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="SHELF">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="PROFILE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="Brukernavn" fx:id="usernameTag">
