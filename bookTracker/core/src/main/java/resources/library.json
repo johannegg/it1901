@@ -42,37 +42,37 @@
       "bookId": "olorunnipa.jpg",
       "description": " An impactful exploration of George Floyd's life and its significance in the fight for racial justice, awarded the Pulitzer Prize in General Non-Fiction in 2023."  
   },{
-      "tittel": "The Netanyahus: An Account of a Minor and Ultimately Even Negligible Episode in the History of a Very Famous Family",
+      "title": "The Netanyahus: An Account of a Minor and Ultimately Even Negligible Episode in the History of a Very Famous Family",
       "author": "Joshua Cohen",
       "pages": 248,
       "bookId": "cohen.jpeg",
       "description": "A captivating work of fiction that received the Pulitzer Prize in 2022."
   },{
-      "tittel": "Covered with Night: A Story of Murder and Indigenous Justice in Early America",
+      "title": "Covered with Night: A Story of Murder and Indigenous Justice in Early America",
       "author": "Nicole Eustace",
       "pages": 464,
       "bookId": "eustace.jpeg",
       "description": "This book, awarded the Pulitzer Prize in History in 2022, delves into a gripping story of murder and indigenous justice in early America."
   },{
-      "tittel": "Cuba: An American History",
+      "title": "Cuba: An American History",
       "author": "Ada Ferrer",
       "pages": 592,
       "bookId": "ferrer.jpeg",
       "description": "A comprehensive account of the history of Cuba and its relationship with the United States, recognized with the Pulitzer Prize in History in 2022."
   },{
-      "tittel": "Chasing Me to My Grave: An Artist's Memoir of the Jim Crow South",
+      "title": "Chasing Me to My Grave: An Artist's Memoir of the Jim Crow South",
       "author": "Winfred Rembert",
       "pages": 304,
       "bookId": "rembert.jpeg",
       "description": "Winner of the Pulitzer Prize in Biography, this memoir provides a powerful glimpse into the Jim Crow South."
   },{
-      "tittel": "frank: sonnets",
+      "title": "frank: sonnets",
       "author": "Diane Seuss ",
       "pages": 154,
       "bookId": "seuss.jpeg",
       "description": "Diane Seuss's collection of sonnets, which won the Pulitzer Prize for Poetry in 2022, is a literary gem."
   },{
-      "tittel": "Invisible Child: Poverty, Survival & Hope in an American City",
+      "title": "Invisible Child: Poverty, Survival & Hope in an American City",
       "author": "Andrea Elliott",
       "pages": 640,
       "bookId": "elliott.jpeg",
@@ -144,7 +144,7 @@
       "title": "Tom Lake",
       "author": "Ann Patchette",
       "pages": 320,
-      "bookId": "patchette",
+      "bookId": "patchett",
       "description": "Join Tom Lake on a journey of self-discovery and transformation."
     },
     {
