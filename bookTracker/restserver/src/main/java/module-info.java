@@ -7,7 +7,7 @@ module bookTracker.restserver{
     requires spring.context;
     requires spring.boot.autoconfigure;
 
-    requires calc.core;
+    requires bookTracker.core;
 
     opens restserver to spring.beans, spring.context, spring.web;
 }
