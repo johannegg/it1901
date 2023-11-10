@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,8 +38,20 @@ public class ProfileController {
     @FXML
     private Button logoutButton;
 
+    @FXML
+    private Label usernameTag;
+
+    @FXML
+    private Label showUsername;
+
+    @FXML
+    private Label showEmail;
+
     public void initialize() {
         this.loggedInUser = dataAccess.getLoggedInUser();
+        usernameTag.setText(loggedInUser.getUsername());
+        showUsername.setText("Username: " + loggedInUser.getUsername());
+        showEmail.setText("E-mail: " + loggedInUser.getEmail());
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
