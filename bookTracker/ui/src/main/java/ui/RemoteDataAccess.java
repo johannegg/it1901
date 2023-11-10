@@ -13,7 +13,7 @@ import core.User;
 import core.Users;
 import json.UsersModule;
 
-public class RemoteDataAccess {
+public class RemoteDataAccess implements DataAccess {
     private URI baseURI;
     private ObjectMapper objectMapper;
 
