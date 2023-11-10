@@ -17,11 +17,12 @@ public class BookShelf implements Iterable<Book> {
     }
 
     public void addBook(Book book) {
-        if (!books.contains(book)) {
-            books.add(book);
-        } else {
-            // få opp en bekjed, allerede lagt til
+        for (Book b : books) {
+            if (b.getBookId().equals(book.getBookId())) {
+                throw new IllegalStateException("The book you are trying to add is already added");
+            }
         }
+        books.add(book);
     }
 
     public void setBooks(List<Book> books) {
@@ -38,6 +39,15 @@ public class BookShelf implements Iterable<Book> {
     @Override
     public Iterator<Book> iterator() {
         return books.iterator();
+    }
+
+    @Override
+    public String toString() {
+        String bookString = "";
+        for (Book book : books) {
+            bookString += book.getTitle();
+        }
+        return bookString;
     }
 
     /*
