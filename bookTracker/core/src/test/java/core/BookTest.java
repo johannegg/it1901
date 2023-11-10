@@ -1,14 +1,12 @@
 package core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for testing Book. 
+ * Test class for testing Book.
  */
 public class BookTest {
 
@@ -50,17 +48,8 @@ public class BookTest {
         book1.setBookId("test1");
         book2.setBookId("test2");
 
-        assertEquals(1, book1.getBookId());
-        assertEquals(2, book2.getBookId());
-    }
-
-    /**
-     * Tests checkAuthor()
-     */
-    @Test
-    public void testCheckAuthor() {
-        assertTrue(book1.checkAuthor(book1)); // Samme forfatter
-        assertFalse(book1.checkAuthor(book2)); // Forskjellige forfattere
+        assertEquals("test1", book1.getBookId());
+        assertEquals("test2", book2.getBookId());
     }
 
     /**
@@ -84,11 +73,10 @@ public class BookTest {
     /**
      * Tests setImageSrc()
      */
-    //@Test
-    //public void testSetImageSrc() {
-    //    book1.setImageSrc("/ui/BookImages/gilmore.jpg");
-    //      assertEquals("/ui/BookImages/gilmore.jpg", book1.getImageSrc());
-    //}
+    // @Test
+    // public void testSetImageSrc() {
+    // book1.setImageSrc("/ui/BookImages/gilmore.jpg");
+    // assertEquals("/ui/BookImages/gilmore.jpg", book1.getImageSrc());
+    // }
 
-    
 }

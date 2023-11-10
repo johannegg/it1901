@@ -14,8 +14,8 @@ public class Book {
     /**
      * Creates a new instance with the given title and author
      * 
-     * @param title     String title
-     * @param author    String author
+     * @param title  String title
+     * @param author String author
      */
     public Book(String title, String author) {
         this.title = title;
@@ -44,9 +44,11 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+
     public String getBookId() {
         return bookId;
     }
+
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }
@@ -66,20 +68,5 @@ public class Book {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    /**
-     * Compares this author with an author from another book.
-     * 
-     * @param other the other bok to compe with
-     * @return whether they share author or not
-     */
-    public boolean checkAuthor(Book other) {
-        boolean sameAuthor = false;
-        String otherAuthor = other.getAuthor();
 
-        if (otherAuthor.equals(this.author)) {
-            sameAuthor = true;
-        }
-        return sameAuthor;
-    }
 }
