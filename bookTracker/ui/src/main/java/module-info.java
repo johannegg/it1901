@@ -1,5 +1,5 @@
 module bookTracker.ui {
-    requires calc.core;
+    requires bookTracker.core;
     requires javafx.controls;
     requires javafx.fxml;
     requires com.fasterxml.jackson.databind;
