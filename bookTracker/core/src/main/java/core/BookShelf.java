@@ -13,7 +13,7 @@ public class BookShelf implements Iterable<Book> {
     }
 
     public List<Book> getBooks() {
-        return books;
+        return new ArrayList<>(books);
     }
 
     public void addBook(Book book) {

@@ -11,16 +11,6 @@ public class Book {
     private String bookId;
     private String description;
 
-    /**
-     * Creates a new instance with the given title and author
-     * 
-     * @param title  String title
-     * @param author String author
-     */
-    public Book(String title, String author) {
-        this.title = title;
-        this.author = author;
-    }
 
     /**
      * Creates a new Book object and sets every parameter to null.

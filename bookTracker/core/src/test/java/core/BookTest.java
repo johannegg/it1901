@@ -18,26 +18,8 @@ public class BookTest {
      */
     @BeforeEach
     public void setUp() {
-        book1 = new Book("Book Title 1", "Author 1");
-        book2 = new Book("Book Title 2", "Author 2");
-    }
-
-    /**
-     * Tests getTitle()
-     */
-    @Test
-    public void testGetTitle() {
-        assertEquals("Book Title 1", book1.getTitle());
-        assertEquals("Book Title 2", book2.getTitle());
-    }
-
-    /**
-     * Tests getAuthor()
-     */
-    @Test
-    public void testGetAuthor() {
-        assertEquals("Author 1", book1.getAuthor());
-        assertEquals("Author 2", book2.getAuthor());
+        book1 = new Book();
+        book2 = new Book();
     }
 
     /**
@@ -52,31 +34,40 @@ public class BookTest {
         assertEquals("test2", book2.getBookId());
     }
 
-    /**
-     * Tests setTitle()
-     */
     @Test
-    public void testSetTitle() {
-        book1.setTitle("Title Test");
-        assertEquals("Title Test", book1.getTitle());
+    public void testSetAndGetTitle() {
+        book1.setTitle("TitleTest1");
+        book2.setTitle("TitleTest2");
+
+        assertEquals("TitleTest1", book1.getTitle());
+        assertEquals("TitleTest2", book2.getTitle());
     }
 
-    /**
-     * Tests setAuthor()
-     */
     @Test
-    public void testSetAuthor() {
-        book1.setAuthor("Navn Navnesen");
-        assertEquals("Navn Navnesen", book1.getAuthor());
+    public void testSetAndGetPages() {
+        book1.setPages(10);
+        book2.setPages(20);
+
+        assertEquals(10, book1.getPages());
+        assertEquals(20, book2.getPages());
     }
 
-    /**
-     * Tests setImageSrc()
-     */
-    // @Test
-    // public void testSetImageSrc() {
-    // book1.setImageSrc("/ui/BookImages/gilmore.jpg");
-    // assertEquals("/ui/BookImages/gilmore.jpg", book1.getImageSrc());
-    // }
+    @Test
+    public void testSetAndGetDescription() {
+        book1.setDescription("TestDescription1");
+        book2.setDescription("TestDescription2");
+
+        assertEquals("TestDescription1", book1.getDescription());
+        assertEquals("TestDescription2", book2.getDescription());
+    }
+
+    @Test
+    public void testSetAndGetAuthor() {
+        book1.setAuthor("TestAuthor1");
+        book2.setAuthor("TestAuthor2");
+
+        assertEquals("TestAuthor1", book1.getAuthor());
+        assertEquals("TestAuthor2", book2.getAuthor());
+    }
 
 }
