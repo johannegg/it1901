@@ -1,6 +1,8 @@
 package core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -104,4 +106,24 @@ public class UserTest {
         () -> new User("camillantnu.no", "camilla123", "passord1234"));
     }
 
+
+     @Test
+    public void testSetAndGetLoggedIn() {
+        User user = new User();
+        assertFalse(user.isLoggedIn());
+
+        user.setLoggedIn(true);
+        assertTrue(user.isLoggedIn());
+
+        user.setLoggedIn(false);
+        assertFalse(user.isLoggedIn());
+    }
+
+    @Test
+    public void testSetAndGetBookShelf() {
+        User user = new User();
+        BookShelf bookShelf = new BookShelf();
+        user.setBookShelf(bookShelf);
+        assertEquals(bookShelf, user.getBookShelf());
+    }
 }
