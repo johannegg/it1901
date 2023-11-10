@@ -80,7 +80,7 @@ public class Users implements Iterable<User> {
      * @return a list of Users
      */
     public List<User> getUsers() {
-        return this.users;
+        return new ArrayList<>(users);
     }
 
     @Override
@@ -88,13 +88,13 @@ public class Users implements Iterable<User> {
         return users.iterator();
     }
 
-    public static void main(String[] args) {
-        // Users users = new Users();
-        // User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
-        // User u2 = new User("per@ntnu.no", "per123", "1234569l");
-        // users.addUser(u1);
-        // users.addUser(u2);
-        // System.out.println(users.getUsers());
-    }
+    // public static void main(String[] args) {
+    // // Users users = new Users();
+    // // User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
+    // // User u2 = new User("per@ntnu.no", "per123", "1234569l");
+    // // users.addUser(u1);
+    // // users.addUser(u2);
+    // // System.out.println(users.getUsers());
+    // }
 
 }
