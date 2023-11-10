@@ -26,8 +26,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import json.LibraryPersistence;
-import json.UsersPersistence;
 
 /**
  * Controller connected to Startpage.fxml
@@ -52,9 +50,6 @@ public class StartpageController {
     @FXML
     private Label usernameTag;
 
-    private LibraryPersistence libraryPersistence;
-    // private UsersPersistence usersPersistence;
-    private String bookId;
     private Book book;
     private RemoteDataAccess dataAccess;
     private User loggedInUser;
@@ -72,7 +67,6 @@ public class StartpageController {
      * Sets up the Start Page by showing the book images
      */
     public void initialize() {
-        libraryPersistence = new LibraryPersistence();
         dataAccess = new RemoteDataAccess();
         this.loggedInUser = dataAccess.getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
@@ -131,13 +125,8 @@ public class StartpageController {
     }
 
     private void handleImgClicked(ImageView imageView) throws IOException {
-        this.bookId = imageView.getId();
-        BookShelf bookShelf = libraryPersistence.readFromLibrary();
-        for (Book book : bookShelf) {
-            if (this.bookId.equals(book.getBookId())) {
-                this.book = book;
-            }
-        }
+        String bookId = imageView.getId();
+        this.book = dataAccess.getBookById(bookId);
         displayBookPopup();
     }
 
@@ -191,7 +180,6 @@ public class StartpageController {
         User newUser = this.loggedInUser;
         newUser.getBookShelf().addBook(this.book);
         dataAccess.putUser(newUser);
-        System.out.println(book.getTitle() + "added to book shelf");
     }
     // kunne legge bookShelf i users
 
