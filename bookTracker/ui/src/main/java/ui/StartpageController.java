@@ -9,6 +9,7 @@ import core.Book;
 import core.BookShelf;
 import core.User;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -51,6 +52,15 @@ public class StartpageController {
     @FXML
     private Label usernameTag;
 
+    @FXML
+    private TextField autoSearch;
+
+    @FXML
+    Button search;
+
+    @FXML
+    Label check;
+
     private Book book;
     private RemoteDataAccess dataAccess;
     private User loggedInUser;
@@ -71,6 +81,14 @@ public class StartpageController {
         dataAccess = new RemoteDataAccess();
         this.loggedInUser = dataAccess.getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
+
+        check.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            try {
+                handleLabelClicked(check);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
@@ -119,6 +137,35 @@ public class StartpageController {
                 System.out.println("test");
             }
         }
+    }
+
+    public void handleSearchButton(ActionEvent event) {
+        String searchText = autoSearch.getText();
+        BookShelf library = dataAccess.getLibrary();
+        Boolean matchFound = false;
+
+        for (Book book : library.getBooks()) {
+            if (book.getTitle() != null && book.getTitle().equalsIgnoreCase(searchText)) {
+                check.setText(book.getTitle() + " - " + book.getAuthor());
+                check.setStyle("-fx-background-color: white;");
+                check.setId(book.getBookId());
+                matchFound = true;
+                break;
+
+            }
+        }
+        if (!matchFound) {
+            check.setText("Not Found");
+            check.setStyle("-fx-background-color: white;");
+        }
+
+    }
+
+    private void handleLabelClicked(Label label) throws IOException {
+        String bookId = check.getId();
+        this.book = dataAccess.getBookById(bookId);
+        check.setStyle("-fx-background-color: lightblue;");
+        displayBookPopup();
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
