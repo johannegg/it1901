@@ -34,6 +34,10 @@ import json.UsersPersistence;
  * Controller connected to Startpage.fxml
  */
 public class StartpageController {
+    
+    private Book book;
+    private RemoteDataAccess dataAccess;
+    private User loggedInUser;
 
     @FXML
     private HBox PopHBox;
@@ -53,9 +57,6 @@ public class StartpageController {
     @FXML
     private Label usernameTag;
 
-    private Book book;
-    private RemoteDataAccess dataAccess;
-    private User loggedInUser;
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",

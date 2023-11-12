@@ -28,6 +28,12 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class ShelfController {
+
+    private TilePane shelfTilePane;
+    private double lastX = 0;
+    private User loggedInUser;
+    private RemoteDataAccess dataAccess = new RemoteDataAccess();
+    
     @FXML
     private Button profileButton;
 
@@ -49,10 +55,6 @@ public class ShelfController {
     @FXML
     private Label usernameTag;
 
-    private TilePane shelfTilePane;
-    private double lastX = 0;
-    private User loggedInUser;
-    private RemoteDataAccess dataAccess = new RemoteDataAccess();
 
     public void initialize() {
         shelfTilePane = createShelfTilePane();

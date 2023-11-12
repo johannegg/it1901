@@ -1,15 +1,19 @@
 package ui;
 
+import java.io.File;
+
 import core.User;
 import core.Users;
 import json.UsersPersistence;
 
 public class DirectDataAccess implements DataAccess{
+    
     private UsersPersistence usersPersistence = new UsersPersistence();
     private Users users;
 
     public DirectDataAccess() {
         this.users = readUsers();
+        usersPersistence.setFile(new File("../ui/src/main/java/resources/test/test_users.json"));
     }
 
     public User getUserByUsername(String username) {

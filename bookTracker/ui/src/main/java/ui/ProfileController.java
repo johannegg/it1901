@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ProfileController {
+    
     private RemoteDataAccess dataAccess = new RemoteDataAccess();
     private User loggedInUser;
 
@@ -97,5 +98,23 @@ public class ProfileController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+    }
+
+    /**
+     * Getter for test-methods.
+     *
+     * @return the username currently showing in the showUsername label
+     */
+    public String getLabelName() {
+        return showUsername.getText();
+    }
+
+    /**
+     * Getter for test-methods.
+     *
+     * @return the email currently showing in the showEmail label
+     */
+    public String getLabelEmail() {
+        return showEmail.getText();
     }
 }
