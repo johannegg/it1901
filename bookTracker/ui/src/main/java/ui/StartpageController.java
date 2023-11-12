@@ -27,6 +27,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import json.LibraryPersistence;
+import json.UsersPersistence;
 
 /**
  * Controller connected to Startpage.fxml
@@ -72,6 +74,7 @@ public class StartpageController {
         this.loggedInUser = dataAccess.getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
 
+        //Shows images and sets id
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
             Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpg"));
@@ -200,7 +203,6 @@ public class StartpageController {
             alert.showAndWait();
         }
     }
-    // kunne legge bookShelf i users
 
     /**
      * Changes the scne to the given file path

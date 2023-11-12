@@ -30,17 +30,28 @@ public class LogInControllerTest extends ApplicationTest {
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
     final Parent root = loader.load();
     this.controller = loader.getController();
+    //this.controller.setDataAccess();
     stage.setScene(new Scene(root));
     stage.show();
   }
 
+  /**
+   * Help method for generating test object
+   *
+   * @return users objects for use in testing
+   */
   public Users createTestUserObject() throws IOException {
     Users users = new Users();
-    User user1 = new User("test@mail.com", "TestUser", "password1");
-    users.addUser(user1);
+    User user = new User("test@mail.com", "TestUser", "password1");
+    users.addUser(user);
     return users;
   }
 
+  /**
+   * Writes existing user to textfields for successfull log in.
+   *
+   * @throws InterruptedException if Thread.sleep() fails
+   */
   @BeforeEach
   public void setupUsers() throws InterruptedException {
     Thread.sleep(1500);
@@ -50,7 +61,7 @@ public class LogInControllerTest extends ApplicationTest {
   }
 
   /**
-   * Test to check if the UI changes Window and Scene when the "Log in"-button in UI is pushed.
+   * Test to check if the UI changes window when the "Log in"-button in UI is clicked.
    */
   @Test
   public void testLogInButton() {
@@ -74,7 +85,7 @@ public class LogInControllerTest extends ApplicationTest {
   }
 
   /**
-   * Test to check if the UI changes Window and Scene when the "Register"-button in UI is pushed.
+   * Test to check if the UI changes Window when the "Register"-button in UI is clicked.
    */
   @Test
   public void testRegisterButton() {
@@ -96,4 +107,5 @@ public class LogInControllerTest extends ApplicationTest {
     }
     assertNotEquals(afterRoot, beforeRoot);
   }
+
 }
