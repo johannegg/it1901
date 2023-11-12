@@ -147,6 +147,7 @@ public class StartpageController {
         Label author = new Label("Author: " + this.book.getAuthor());
         Label pages = new Label("Pages: " + this.book.getPages());
         Label description = new Label("Description: " + this.book.getDescription());
+        description.setWrapText(true);
 
         Button addButton = new Button("Add book");
         addButton.setOnAction(e -> {
