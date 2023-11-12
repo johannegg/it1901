@@ -16,16 +16,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -53,61 +54,51 @@ public class ShelfController {
 
     private String bookId;
     private Book book;
+    private TilePane shelfTilePane;
+    private double lastX = 0;
     private User loggedInUser;
     private RemoteDataAccess dataAccess = new RemoteDataAccess();
 
     public void initialize() {
         this.loggedInUser = dataAccess.getLoggedInUser();
-    
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Disable horizontal scrollbar
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Enable vertical scrollbar if needed
-        shelfTilepane.setVgap(80); // Adjust the vertical gap as needed
-        shelfTilepane.setHgap(30);
+        usernameTag.setText(loggedInUser.getUsername());
 
-                usernameTag.setText(loggedInUser.getUsername());
-        //scrollPane.setMouseTransparent(true);*/
-
-       /*shelfTilePane.setOnMousePressed(event -> lastX = event.getSceneX());
+        shelfTilePane.setOnMousePressed(event -> lastX = event.getSceneX());
         shelfTilePane.setOnMouseDragged(event -> {
             double deltaX = event.getSceneX() - lastX;
             double newX = shelfTilePane.getLayoutX() + deltaX;
             shelfTilePane.setLayoutX(newX);
             lastX = event.getSceneX();
-        });*/ 
+        });
 
         try {
             addBookShelf(shelfTilePane);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    } 
+    }
 
-    /*private TilePane createShelfTilePane() {
+    private TilePane createShelfTilePane() {
         TilePane tilePane = new TilePane();
-        //tilePane.setVgap(70); // Adjust the vertical gap as needed
-        //tilePane.setHgap(30);
-        tilePane.setPrefColumns(4); // 
-        //tilePane.setPrefWidth(957.0); // Set the width of the TilePane
+        tilePane.setVgap(70); // Adjust the vertical gap as needed
+        tilePane.setHgap(50);
+        tilePane.setPrefColumns(4); // Display 4 books in a row
+        tilePane.setPrefWidth(1000); // Set the width of the TilePane
 
         return tilePane;
 
     }
 
-    //SAMME NAVN, MÅ FIKSE 
-    public void addBookShelf(TilePane tilePane) throws IOException{
     public void addBookShelf(TilePane tilePane) throws IOException {
         BookShelf bookShelf = loggedInUser.getBookShelf();
         for (Book book : bookShelf) {
-            ImageView bookImageView = createBookImageView(book);
-            Node bookInfoView = createBookInfoView(book, bookImageView);
-            shelfTilepane.getChildren().add(bookInfoView);
+            Node bookInfoView = createBookInfoView(book);
+            tilePane.getChildren().add(bookInfoView);
         }
     }
 
     private Node createBookInfoView(Book book) {
         ImageView imageView = createBookImageView();
-    private Node createBookInfoView(Book book, ImageView imageView){
-        imageView = createBookImageView(book);
         Label titleLabel = new Label(book.getTitle());
         Label authorLabel = new Label(book.getAuthor());
 
@@ -122,43 +113,38 @@ public class ShelfController {
         StackPane bookInfoView = new StackPane();
         bookInfoView.getChildren().addAll(imageView, labelContainer);
 
-        Insets margin = new Insets(0, 0, 0, 0);
+        Insets margin = new Insets(0, 0, 0, 25);
         StackPane.setMargin(labelContainer, margin);
 
         return bookInfoView;
     }
 
-    private ImageView createBookImageView(Book book) {
+    private ImageView createBookImageView() {
         ImageView imageView = new ImageView();
         Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/bookDefault.png"));
         imageView.setImage(image);
-        imageView.setFitWidth(130); // Adjust the width as needed
+        imageView.setFitWidth(180); // Adjust the width as needed
         imageView.setPreserveRatio(true);
-        imageView.setPickOnBounds(true);
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(5);
         dropShadow.setOffsetX(3);
         dropShadow.setOffsetY(3);
         imageView.setEffect(dropShadow);
+        imageView.setId(book.getBookId()); // Set the imageView ID to the book's ID
 
-        imageView.setId(book.getBookId());
-
-        /*imageView.setOnMouseClicked(event -> {
-            System.out.println("click on image");
-            try {
-                handleImgClicked(imageView);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            event.consume();
+    // Add a mouse click event handler to the imageView
+        imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        try {
+            handleImgClicked(imageView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         });
-
         return imageView;
-    }*/
-
+    }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
-        changeScene("/ui/Profile.fxml", event);
+        changeScene("/ui/ProfilePage.fxml", event);
     }
 
     public void handleShelfButton(ActionEvent event) throws IOException {
@@ -169,60 +155,9 @@ public class ShelfController {
         changeScene("/ui/Startpage.fxml", event);
     }
 
-    private Node createBookImageView(Book book) {
-        ImageView imageView = new ImageView();
-        Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/bookDefault.png"));
-        imageView.setImage(image);
-        imageView.setFitWidth(180); // Adjust the width as needed
-        imageView.setPreserveRatio(true);
-        // You can add event handling here if needed
-        imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                try {
-                    handleImgClicked(imageView);
-                    System.out.println("clicked");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(5);
-        dropShadow.setOffsetX(3);
-        dropShadow.setOffsetY(3);
-        imageView.setEffect(dropShadow);
-        imageView.setId(book.getBookId());
-
-        Label titleLabel = new Label(book.getTitle());
-        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        Label authorLabel = new Label(book.getAuthor());
-        authorLabel.setFont(Font.font("Arial", 14));
-
-        /*titleLabel.setFont(new Font(16));
-        titleLabel.setStyle("-fx-font-weight: bold"); 
-        authorLabel.setFont(new Font(14));*/
-
-        VBox labelsVBox = new VBox(titleLabel, authorLabel);
-        labelsVBox.setAlignment(Pos.CENTER);
-    
-        // Position the VBox on top of the image using a StackPane
-        StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(imageView, labelsVBox);
-
-        Insets margin = new Insets(0,0,0,25);
-        StackPane.setMargin(labelsVBox, margin);
-    
-        return stackPane;
-    }
-    public void addBookShelf(TilePane tilePane) throws IOException{
-        BookShelf bookShelf = loggedInUser.getBookShelf();
-        for(Book book: bookShelf){
-            Node bookImageView = createBookImageView(book);
-            shelfTilepane.getChildren().add(bookImageView);
-        }
-    }
-
-    private void handleImgClicked(ImageView imageView) throws IOException {
+     private void handleImgClicked(ImageView imageView) throws IOException {
         this.bookId = imageView.getId();
-        BookShelf bookShelf = this.loggedInUser.getBookShelf();
+        BookShelf bookShelf = loggedInUser.getBookShelf();
         for (Book book : bookShelf) {
             if (this.bookId.equals(book.getBookId())) {
                 this.book = book;
@@ -231,30 +166,7 @@ public class ShelfController {
         displayBookPopup();
     }
 
-    /*private void handleImgClicked(ImageView imageView) throws IOException {
-        String bookId = imageView.getId();
-
-        Book clickedBook = getBookId(bookId);
-
-        if(clickedBook != null){
-            displayBookPopup(clickedBook);
-            System.out.println("the book whas clicked on");
-        }
-
-    }*/
-
-    /*private Book getBookId(String bookId){
-        BookShelf bookShelf = loggedInUser.getBookShelf();
-        for (Book book : bookShelf) {
-            if (bookId.equals(book.getBookId())) {
-                return book;
-            }
-        }
-        return null; 
-
-    }*/
-
-     private void displayBookPopup() {
+    private void displayBookPopup() {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
 
@@ -304,16 +216,8 @@ public class ShelfController {
         User newUser = this.loggedInUser;
         newUser.getBookShelf().removeBook(this.book);
         dataAccess.putUser(newUser);
-        System.out.println(book.getTitle() + "removed from shelf");
+        System.out.println(book.getTitle() + "removed to book shelf");
     }
-    /*public void removeBookFromShelf(Book book) throws IOException {
-
-        // Create new user and add to users with new book
-        User newUser = this.loggedInUser;
-        newUser.getBookShelf().removeBook(book);
-        dataAccess.putUser(newUser);
-        System.out.println(book.getTitle() + "added to book shelf");
-    }*/
     /**
      * Changes the scene to the given file path
      * 
@@ -334,8 +238,4 @@ public class ShelfController {
     // mangler evnen til å fjerene bok fra shelf.
     // kan lese informasjon om boka, popup.
     // må bruke bookid, for å lese om boka
-    
-    //mangler evnen til å fjerene bok fra shelf. 
-    //kan lese informasjon om boka, popup. 
-    // må bruke bookid, for å lese om boka 
 }
