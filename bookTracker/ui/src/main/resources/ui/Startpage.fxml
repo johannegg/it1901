@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.StartpageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.StartpageController">
    <children>
       <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0">
          <children>
@@ -22,24 +22,36 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="shelf_button" mnemonicParsing="false" onAction="#handleShelfButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="SHELF">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="PROFILE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="Brukernavn" fx:id="usernameTag">
+                  <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox onMouseClicked="#handleShelfButton" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="shelf_button" mnemonicParsing="false" onAction="#handleShelfButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="SHELF">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox onMouseClicked="#handleProfileButton" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="PROFILE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="Brukernavn">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -49,12 +61,7 @@
          </children>
       </HBox>
       <Separator layoutX="-8.0" layoutY="73.0" prefHeight="0.0" prefWidth="1013.0" />
-      <HBox layoutX="45.0" layoutY="99.0" prefHeight="50.0" prefWidth="200.0">
-         <children>
-            <TextField prefHeight="30.0" prefWidth="200.0" promptText="Search" />
-         </children>
-      </HBox>
-      <Button layoutX="254.0" layoutY="100.0" mnemonicParsing="false" text="Search" />
+      <Button fx:id="search" layoutX="254.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
       <ScrollPane layoutX="51.0" layoutY="210.0" prefHeight="180.0" prefWidth="880.0">
          <content>
             <HBox fx:id="PopHBox" prefHeight="140.0" prefWidth="881.0" />
@@ -66,7 +73,13 @@
             <HBox fx:id="PulHBox" prefHeight="140.0" prefWidth="881.0" />
          </content>
       </ScrollPane>
-      <HBox layoutX="-1.0" layoutY="76.0" prefHeight="97.0" prefWidth="1003.0" />
+      <HBox layoutX="-1.0" layoutY="76.0" prefHeight="97.0" prefWidth="1003.0">
+         <children>
+            <TextField fx:id="autoSearch" prefHeight="32.0" prefWidth="170.0" />
+         </children>
+      </HBox>
       <Label layoutX="54.0" layoutY="400.0" prefHeight="17.0" prefWidth="192.0" text="Pulitzer winners 2022 and 2023" />
+      <Button layoutX="247.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleSearchButton" text="Button" />
+      <Label fx:id="check" layoutX="15.0" layoutY="135.0" prefHeight="32.0" prefWidth="161.0" />
    </children>
 </AnchorPane>
