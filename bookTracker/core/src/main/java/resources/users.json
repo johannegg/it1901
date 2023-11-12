@@ -13,32 +13,50 @@
     "password" : "anniken123",
     "loggedIn" : false,
     "bookShelf" : {
-      "books" : [ ]
-    }
-  }, {
-    "username" : "jojo",
-    "email" : "jojo@ntnu.no",
-    "password" : "jojo1234",
-    "loggedIn" : true,
-    "bookShelf" : {
       "books" : [ {
-        "title" : "My Year of Rest and Relaxation",
-        "author" : "Ottessa Moshfegh",
-        "pages" : 0,
-        "bookId" : "moshfegh",
-        "description" : "A darkly humorous and thought-provoking exploration of a year-long pursuit of rest and self-discovery."
-      }, {
         "title" : "Before the Coffee Gets Cold",
         "author" : "Toshikazu Kawaguchi",
-        "pages" : 0,
+        "pages" : "272",
         "bookId" : "kawaguchi",
         "description" : "A captivating tale of time travel and the moments that matter most."
       }, {
         "title" : "The Paper Palace",
         "author" : "Miranda Cowley Heller",
-        "pages" : 0,
+        "pages" : "348",
         "bookId" : "heller",
         "description" : "Dive into a story of secrets and revelations in the scenic Paper Palace."
+      } ]
+    }
+  }, {
+    "username" : "jojo",
+    "email" : "jojo@ntnu.no",
+    "password" : "jojo1234",
+    "loggedIn" : false,
+    "bookShelf" : {
+      "books" : [ {
+        "title" : "Before the Coffee Gets Cold",
+        "author" : "Toshikazu Kawaguchi",
+        "pages" : "272",
+        "bookId" : "kawaguchi",
+        "description" : "A captivating tale of time travel and the moments that matter most."
+      }, {
+        "title" : "My Year of Rest and Relaxation",
+        "author" : "Ottessa Moshfegh",
+        "pages" : "304",
+        "bookId" : "moshfegh",
+        "description" : "A darkly humorous and thought-provoking exploration of a year-long pursuit of rest and self-discovery."
+      }, {
+        "title" : "G-Man: J. Edgar Hoover and the Making of the American Century",
+        "author" : "Beverly Gage",
+        "pages" : "864",
+        "bookId" : "gage",
+        "description" : "Winner of the Pulitzer Prize in Biography, this book provides a fascinating insight into the life of J. Edgar Hoover."
+      }, {
+        "title" : "Demon Copperhead",
+        "author" : "Barbara Kingslover",
+        "pages" : "560",
+        "bookId" : "kingslover",
+        "description" : "This Pulitzer Prize-winning book is a powerful work of fiction that captivates readers."
       } ]
     }
   } ]

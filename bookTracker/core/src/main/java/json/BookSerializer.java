@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 import core.Book;
 
-public class BookSerializer extends JsonSerializer<Book>{
+public class BookSerializer extends JsonSerializer<Book> {
 
     @Override
     public void serialize(Book book, JsonGenerator gen, SerializerProvider serializers) throws IOException {
@@ -16,11 +16,11 @@ public class BookSerializer extends JsonSerializer<Book>{
 
         gen.writeStringField("title", book.getTitle());
         gen.writeStringField("author", book.getAuthor());
-        gen.writeNumberField("pages", book.getPages());
+        gen.writeStringField("pages", book.getPages());
         gen.writeStringField("bookId", book.getBookId());
         gen.writeStringField("description", book.getDescription());
 
         gen.writeEndObject();
     }
-    
+
 }
