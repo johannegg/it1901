@@ -19,7 +19,7 @@
     "username" : "jojo",
     "email" : "jojo@ntnu.no",
     "password" : "jojo1234",
-    "loggedIn" : true,
+    "loggedIn" : false,
     "bookShelf" : {
       "books" : [ {
         "title" : "My Year of Rest and Relaxation",
