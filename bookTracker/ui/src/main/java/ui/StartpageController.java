@@ -70,9 +70,9 @@ public class StartpageController {
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
 
     private List<String> imageSrcPul = new ArrayList<>(
-            Arrays.asList("cowie.jpg", "diaz.jpeg", "gage.jpeg", "hsu.jpeg", "kingslover.png", "olorunnipa.jpg",
-                    "phillips.jpeg", "cohen.jpeg", "elliott.jpeg", "eustace.jpeg", "ferrer.jpeg", "rembert.jpeg",
-                    "seuss.jpeg"));
+            Arrays.asList("cowie", "diaz", "gage", "hsu", "kingslover", "olorunnipa",
+                    "phillips", "cohen", "elliott", "eustace", "ferrer", "rembert",
+                    "seuss"));
 
     /**
      * Sets up the Start Page by showing the book images
@@ -92,7 +92,7 @@ public class StartpageController {
 
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
-            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpg"));
+            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpeg"));
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
@@ -116,7 +116,7 @@ public class StartpageController {
 
         for (String img : imageSrcPul) {
             ImageView imageView = new ImageView();
-            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img));
+            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpeg"));
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
@@ -194,6 +194,7 @@ public class StartpageController {
         Label author = new Label("Author: " + this.book.getAuthor());
         Label pages = new Label("Pages: " + this.book.getPages());
         Label description = new Label("Description: " + this.book.getDescription());
+        description.setWrapText(true);
 
         Button addButton = new Button("Add book");
         addButton.setOnAction(e -> {
