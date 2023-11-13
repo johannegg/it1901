@@ -149,13 +149,13 @@ public class StartpageController {
     }
 
     public void handleSearchButton(ActionEvent event) {
-        String searchText = searchBar.getText();
+        String searchText = searchBar.getText().toLowerCase();
 
         List<String> bookList = new ArrayList<>();
         bookIds = new HashMap<>();
 
         for (Book book : library.getBooks()) {
-            if (book.getTitle().contains(searchText)) {
+            if (book.getTitle().toLowerCase().contains(searchText)) {
                 String textDisplay = book.getTitle() + " - " + book.getAuthor();
                 bookList.add(textDisplay);
                 bookIds.put(textDisplay, book.getBookId());
