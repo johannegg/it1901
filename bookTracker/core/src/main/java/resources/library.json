@@ -15,14 +15,14 @@
       "description": "This Pulitzer Prize-winning book is a powerful work of fiction that captivates readers."
     },
     {
-      "title": "Freedom’s Dominion: A Saga of White Resistance to Federal Power",
+      "title": "Freedom’s Dominion",
       "author": "Jefferson Cowie",
       "pages": "512",
       "bookId": "cowie",
       "description": "An award-winning historical exploration of white resistance to federal authority, recognized with the Pulitzer Prize in History in 2023."
     },
     {
-      "title": "G-Man: J. Edgar Hoover and the Making of the American Century",
+      "title": "G-Man",
       "author": "Beverly Gage",
       "pages": "864",
       "bookId": "gage",
@@ -57,7 +57,7 @@
       "description": "A captivating work of fiction that received the Pulitzer Prize in 2022."
     },
     {
-      "title": "Covered with Night: A Story of Murder and Indigenous Justice in Early America",
+      "title": "Covered with Night",
       "author": "Nicole Eustace",
       "pages": "464",
       "bookId": "eustace",
@@ -85,7 +85,7 @@
       "description": "Diane Seuss's collection of sonnets, which won the Pulitzer Prize for Poetry in 2022, is a literary gem."
     },
     {
-      "title": "Invisible Child: Poverty, Survival & Hope in an American City",
+      "title": "Invisible Child",
       "author": "Andrea Elliott",
       "pages": "640",
       "bookId": "elliott",

@@ -62,6 +62,7 @@ public class ShelfController {
 
     public void initialize() {
         this.loggedInUser = dataAccess.getLoggedInUser();
+        usernameTag.setText(loggedInUser.getUsername());
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Disable horizontal scrollbar
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Enable vertical scrollbar if needed
@@ -87,9 +88,6 @@ public class ShelfController {
         changeScene("/ui/Startpage.fxml", event);
     }
 
-    public void print() {
-        System.out.println("Hei");
-    }
 
     private Node createBookButton(Book book) {
         GridPane outerGrid = new GridPane();
