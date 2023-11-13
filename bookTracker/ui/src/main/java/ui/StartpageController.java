@@ -174,13 +174,20 @@ public class StartpageController {
 
         List<String> bookList = new ArrayList<>();
         bookIds = new HashMap<>();
+        Boolean bookFound = false;
 
         for (Book book : library.getBooks()) {
             if (book.getTitle().toLowerCase().contains(searchText)) {
                 String textDisplay = book.getTitle() + " - " + book.getAuthor();
                 bookList.add(textDisplay);
                 bookIds.put(textDisplay, book.getBookId());
+                bookFound = true;
             }
+        }
+        
+        if (!bookFound){
+            String textDisplay = "Book not found";
+            bookList.add(textDisplay);
         }
 
         listView.getItems().clear();
