@@ -57,7 +57,6 @@ public class StartpageController {
     @FXML
     private Label usernameTag;
 
-
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
@@ -75,7 +74,7 @@ public class StartpageController {
         this.loggedInUser = dataAccess.getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
 
-        //Shows images and sets id
+        // Shows images and sets id
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
             Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpg"));
@@ -153,6 +152,7 @@ public class StartpageController {
         Label description = new Label("Description: " + this.book.getDescription());
 
         Button addButton = new Button("Add book");
+        addButton.setId("addButton");
         addButton.setOnAction(e -> {
             try {
                 addBookToShelf();
@@ -192,7 +192,7 @@ public class StartpageController {
         dataAccess.putUser(loggedInUser);
     }
 
-    private void addBookToUser(){
+    private void addBookToUser() {
         try {
             loggedInUser.getBookShelf().addBook(this.book);
             Alert alert = new Alert(AlertType.INFORMATION);

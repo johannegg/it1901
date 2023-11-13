@@ -40,8 +40,11 @@ public class RegisterControllerTest extends ApplicationTest {
     stage.show();
   }
 
+  /**
+   * Set up a User to use in the test
+   */
   @BeforeEach
-  public void setupUsers() throws InterruptedException {
+  public void setupUser() throws InterruptedException {
     Thread.sleep(500);
     clickOn("#emailField").write("test1@mail.com");
     clickOn("#usernameField").write("Usertwo");

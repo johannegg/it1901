@@ -110,7 +110,7 @@ public class ProfileController {
     }
 
     /**
-     * Getter for test-methods.
+     * Getter for test method.
      *
      * @return the email currently showing in the showEmail label
      */
