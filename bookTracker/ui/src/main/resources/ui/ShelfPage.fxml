@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController">
    <children>
-      <Pane fx:id="pane" layoutX="23.0" layoutY="100.0" prefHeight="510.0" prefWidth="957.0" AnchorPane.topAnchor="92.0">
+      <Pane fx:id="pane" layoutX="23.0" layoutY="100.0" prefHeight="593.0" prefWidth="957.0" AnchorPane.topAnchor="92.0">
          <children>
-            <ScrollPane fx:id="scrollPane" prefHeight="510.0" prefWidth="957.0" />
+            <ScrollPane fx:id="scrollPane" prefHeight="587.0" prefWidth="957.0" />
          </children></Pane>
       <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0">
          <children>
@@ -43,7 +43,7 @@
             </Button>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="Brukernavn" fx:id="usernameTag">
+                  <Label fx:id="usernameTag" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="Brukernavn">
                      <font>
                         <Font size="14.0" />
                      </font>
