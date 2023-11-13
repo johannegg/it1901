@@ -25,7 +25,7 @@ public class BookShelfTest {
         book1.setTitle("Title1");
         book1.setBookId("abc");
         book1.setDescription("Description1");
-        book1.setPages(1);
+        book1.setPages("1");
     }
 
     @Test

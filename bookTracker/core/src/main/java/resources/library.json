@@ -3,419 +3,377 @@
     {
       "title": "Trust",
       "author": "Hernan Diaz",
-      "pages": 416,
+      "pages": "416",
       "bookId": "diaz",
       "description": "A compelling novel that won the Pulitzer Prize for Fiction in 2023."
     },
     {
       "title": "Demon Copperhead",
       "author": "Barbara Kingslover",
-      "pages": 560,
+      "pages": "560",
       "bookId": "kingslover",
       "description": "This Pulitzer Prize-winning book is a powerful work of fiction that captivates readers."
     },
     {
       "title": "Freedom’s Dominion: A Saga of White Resistance to Federal Power",
       "author": "Jefferson Cowie",
-      "pages": 512,
+      "pages": "512",
       "bookId": "cowie",
       "description": "An award-winning historical exploration of white resistance to federal authority, recognized with the Pulitzer Prize in History in 2023."
     },
     {
       "title": "G-Man: J. Edgar Hoover and the Making of the American Century",
       "author": "Beverly Gage",
-      "pages": 864,
+      "pages": "864",
       "bookId": "gage",
       "description": "Winner of the Pulitzer Prize in Biography, this book provides a fascinating insight into the life of J. Edgar Hoover."
     },
     {
       "title": "Stay True",
       "author": "Hua Hsu",
-      "pages": 208,
+      "pages": "208",
       "bookId": "hsu",
       "description": "Hua Hsu's memoir, honored with the Pulitzer Prize in Memoir or Autobiography, offers a heartfelt journey through his life."
     },
     {
       "title": "Then the War",
       "author": "Carl Phillips",
-      "pages": 224,
+      "pages": "224",
       "bookId": "phillips",
       "description": "This collection of poetry by Carl Phillips received the Pulitzer Prize for Poetry in 2023."
     },
     {
       "title": "His Name Is George Floyd",
       "author": "Toluse Olorunnipa",
-      "pages": 432,
+      "pages": "432",
       "bookId": "olorunnipa",
       "description": " An impactful exploration of George Floyd's life and its significance in the fight for racial justice, awarded the Pulitzer Prize in General Non-Fiction in 2023."
     },
     {
       "title": "The Netanyahus",
       "author": "Joshua Cohen",
-      "pages": 248,
+      "pages": "248",
       "bookId": "cohen",
       "description": "A captivating work of fiction that received the Pulitzer Prize in 2022."
     },
     {
       "title": "Covered with Night: A Story of Murder and Indigenous Justice in Early America",
       "author": "Nicole Eustace",
-      "pages": 464,
+      "pages": "464",
       "bookId": "eustace",
       "description": "This book, awarded the Pulitzer Prize in History in 2022, delves into a gripping story of murder and indigenous justice in early America."
     },
     {
       "title": "Cuba: An American History",
       "author": "Ada Ferrer",
-      "pages": 592,
+      "pages": "592",
       "bookId": "ferrer",
       "description": "A comprehensive account of the history of Cuba and its relationship with the United States, recognized with the Pulitzer Prize in History in 2022."
     },
     {
       "title": "Chasing Me to My Grave",
       "author": "Winfred Rembert",
-      "pages": 304,
+      "pages": "304",
       "bookId": "rembert",
       "description": "Winner of the Pulitzer Prize in Biography, this memoir provides a powerful glimpse into the Jim Crow South."
     },
     {
       "title": "frank: sonnets",
       "author": "Diane Seuss ",
-      "pages": 154,
+      "pages": "154",
       "bookId": "seuss",
       "description": "Diane Seuss's collection of sonnets, which won the Pulitzer Prize for Poetry in 2022, is a literary gem."
     },
     {
       "title": "Invisible Child: Poverty, Survival & Hope in an American City",
       "author": "Andrea Elliott",
-      "pages": 640,
+      "pages": "640",
       "bookId": "elliott",
       "description": "An eye-opening exploration of poverty, survival, and hope in an American city, recognized with the Pulitzer Prize in General Non-Fiction in 2022."
     },
     {
       "title": "The Survivalist",
       "author": "Kashana Cauley",
-      "pages": 288,
+      "pages": "288",
       "bookId": "cauley",
       "description": "An enthralling story that keeps you on the edge of your seat."
     },
     {
       "title": "Small Pleasures",
       "author": "Clare Chambers Chambers",
-      "pages": 368,
+      "pages": "368",
       "bookId": "chambers",
       "description": "A delightful read that explores the simple joys in life."
     },
     {
       "title": "The Pumpkin Spice Café",
       "author": "Laurie Gilmore",
-      "pages": 384,
+      "pages": "384",
       "bookId": "gilmore",
       "description": "A heartwarming tale set in a cozy cafe with a touch of pumpkin spice."
     },
     {
       "title": "The Paper Palace",
       "author": "Miranda Cowley Heller",
-      "pages": 348,
+      "pages": "348",
       "bookId": "heller",
       "description": "Dive into a story of secrets and revelations in the scenic Paper Palace."
     },
     {
       "title": "Before the Coffee Gets Cold",
       "author": "Toshikazu Kawaguchi",
-      "pages": 272,
+      "pages": "272",
       "bookId": "kawaguchi",
       "description": "A captivating tale of time travel and the moments that matter most."
     },
     {
       "title": "Heaven",
       "author": "Mieko Kawakami",
-      "pages": 176,
+      "pages": "176",
       "bookId": "kawakami",
       "description": "An exploration of personal struggles and finding solace in unexpected places."
     },
     {
       "title": "The Half Moon",
       "author": "Mary Beth Keane",
-      "pages": 304,
+      "pages": "304",
       "bookId": "keane",
       "description": "A compelling narrative that revolves around the mysteries of the half moon."
     },
     {
       "title": "Cleopatra and Frankenstein",
       "author": "Coco Mellors",
-      "pages": 384,
+      "pages": "384",
       "bookId": "mellors",
       "description": "An intriguing blend of history and science fiction that takes readers on an unexpected journey."
     },
     {
       "title": "My Year of Rest and Relaxation",
       "author": "Ottessa Moshfegh",
-      "pages": 304,
+      "pages": "304",
       "bookId": "moshfegh",
       "description": "A darkly humorous and thought-provoking exploration of a year-long pursuit of rest and self-discovery."
     },
     {
       "title": "Tom Lake",
       "author": "Ann Patchette",
-      "pages": 320,
+      "pages": "320",
       "bookId": "patchett",
       "description": "Join Tom Lake on a journey of self-discovery and transformation."
     },
     {
       "title": "Beautiful World, Where Are You",
       "author": "Sally Rooney",
-      "pages": 368,
+      "pages": "368",
       "bookId": "rooney",
       "description": "A thought-provoking exploration of friendship, love, and the complexities of the modern world."
     },
     {
       "title": "The Celebrants",
       "author": "Steven Rowley",
-      "pages": 320,
+      "pages": "320",
       "bookId": "rowley",
       "description": "Join the celebrants in a heartwarming tale of love, family, and new beginnings."
     },
     {
       "title": "How to Say Babylon",
       "author": "Safiya Sinclair",
-      "pages": 352,
+      "pages": "352",
       "bookId": "sinclair",
       "description": "An evocative collection of poetry that invites readers to explore the depths of human experience."
     },
     {
       "title": "Romantic Comedy",
       "author": "Curtis Sittenfeld",
-      "pages": 320,
+      "pages": "320",
       "bookId": "sittenfeld",
       "description": "A humorous and touching exploration of the ups and downs of romance in the modern world."
     },
     {
       "title": "The Covenant of Water",
       "author": "Abraham Verghese",
-      "pages": 736,
+      "pages": "736",
       "bookId": "verghese",
       "description": "A sweeping and captivating tale that weaves together history, culture, and human connection."
     },
     {
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
-      "pages": 180,
+      "pages": "180",
       "description": "A classic American novel that explores themes of wealth, love, and the American Dream"
     },
     {
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
-      "pages": 324,
+      "pages": "324",
       "description": "A timeless novel that addresses issues of racial injustice and moral growth in the American South"
     },
     {
       "title": "1984",
       "author": "George Orwell",
-      "pages": 328,
+      "pages": "328",
       "description": "A dystopian classic that delves into surveillance, propaganda, and the struggle for individuality"
     },
     {
       "title": "The Catcher in the Rye",
       "author": "J.D. Salinger",
-      "pages": 234,
+      "pages": "234",
       "description": "A coming-of-age novel that explores the challenges of adolescence and the quest for authenticity"
     },
     {
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
-      "pages": 279,
+      "pages": "279",
       "description": "A beloved classic novel that explores themes of love, class, and social expectations"
     },
     {
       "title": "Moby-Dick",
       "author": "Herman Melville",
-      "pages": 624,
+      "pages": "624",
       "description": "A literary masterpiece that tells the epic tale of Captain Ahab's pursuit of the white whale"
     },
     {
       "title": "The Lord of the Rings",
       "author": "J.R.R. Tolkien",
-      "pages": 1178,
+      "pages": "1178",
       "description": "A fantasy epic that follows the quest to destroy the One Ring and save Middle-earth"
     },
     {
       "title": "Harry Potter and the Sorcerer's Stone",
       "author": "J.K. Rowling",
-      "pages": 309,
+      "pages": "309",
       "description": "The start of the beloved series about a young wizard's adventures at Hogwarts School of Witchcraft and Wizardry"
     },
     {
       "title": "The Hobbit",
       "author": "J.R.R. Tolkien",
-      "pages": 310,
+      "pages": "310",
       "description": "A delightful adventure of Bilbo Baggins and the dwarves on a quest to reclaim their treasure"
     },
     {
       "title": "The Hitchhiker's Guide to the Galaxy",
       "author": "Douglas Adams",
-      "pages": 193,
+      "pages": "193",
       "description": "A humorous science fiction series that follows the misadventures of Arthur Dent"
     },
     {
       "title": "The Da Vinci Code",
       "author": "Dan Brown",
-      "pages": 454,
+      "pages": "454",
       "description": "A thrilling mystery that unravels the secrets of the Holy Grail and religious symbolism"
     },
     {
       "title": "The Hunger Games",
       "author": "Suzanne Collins",
-      "pages": 374,
+      "pages": "374",
       "description": "A dystopian series where Katniss Everdeen becomes the symbol of a rebellion against a tyrannical government"
     },
     {
       "title": "The Alchemist",
       "author": "Paulo Coelho",
-      "pages": 197,
+      "pages": "197",
       "description": "A philosophical novel about a shepherd's journey to fulfill his dreams"
     },
     {
       "title": "The Road",
       "author": "Cormac McCarthy",
-      "pages": 287,
+      "pages": "287",
       "description": "A post-apocalyptic tale of a father and son's struggle for survival and humanity"
     },
     {
       "title": "The Girl with the Dragon Tattoo",
       "author": "Stieg Larsson",
-      "pages": 590,
+      "pages": "590",
       "description": "A gripping mystery that follows investigative journalist Mikael Blomkvist and hacker Lisbeth Salander"
     },
     {
       "title": "The Shining",
       "author": "Stephen King",
-      "pages": 447,
+      "pages": "447",
       "description": "A classic horror novel about a family's stay at a haunted hotel"
     },
     {
       "title": "Brave New World",
       "author": "Aldous Huxley",
-      "pages": 259,
+      "pages": "259",
       "description": "A dystopian work that explores a future society driven by technology and conformity"
     },
     {
       "title": "The Road Not Taken and Other Poems",
       "author": "Robert Frost",
-      "pages": 74,
+      "pages": "74",
       "description": "A collection of timeless poems by Robert Frost, including 'The Road Not Taken'"
     },
     {
       "title": "The Kite Runner",
       "author": "Khaled Hosseini",
-      "pages": 371,
+      "pages": "371",
       "description": "A powerful story of friendship, redemption, and the impact of the past"
     },
     {
       "title": "The Martian",
       "author": "Andy Weir",
-      "pages": 369,
+      "pages": "369",
       "description": "A thrilling science fiction novel about an astronaut stranded on Mars"
     },
     {
       "title": "The Picture of Dorian Gray",
       "author": "Oscar Wilde",
-      "pages": 194,
-      "description": "A novel that delves into the consequences of a man's moral degradation"
+      "pages": "194",
+      "description": "A novel that delves into the"
     },
     {
       "title": "The Road Less Traveled",
       "author": "M. Scott Peck",
-      "pages": 316,
+      "pages": "316",
       "description": "A self-help classic that explores the path to personal growth and fulfillment"
     },
     {
       "title": "One Hundred Years of Solitude",
       "author": "Gabriel García Márquez",
-      "pages": 422,
+      "pages": "422",
       "description": "A landmark novel of magical realism that traces the Buendía family's history"
     },
     {
       "title": "The Night Circus",
       "author": "Erin Morgenstern",
-      "pages": 391,
+      "pages": "391",
       "description": "A mesmerizing tale of a magical competition between two young illusionists"
     },
     {
       "title": "The Silent Patient",
       "author": "Alex Michaelides",
-      "pages": 336,
+      "pages": "336",
       "description": "A gripping psychological thriller that keeps you guessing until the end"
     },
     {
       "title": "Educated: A Memoir",
       "author": "Tara Westover",
-      "pages": 384,
+      "pages": "384",
       "description": "A powerful memoir of a woman's journey from a strict rural upbringing to education and self-discovery"
     },
     {
       "title": "Where the Crawdads Sing",
       "author": "Delia Owens",
-      "pages": 384,
+      "pages": "384",
       "description": "A mesmerizing novel of mystery and romance set in the wilds of North Carolina"
     },
     {
       "title": "The Goldfinch",
       "author": "Donna Tartt",
-      "pages": 771,
+      "pages": "771",
       "description": "A Pulitzer Prize-winning novel that weaves a rich tapestry of art, loss, and redemption"
     },
     {
       "title": "Becoming",
       "author": "Michelle Obama",
-      "pages": 426,
+      "pages": "426",
       "description": "The inspirational memoir of the former First Lady of the United States"
     },
     {
       "title": "The Nightingale",
       "author": "Kristin Hannah",
-      "pages": 440,
-      "description": "A moving story of two sisters in Nazi-occupied France during World War II"
-    },
-    {
-      "title": "The Night Circus",
-      "author": "Erin Morgenstern",
-      "pages": 391,
-      "description": "A mesmerizing tale of a magical competition between two young illusionists"
-    },
-    {
-      "title": "The Silent Patient",
-      "author": "Alex Michaelides",
-      "pages": 336,
-      "description": "A gripping psychological thriller that keeps you guessing until the end"
-    },
-    {
-      "title": "Educated: A Memoir",
-      "author": "Tara Westover",
-      "pages": 384,
-      "description": "A powerful memoir of a woman's journey from a strict rural upbringing to education and self-discovery"
-    },
-    {
-      "title": "Where the Crawdads Sing",
-      "author": "Delia Owens",
-      "pages": 384,
-      "description": "A mesmerizing novel of mystery and romance set in the wilds of North Carolina"
-    },
-    {
-      "title": "The Goldfinch",
-      "author": "Donna Tartt",
-      "pages": 771,
-      "description": "A Pulitzer Prize-winning novel that weaves a rich tapestry of art, loss, and redemption"
-    },
-    {
-      "title": "Becoming",
-      "author": "Michelle Obama",
-      "pages": 426,
-      "description": "The inspirational memoir of the former First Lady of the United States"
-    },
-    {
-      "title": "The Nightingale",
-      "author": "Kristin Hannah",
-      "pages": 440,
+      "pages": "440",
       "description": "A moving story of two sisters in Nazi-occupied France during World War II"
     }
   ]
