@@ -39,7 +39,7 @@
     "username" : "jojo",
     "email" : "jojo@ntnu.no",
     "password" : "jojo1234",
-    "loggedIn" : true,
+    "loggedIn" : false,
     "bookShelf" : {
       "books" : [ {
         "title" : "My Year of Rest and Relaxation",
@@ -47,12 +47,6 @@
         "pages" : 0,
         "bookId" : "moshfegh",
         "description" : "A darkly humorous and thought-provoking exploration of a year-long pursuit of rest and self-discovery."
-      }, {
-        "title" : "Before the Coffee Gets Cold",
-        "author" : "Toshikazu Kawaguchi",
-        "pages" : 0,
-        "bookId" : "kawaguchi",
-        "description" : "A captivating tale of time travel and the moments that matter most."
       }, {
         "title" : "The Paper Palace",
         "author" : "Miranda Cowley Heller",

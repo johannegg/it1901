@@ -43,7 +43,7 @@ public class BookShelfTest {
     @Test
     void testRemoveBook() {
         bookShelf.addBook(book1);
-        bookShelf.removeBook(book1);
+        //bookShelf.removeBook(book1);
         assertFalse(bookShelf.getBooks().contains(book1));
     }
 

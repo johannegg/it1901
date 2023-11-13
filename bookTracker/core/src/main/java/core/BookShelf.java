@@ -30,9 +30,12 @@ public class BookShelf implements Iterable<Book> {
 
     }
 
-    public void removeBook(Book book) {
-        if (books.contains(book)) {
-            books.remove(book);
+    public void removeBookById(String bookId) {
+        for (Book book : books) {
+            if(book.getBookId().equals(bookId)){
+                books.remove(book);
+                break;
+            }
         }
     }
 
