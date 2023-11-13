@@ -200,180 +200,259 @@
       "title": "The Great Gatsby",
       "author": "F. Scott Fitzgerald",
       "pages": "180",
+      "bookId": "book1",
       "description": "A classic American novel that explores themes of wealth, love, and the American Dream"
     },
     {
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
       "pages": "324",
+      "bookId": "book2",
       "description": "A timeless novel that addresses issues of racial injustice and moral growth in the American South"
     },
     {
       "title": "1984",
       "author": "George Orwell",
       "pages": "328",
+      "bookId": "book3",
       "description": "A dystopian classic that delves into surveillance, propaganda, and the struggle for individuality"
     },
     {
       "title": "The Catcher in the Rye",
       "author": "J.D. Salinger",
       "pages": "234",
+      "bookId": "book4",
       "description": "A coming-of-age novel that explores the challenges of adolescence and the quest for authenticity"
     },
     {
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
       "pages": "279",
+      "bookId": "book5",
       "description": "A beloved classic novel that explores themes of love, class, and social expectations"
     },
     {
       "title": "Moby-Dick",
       "author": "Herman Melville",
       "pages": "624",
+      "bookId": "book6",
       "description": "A literary masterpiece that tells the epic tale of Captain Ahab's pursuit of the white whale"
     },
     {
       "title": "The Lord of the Rings",
       "author": "J.R.R. Tolkien",
       "pages": "1178",
+      "bookId": "book7",
       "description": "A fantasy epic that follows the quest to destroy the One Ring and save Middle-earth"
     },
     {
       "title": "Harry Potter and the Sorcerer's Stone",
       "author": "J.K. Rowling",
       "pages": "309",
+      "bookId": "book8",
       "description": "The start of the beloved series about a young wizard's adventures at Hogwarts School of Witchcraft and Wizardry"
     },
     {
       "title": "The Hobbit",
       "author": "J.R.R. Tolkien",
       "pages": "310",
+      "bookId": "book9",
       "description": "A delightful adventure of Bilbo Baggins and the dwarves on a quest to reclaim their treasure"
     },
     {
       "title": "The Hitchhiker's Guide to the Galaxy",
       "author": "Douglas Adams",
       "pages": "193",
+      "bookId": "book10",
       "description": "A humorous science fiction series that follows the misadventures of Arthur Dent"
     },
     {
       "title": "The Da Vinci Code",
       "author": "Dan Brown",
       "pages": "454",
+      "bookId": "book11",
       "description": "A thrilling mystery that unravels the secrets of the Holy Grail and religious symbolism"
     },
     {
       "title": "The Hunger Games",
       "author": "Suzanne Collins",
       "pages": "374",
+      "bookId": "book12",
       "description": "A dystopian series where Katniss Everdeen becomes the symbol of a rebellion against a tyrannical government"
     },
     {
       "title": "The Alchemist",
       "author": "Paulo Coelho",
       "pages": "197",
+      "bookId": "book13",
       "description": "A philosophical novel about a shepherd's journey to fulfill his dreams"
     },
     {
       "title": "The Road",
       "author": "Cormac McCarthy",
       "pages": "287",
+      "bookId": "book14",
       "description": "A post-apocalyptic tale of a father and son's struggle for survival and humanity"
     },
     {
       "title": "The Girl with the Dragon Tattoo",
       "author": "Stieg Larsson",
       "pages": "590",
+      "bookId": "book15",
       "description": "A gripping mystery that follows investigative journalist Mikael Blomkvist and hacker Lisbeth Salander"
     },
     {
       "title": "The Shining",
       "author": "Stephen King",
       "pages": "447",
+      "bookId": "book16",
       "description": "A classic horror novel about a family's stay at a haunted hotel"
     },
     {
       "title": "Brave New World",
       "author": "Aldous Huxley",
       "pages": "259",
+      "bookId": "book17",
       "description": "A dystopian work that explores a future society driven by technology and conformity"
     },
     {
       "title": "The Road Not Taken and Other Poems",
       "author": "Robert Frost",
       "pages": "74",
+      "bookId": "book18",
       "description": "A collection of timeless poems by Robert Frost, including 'The Road Not Taken'"
     },
     {
       "title": "The Kite Runner",
       "author": "Khaled Hosseini",
       "pages": "371",
+      "bookId": "book19",
       "description": "A powerful story of friendship, redemption, and the impact of the past"
     },
     {
       "title": "The Martian",
       "author": "Andy Weir",
       "pages": "369",
+      "bookId": "book20",
       "description": "A thrilling science fiction novel about an astronaut stranded on Mars"
     },
     {
       "title": "The Picture of Dorian Gray",
       "author": "Oscar Wilde",
       "pages": "194",
-      "description": "A novel that delves into the"
+      "bookId": "book21",
+      "description": "A novel that delves into the consequences of a man's moral degradation"
     },
     {
       "title": "The Road Less Traveled",
       "author": "M. Scott Peck",
       "pages": "316",
+      "bookId": "book22",
       "description": "A self-help classic that explores the path to personal growth and fulfillment"
     },
     {
       "title": "One Hundred Years of Solitude",
       "author": "Gabriel García Márquez",
       "pages": "422",
+      "bookId": "book23",
       "description": "A landmark novel of magical realism that traces the Buendía family's history"
     },
     {
       "title": "The Night Circus",
       "author": "Erin Morgenstern",
       "pages": "391",
+      "bookId": "book24",
       "description": "A mesmerizing tale of a magical competition between two young illusionists"
     },
     {
       "title": "The Silent Patient",
       "author": "Alex Michaelides",
       "pages": "336",
+      "bookId": "book25",
       "description": "A gripping psychological thriller that keeps you guessing until the end"
     },
     {
       "title": "Educated: A Memoir",
       "author": "Tara Westover",
       "pages": "384",
+      "bookId": "book26",
       "description": "A powerful memoir of a woman's journey from a strict rural upbringing to education and self-discovery"
     },
     {
       "title": "Where the Crawdads Sing",
       "author": "Delia Owens",
       "pages": "384",
+      "bookId": "book27",
       "description": "A mesmerizing novel of mystery and romance set in the wilds of North Carolina"
     },
     {
       "title": "The Goldfinch",
       "author": "Donna Tartt",
       "pages": "771",
+      "bookId": "book28",
       "description": "A Pulitzer Prize-winning novel that weaves a rich tapestry of art, loss, and redemption"
     },
     {
       "title": "Becoming",
       "author": "Michelle Obama",
       "pages": "426",
+      "bookId": "book29",
       "description": "The inspirational memoir of the former First Lady of the United States"
     },
     {
       "title": "The Nightingale",
       "author": "Kristin Hannah",
       "pages": "440",
+      "bookId": "book30",
+      "description": "A moving story of two sisters in Nazi-occupied France during World War II"
+    },
+    {
+      "title": "The Night Circus",
+      "author": "Erin Morgenstern",
+      "pages": "391",
+      "bookId": "book31",
+      "description": "A mesmerizing tale of a magical competition between two young illusionists"
+    },
+    {
+      "title": "The Silent Patient",
+      "author": "Alex Michaelides",
+      "pages": "336",
+      "bookId": "book32",
+      "description": "A gripping psychological thriller that keeps you guessing until the end"
+    },
+    {
+      "title": "Educated: A Memoir",
+      "author": "Tara Westover",
+      "pages": "384",
+      "bookId": "book33",
+      "description": "A powerful memoir of a woman's journey from a strict rural upbringing to education and self-discovery"
+    },
+    {
+      "title": "Where the Crawdads Sing",
+      "author": "Delia Owens",
+      "pages": "384",
+      "bookId": "book34",
+      "description": "A mesmerizing novel of mystery and romance set in the wilds of North Carolina"
+    },
+    {
+      "title": "The Goldfinch",
+      "author": "Donna Tartt",
+      "pages": "771",
+      "bookId": "book35",
+      "description": "A Pulitzer Prize-winning novel that weaves a rich tapestry of art, loss, and redemption"
+    },
+    {
+      "title": "Becoming",
+      "author": "Michelle Obama",
+      "pages": "426",
+      "bookId": "book37",
+      "description": "The inspirational memoir of the former First Lady of the United States"
+    },
+    {
+      "title": "The Nightingale",
+      "author": "Kristin Hannah",
+      "pages": "440",
+      "bookId": "book38",
       "description": "A moving story of two sisters in Nazi-occupied France during World War II"
     }
   ]
