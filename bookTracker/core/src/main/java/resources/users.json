@@ -13,19 +13,7 @@
     "password" : "anniken123",
     "loggedIn" : false,
     "bookShelf" : {
-      "books" : [ {
-        "title" : "Before the Coffee Gets Cold",
-        "author" : "Toshikazu Kawaguchi",
-        "pages" : "272",
-        "bookId" : "kawaguchi",
-        "description" : "A captivating tale of time travel and the moments that matter most."
-      }, {
-        "title" : "The Paper Palace",
-        "author" : "Miranda Cowley Heller",
-        "pages" : "348",
-        "bookId" : "heller",
-        "description" : "Dive into a story of secrets and revelations in the scenic Paper Palace."
-      } ]
+      "books" : [ ]
     }
   }, {
     "username" : "jojo",
