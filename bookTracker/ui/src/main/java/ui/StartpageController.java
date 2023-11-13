@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -116,6 +117,16 @@ public class StartpageController {
                 }
             });
 
+            imageView.hoverProperty().addListener((observable, oldValue, isHovered) -> {
+                if (isHovered) {
+                    imageView.setCursor(Cursor.HAND);
+                    imageView.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
+                } else {
+                    imageView.setCursor(Cursor.DEFAULT);
+                    imageView.setStyle("");
+                }
+            });
+
             try {
                 PopHBox.getChildren().add(imageView);
             } catch (Exception e) {
@@ -137,6 +148,16 @@ public class StartpageController {
                     handleImgClicked(imageView);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+            });
+
+            imageView.hoverProperty().addListener((observable, oldValue, isHovered) -> {
+                if (isHovered) {
+                    imageView.setCursor(Cursor.HAND);
+                    imageView.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
+                } else {
+                    imageView.setCursor(Cursor.DEFAULT);
+                    imageView.setStyle("");
                 }
             });
 
