@@ -17,6 +17,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+/**
+ * Class for testing RegisterController and its fxml-file.
+ */
 public class RegisterControllerTest extends ApplicationTest {
 
   private RegisterController controller;
@@ -98,5 +101,5 @@ public class RegisterControllerTest extends ApplicationTest {
     }
     assertNotEquals(afterRoot, beforeRoot);
   }
-  
+
 }

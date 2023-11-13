@@ -34,7 +34,7 @@ import json.UsersPersistence;
  * Controller connected to Startpage.fxml
  */
 public class StartpageController {
-    
+
     private Book book;
     private RemoteDataAccess dataAccess;
     private User loggedInUser;
@@ -188,6 +188,11 @@ public class StartpageController {
 
     public void addBookToShelf() throws IOException {
         this.loggedInUser = dataAccess.getLoggedInUser();
+        addBookToUser();
+        dataAccess.putUser(loggedInUser);
+    }
+
+    private void addBookToUser(){
         try {
             loggedInUser.getBookShelf().addBook(this.book);
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -195,7 +200,6 @@ public class StartpageController {
             alert.setHeaderText("Book successfully added");
             alert.setContentText("You can find all your added books under SHELF");
             alert.showAndWait();
-            dataAccess.putUser(loggedInUser);
         } catch (IllegalStateException e) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Error");

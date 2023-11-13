@@ -18,9 +18,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+/**
+ * Class for testing LogInController and its fxml-file.
+ */
 public class LogInControllerTest extends ApplicationTest {
 
   private LogInController controller;
+  private DirectDataAccess directDataAccess = new DirectDataAccess();
 
   /**
    * Set up for testing LogInController.java
@@ -30,13 +34,13 @@ public class LogInControllerTest extends ApplicationTest {
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
     final Parent root = loader.load();
     this.controller = loader.getController();
-    //this.controller.setDataAccess();
+    directDataAccess.readUsers();
     stage.setScene(new Scene(root));
     stage.show();
   }
 
   /**
-   * Help method for generating test object
+   * Help method for creating test object
    *
    * @return users objects for use in testing
    */
@@ -54,14 +58,14 @@ public class LogInControllerTest extends ApplicationTest {
    */
   @BeforeEach
   public void setupUsers() throws InterruptedException {
-    Thread.sleep(1500);
-    clickOn("#usernameField").write("Usertwo");
-    clickOn("#passwordField").write("password2");
+    Thread.sleep(1000);
+    clickOn("#usernameField").write("TestUser");
+    clickOn("#passwordField").write("password1");
     Thread.sleep(500);
   }
 
   /**
-   * Test to check if the UI changes window when the "Log in"-button in UI is clicked.
+   * Test to check if the UI changes window when the "Log in"-button is clicked.
    */
   @Test
   public void testLogInButton() {
@@ -85,7 +89,7 @@ public class LogInControllerTest extends ApplicationTest {
   }
 
   /**
-   * Test to check if the UI changes Window when the "Register"-button in UI is clicked.
+   * Test to check if the UI changes Window when the "Register"-button is clicked.
    */
   @Test
   public void testRegisterButton() {

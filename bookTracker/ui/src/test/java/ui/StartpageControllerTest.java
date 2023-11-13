@@ -14,11 +14,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class StartpageControllerTest extends ApplicationTest{
-    
-    private StartpageController controller;
+public class StartpageControllerTest extends ApplicationTest {
 
-    /**
+  private StartpageController controller;
+
+  /**
    * Set up for testing StartpageController.java
    */
   @Override
@@ -31,7 +31,7 @@ public class StartpageControllerTest extends ApplicationTest{
   }
 
   /**
-   * Test to check if the UI changes Window and Scene when the "SHELF"-button in UI is clicked.
+   * Test to check if the UI changes Window when the "SHELF"-button is clicked.
    */
   @Test
   public void testShelfButton() {
