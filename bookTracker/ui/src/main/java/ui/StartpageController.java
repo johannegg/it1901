@@ -3,6 +3,7 @@ package ui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import core.Book;
@@ -20,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -53,17 +55,19 @@ public class StartpageController {
     private Label usernameTag;
 
     @FXML
-    private TextField autoSearch;
+    private TextField searchBar;
 
     @FXML
     Button search;
 
     @FXML
-    Label check;
+    private ListView<String> listView;
 
     private Book book;
     private RemoteDataAccess dataAccess;
     private User loggedInUser;
+    private HashMap<String, String> bookIds;
+    private BookShelf library;
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
@@ -79,14 +83,19 @@ public class StartpageController {
      */
     public void initialize() {
         dataAccess = new RemoteDataAccess();
+        this.library = dataAccess.getLibrary();
         this.loggedInUser = dataAccess.getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
 
-        check.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-            try {
-                handleLabelClicked(check);
-            } catch (IOException e) {
-                e.printStackTrace();
+        listView.setOnMouseClicked((MouseEvent event) -> {
+            String selectedBook = listView.getSelectionModel().getSelectedItem();
+            String bookId = bookIds.get(selectedBook);
+            if (bookId != null) {
+                try {
+                    handleListClicked(bookId);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -140,31 +149,25 @@ public class StartpageController {
     }
 
     public void handleSearchButton(ActionEvent event) {
-        String searchText = autoSearch.getText();
-        BookShelf library = dataAccess.getLibrary();
-        Boolean matchFound = false;
+        String searchText = searchBar.getText().toLowerCase();
+
+        List<String> bookList = new ArrayList<>();
+        bookIds = new HashMap<>();
 
         for (Book book : library.getBooks()) {
-            if (book.getTitle() != null && book.getTitle().equalsIgnoreCase(searchText)) {
-                check.setText(book.getTitle() + " - " + book.getAuthor());
-                check.setStyle("-fx-background-color: white;");
-                check.setId(book.getBookId());
-                matchFound = true;
-                break;
-
+            if (book.getTitle().toLowerCase().contains(searchText)) {
+                String textDisplay = book.getTitle() + " - " + book.getAuthor();
+                bookList.add(textDisplay);
+                bookIds.put(textDisplay, book.getBookId());
             }
         }
-        if (!matchFound) {
-            check.setText("Not Found");
-            check.setStyle("-fx-background-color: white;");
-        }
 
+        listView.getItems().clear();
+        listView.getItems().addAll(bookList);
     }
 
-    private void handleLabelClicked(Label label) throws IOException {
-        String bookId = check.getId();
+    private void handleListClicked(String bookId) throws IOException {
         this.book = dataAccess.getBookById(bookId);
-        check.setStyle("-fx-background-color: lightblue;");
         displayBookPopup();
     }
 
@@ -177,7 +180,7 @@ public class StartpageController {
     }
 
     public void handleHomePageButton(ActionEvent event) throws IOException {
-        changeScene("/ui/HomePage.fxml", event);
+        changeScene("/ui/Startpage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) throws IOException {
