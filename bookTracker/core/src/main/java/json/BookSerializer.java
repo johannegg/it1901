@@ -16,7 +16,7 @@ public class BookSerializer extends JsonSerializer<Book>{
 
         gen.writeStringField("title", book.getTitle());
         gen.writeStringField("author", book.getAuthor());
-        gen.writeNumberField("pages", book.getPages());
+        gen.writeStringField("pages", book.getPages());
         gen.writeStringField("bookId", book.getBookId());
         gen.writeStringField("description", book.getDescription());
 

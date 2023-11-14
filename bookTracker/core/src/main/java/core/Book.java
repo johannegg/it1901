@@ -7,7 +7,7 @@ public class Book {
 
     private String title;
     private String author;
-    private int pages;
+    private String pages;
     private String bookId;
     private String description;
 
@@ -43,11 +43,11 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public int getPages() {
+    public String getPages() {
         return pages;
     }
 
-    public void setPages(int pages) {
+    public void setPages(String pages) {
         this.pages = pages;
     }
 

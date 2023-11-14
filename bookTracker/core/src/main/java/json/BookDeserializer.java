@@ -39,7 +39,7 @@ public class BookDeserializer extends JsonDeserializer<Book> {
             }
             JsonNode pagesNode = objectNode.get("pages");
             if (pagesNode instanceof TextNode) {
-                book.setPages(pagesNode.asInt());
+                book.setPages(pagesNode.asText());
             }
             JsonNode bookIdNode = objectNode.get("bookId");
             if (bookIdNode instanceof TextNode) {
