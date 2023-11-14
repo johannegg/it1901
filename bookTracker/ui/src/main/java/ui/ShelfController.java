@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -112,6 +113,16 @@ public class ShelfController {
                 System.out.println("clicked");
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        });
+
+        button.hoverProperty().addListener((observable, oldValue, isHovered) -> {
+            if (isHovered) {
+                button.setCursor(Cursor.HAND);
+                button.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 1);"); 
+            } else {
+                button.setCursor(Cursor.DEFAULT);
+                button.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);"); 
             }
         });
 
