@@ -31,7 +31,7 @@ public class BookTrackerController {
 
   @Autowired
   private LibraryService libraryService;
-  
+
 
   @GetMapping("/users")
   public Users getUsers() throws IOException {
@@ -44,13 +44,15 @@ public class BookTrackerController {
   }
 
   @PostMapping("/users/{username}")
-  public ResponseEntity<Object> postUser(@PathVariable("username") String username, @RequestBody User user) throws IOException {
+  public ResponseEntity<Object> postUser(@PathVariable("username") String username, @RequestBody User user)
+      throws IOException {
     usersService.postUser(user);
     return new ResponseEntity<>("Bruker lagt til", HttpStatus.CREATED);
   }
 
   @PutMapping("/users/{username}")
-  public ResponseEntity<Object> putUser(@PathVariable("username") String username, @RequestBody User user) throws IOException {
+  public ResponseEntity<Object> putUser(@PathVariable("username") String username, @RequestBody User user)
+      throws IOException {
     usersService.putUser(user);
     return new ResponseEntity<>("Bruker endret", HttpStatus.OK);
   }
@@ -65,5 +67,8 @@ public class BookTrackerController {
     return libraryService.getLibrary().getBook(bookId);
   }
 
+  public void setUsersFileName(String fileName) {
+    this.usersService.setUsersJsonFileName(fileName);
+  }
 
 }
