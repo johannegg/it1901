@@ -33,12 +33,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ShelfController {
+public class ShelfController extends DataAccessController{
 
     private String bookId;
     private Book book;
     private User loggedInUser;
-    private RemoteDataAccess dataAccess = new RemoteDataAccess();
 
     @FXML
     private Button profileButton;

@@ -31,11 +31,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import json.LibraryPersistence;
+import json.UsersPersistence;
 
 /**
  * Controller connected to Startpage.fxml
  */
-public class StartpageController {
+public class StartpageController extends DataAccessController{
+
+    private Book book;
+    private User loggedInUser;
 
     @FXML
     private HBox PopHBox;
@@ -213,7 +218,7 @@ public class StartpageController {
 
     private void handleImgClicked(ImageView imageView) throws IOException {
         String bookId = imageView.getId();
-        this.book = dataAccess.getBookById(bookId);
+        this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
@@ -228,6 +233,7 @@ public class StartpageController {
         description.setWrapText(true);
 
         Button addButton = new Button("Add book");
+        addButton.setId("addButton");
         addButton.setOnAction(e -> {
             try {
                 addBookToShelf();
@@ -262,7 +268,12 @@ public class StartpageController {
     }
 
     public void addBookToShelf() throws IOException {
-        this.loggedInUser = dataAccess.getLoggedInUser();
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
+        addBookToUser();
+        this.getDataAccess().putUser(loggedInUser);
+    }
+
+    private void addBookToUser() {
         try {
             loggedInUser.getBookShelf().addBook(this.book);
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -270,7 +281,6 @@ public class StartpageController {
             alert.setHeaderText("Book successfully added");
             alert.setContentText("You can find all your added books under SHELF");
             alert.showAndWait();
-            dataAccess.putUser(loggedInUser);
         } catch (IllegalStateException e) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Error");
@@ -279,7 +289,6 @@ public class StartpageController {
             alert.showAndWait();
         }
     }
-    // kunne legge bookShelf i users
 
     /**
      * Changes the scne to the given file path
