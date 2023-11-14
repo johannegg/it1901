@@ -78,7 +78,7 @@ public class ShelfController {
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
-        changeScene("/ui/Profile.fxml", event);
+        changeScene("/ui/ProfilePage.fxml", event);
     }
 
     public void handleShelfButton(ActionEvent event) throws IOException {
