@@ -8,13 +8,13 @@
       "books" : [ {
         "title" : "Book Title",
         "author" : "Author Name",
-        "pages" : 0,
+        "pages" : null,
         "bookId" : "123456",
         "description" : "Description of the book"
       }, {
         "title" : "Book2 Title",
         "author" : "Author2 Name",
-        "pages" : 0,
+        "pages" : null,
         "bookId" : "12",
         "description" : "Description of the book"
       } ]
@@ -54,17 +54,17 @@
         "bookId" : "moshfegh",
         "description" : "A darkly humorous and thought-provoking exploration of a year-long pursuit of rest and self-discovery."
       }, {
-        "title" : "G-Man: J. Edgar Hoover and the Making of the American Century",
-        "author" : "Beverly Gage",
-        "pages" : "864",
-        "bookId" : "gage",
-        "description" : "Winner of the Pulitzer Prize in Biography, this book provides a fascinating insight into the life of J. Edgar Hoover."
-      }, {
         "title" : "Demon Copperhead",
         "author" : "Barbara Kingslover",
         "pages" : "560",
         "bookId" : "kingslover",
         "description" : "This Pulitzer Prize-winning book is a powerful work of fiction that captivates readers."
+      }, {
+        "title" : "G-Man",
+        "author" : "Beverly Gage",
+        "pages" : "864",
+        "bookId" : "gage",
+        "description" : "Winner of the Pulitzer Prize in Biography, this book provides a fascinating insight into the life of J. Edgar Hoover."
       } ]
     }
   } ]
