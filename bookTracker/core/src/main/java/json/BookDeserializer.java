@@ -19,9 +19,11 @@ public class BookDeserializer extends JsonDeserializer<Book> {
         final JsonNode node = p.getCodec().readTree(p);
         return deserialize(node);
     }
+
     /**
      * Takes in an instance of JsonNode, and deserializes it. Returns an instance of
      * Book.
+     * 
      * @param node node to be deserialized
      * @return Book object
      */

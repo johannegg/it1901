@@ -3,15 +3,18 @@ package ui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import core.Book;
 import core.BookShelf;
 import core.User;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,7 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -58,28 +61,53 @@ public class StartpageController extends DataAccessController{
     private Label usernameTag;
 
     @FXML
-    private TextField textField;
+    private TextField searchBar;
+
+    @FXML
+    Button search;
+
+    @FXML
+    private ListView<String> listView;
+
+    private Book book;
+    private RemoteDataAccess dataAccess;
+    private User loggedInUser;
+    private HashMap<String, String> bookIds;
+    private BookShelf library;
 
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
 
     private List<String> imageSrcPul = new ArrayList<>(
-            Arrays.asList("cowie.jpg", "diaz.jpeg", "gage.jpeg", "hsu.jpeg", "kingslover.png", "olorunnipa.jpg",
-                    "phillips.jpeg", "cohen.jpeg", "elliott.jpeg", "eustace.jpeg", "ferrer.jpeg", "rembert.jpeg",
-                    "seuss.jpeg"));
+            Arrays.asList("cowie", "diaz", "gage", "hsu", "kingslover", "olorunnipa",
+                    "phillips", "cohen", "elliott", "eustace", "ferrer", "rembert",
+                    "seuss"));
 
     /**
      * Sets up the Start Page by showing the book images
      */
-
-
     public void initialize() {
+        dataAccess = new RemoteDataAccess();
+        this.library = dataAccess.getLibrary();
+        this.loggedInUser = dataAccess.getLoggedInUser();
+        usernameTag.setText(loggedInUser.getUsername());
 
-        // Shows images and sets id
+        listView.setOnMouseClicked((MouseEvent event) -> {
+            String selectedBook = listView.getSelectionModel().getSelectedItem();
+            String bookId = bookIds.get(selectedBook);
+            if (bookId != null) {
+                try {
+                    handleListClicked(bookId);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         for (String img : imageSrcPop) {
             ImageView imageView = new ImageView();
-            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpg"));
+            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpeg"));
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
@@ -91,6 +119,16 @@ public class StartpageController extends DataAccessController{
                     handleImgClicked(imageView);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+            });
+
+            imageView.hoverProperty().addListener((observable, oldValue, isHovered) -> {
+                if (isHovered) {
+                    imageView.setCursor(Cursor.HAND);
+                    imageView.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
+                } else {
+                    imageView.setCursor(Cursor.DEFAULT);
+                    imageView.setStyle("");
                 }
             });
 
@@ -103,7 +141,7 @@ public class StartpageController extends DataAccessController{
 
         for (String img : imageSrcPul) {
             ImageView imageView = new ImageView();
-            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img));
+            Image image = new Image(getClass().getResourceAsStream("/ui/BookImages/" + img + ".jpeg"));
             imageView.setImage(image);
             imageView.setX(170);
             imageView.setY(10);
@@ -118,12 +156,52 @@ public class StartpageController extends DataAccessController{
                 }
             });
 
+            imageView.hoverProperty().addListener((observable, oldValue, isHovered) -> {
+                if (isHovered) {
+                    imageView.setCursor(Cursor.HAND);
+                    imageView.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
+                } else {
+                    imageView.setCursor(Cursor.DEFAULT);
+                    imageView.setStyle("");
+                }
+            });
+
             try {
                 PulHBox.getChildren().add(imageView);
             } catch (Exception e) {
                 System.out.println("test");
             }
         }
+    }
+
+    public void handleSearchButton(ActionEvent event) {
+        String searchText = searchBar.getText().toLowerCase();
+
+        List<String> bookList = new ArrayList<>();
+        bookIds = new HashMap<>();
+        Boolean bookFound = false;
+
+        for (Book book : library.getBooks()) {
+            if (book.getTitle().toLowerCase().contains(searchText)) {
+                String textDisplay = book.getTitle() + " - " + book.getAuthor();
+                bookList.add(textDisplay);
+                bookIds.put(textDisplay, book.getBookId());
+                bookFound = true;
+            }
+        }
+        
+        if (!bookFound){
+            String textDisplay = "Book not found";
+            bookList.add(textDisplay);
+        }
+
+        listView.getItems().clear();
+        listView.getItems().addAll(bookList);
+    }
+
+    private void handleListClicked(String bookId) throws IOException {
+        this.book = dataAccess.getBookById(bookId);
+        displayBookPopup();
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {
@@ -135,7 +213,7 @@ public class StartpageController extends DataAccessController{
     }
 
     public void handleHomePageButton(ActionEvent event) throws IOException {
-        changeScene("/ui/HomePage.fxml", event);
+        changeScene("/ui/Startpage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) throws IOException {
@@ -152,6 +230,7 @@ public class StartpageController extends DataAccessController{
         Label author = new Label("Author: " + this.book.getAuthor());
         Label pages = new Label("Pages: " + this.book.getPages());
         Label description = new Label("Description: " + this.book.getDescription());
+        description.setWrapText(true);
 
         Button addButton = new Button("Add book");
         addButton.setId("addButton");

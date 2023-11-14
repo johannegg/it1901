@@ -11,7 +11,6 @@ public class Book {
     private String bookId;
     private String description;
 
-
     /**
      * Creates a new Book object and sets every parameter to null.
      */

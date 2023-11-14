@@ -6,9 +6,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ProfileController">
    <children>
       <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0">
          <children>
@@ -48,26 +49,31 @@
          </children>
       </HBox>
       <Separator layoutX="-8.0" layoutY="73.0" prefHeight="0.0" prefWidth="1013.0" />
-      <Label fx:id="showUsername" layoutX="83.0" layoutY="132.0" prefHeight="23.0" prefWidth="474.0" text="Username:">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Label fx:id="showEmail" layoutX="85.0" layoutY="169.0" prefHeight="23.0" prefWidth="468.0" text="E-mail:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="logoutButton" layoutX="89.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #abb1cf;" text="Log out" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="85.0" layoutY="204.0" prefHeight="23.0" prefWidth="146.0" text="Change password:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="passwordField" layoutX="231.0" layoutY="203.0" prefHeight="26.0" prefWidth="255.0" />
-      <Button fx:id="passwordButton" layoutX="500.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleChangePassword" text="Submit" />
+      <Pane layoutX="50.0" layoutY="155.0" prefHeight="290.0" prefWidth="898.0" style="-fx-border-color: #f7cac9; -fx-background-color: #FFFFFF; -fx-border-width: 1;">
+         <children>
+            <Label fx:id="showUsername" layoutX="34.0" layoutY="34.0" prefHeight="23.0" prefWidth="474.0" text="Username:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="showEmail" layoutX="34.0" layoutY="78.0" prefHeight="23.0" prefWidth="468.0" text="E-mail:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="123.0" prefHeight="23.0" prefWidth="146.0" text="Change password:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="passwordField" layoutX="189.0" layoutY="122.0" prefHeight="26.0" prefWidth="255.0" />
+            <Button fx:id="passwordButton" layoutX="465.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleChangePassword" style="-fx-background-color: #f7cac9;" text="Submit" />
+            <Button fx:id="logoutButton" layoutX="35.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #abb1cf;" text="Log out" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
