@@ -27,12 +27,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class ShelfController {
+public class ShelfController extends DataAccessController{
 
     private TilePane shelfTilePane;
     private double lastX = 0;
     private User loggedInUser;
-    private RemoteDataAccess dataAccess = new RemoteDataAccess();
     
     @FXML
     private Button profileButton;
@@ -59,7 +58,7 @@ public class ShelfController {
     public void initialize() {
         shelfTilePane = createShelfTilePane();
         scrollPane.setContent(shelfTilePane);
-        this.loggedInUser = dataAccess.getLoggedInUser();
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
 
         shelfTilePane.setOnMousePressed(event -> lastX = event.getSceneX());

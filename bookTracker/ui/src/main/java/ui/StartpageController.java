@@ -19,6 +19,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,10 +34,9 @@ import json.UsersPersistence;
 /**
  * Controller connected to Startpage.fxml
  */
-public class StartpageController {
+public class StartpageController extends DataAccessController{
 
     private Book book;
-    private RemoteDataAccess dataAccess;
     private User loggedInUser;
 
     @FXML
@@ -57,6 +57,9 @@ public class StartpageController {
     @FXML
     private Label usernameTag;
 
+    @FXML
+    private TextField textField;
+
     private List<String> imageSrcPop = new ArrayList<>(
             Arrays.asList("gilmore", "heller", "kawaguchi", "mellors", "moshfegh", "rooney", "sittenfeld", "patchett",
                     "keane", "cauley", "sinclair", "verghese", "chambers", "kawakami", "rowley"));
@@ -69,10 +72,9 @@ public class StartpageController {
     /**
      * Sets up the Start Page by showing the book images
      */
+
+
     public void initialize() {
-        dataAccess = new RemoteDataAccess();
-        this.loggedInUser = dataAccess.getLoggedInUser();
-        usernameTag.setText(loggedInUser.getUsername());
 
         // Shows images and sets id
         for (String img : imageSrcPop) {
@@ -138,7 +140,7 @@ public class StartpageController {
 
     private void handleImgClicked(ImageView imageView) throws IOException {
         String bookId = imageView.getId();
-        this.book = dataAccess.getBookById(bookId);
+        this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
@@ -187,9 +189,9 @@ public class StartpageController {
     }
 
     public void addBookToShelf() throws IOException {
-        this.loggedInUser = dataAccess.getLoggedInUser();
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
         addBookToUser();
-        dataAccess.putUser(loggedInUser);
+        this.getDataAccess().putUser(loggedInUser);
     }
 
     private void addBookToUser() {

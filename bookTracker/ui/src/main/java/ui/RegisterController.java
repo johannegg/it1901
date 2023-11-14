@@ -21,9 +21,8 @@ import javafx.stage.Stage;
 /**
  * Controller connected to RegistrationPage.fxml
  */
-public class RegisterController {
+public class RegisterController extends DataAccessController{
 
-    RemoteDataAccess dataAccess = new RemoteDataAccess();
     private String feedbackLabel;
 
     @FXML
@@ -39,7 +38,7 @@ public class RegisterController {
     // Label feedbackLabel;
 
     @FXML
-    Button RegisterButton;
+    Button registerButton;
 
     /**
      * Creates a new user if createNewUser() does not throw an
@@ -65,6 +64,7 @@ public class RegisterController {
 
             changeScene(event);
         } catch (IllegalArgumentException e) {
+            System.out.println(e);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Unsuccessfull registration");
             this.feedbackLabel = "Unsuccessfull registration";
@@ -91,9 +91,10 @@ public class RegisterController {
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
         user.setBookShelf(new BookShelf());
-        Users users = dataAccess.getUsers();
+        Users users = this.getDataAccess().getUsers();
         users.checkUsername(user.getUsername());
-        dataAccess.postUser(user);
+        this.getDataAccess().postUser(user);
+        createUserForTest(user);
     }
 
     /**
@@ -121,5 +122,12 @@ public class RegisterController {
     public String getFeedbackText() {
         return this.feedbackLabel;
     }
+
+    public void createUserForTest(User user) throws IOException {
+        DirectDataAccess directDataAccess = new DirectDataAccess();
+        directDataAccess.postUser(user);
+    }
+
+
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import core.User;
@@ -34,49 +35,31 @@ public class LogInControllerTest extends ApplicationTest {
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
     final Parent root = loader.load();
     this.controller = loader.getController();
-    directDataAccess.readUsers();
+    this.controller.setDataAccess(directDataAccess);
     stage.setScene(new Scene(root));
     stage.show();
   }
 
   /**
-   * Help method for creating test object
-   *
-   * @return users objects for use in testing
-   */
-  public Users createTestUserObject() throws IOException {
-    Users users = new Users();
-    User user = new User("test@mail.com", "TestUser", "password1");
-    users.addUser(user);
-    return users;
-  }
-
-  /**
-   * Writes existing user to textfields for successfull log in.
-   *
-   * @throws InterruptedException if Thread.sleep() fails
-   */
-  @BeforeEach
-  public void setupUsers() throws InterruptedException {
-    Thread.sleep(1000);
-    clickOn("#usernameField").write("TestUser");
-    clickOn("#passwordField").write("password1");
-    Thread.sleep(500);
-  }
-
-  /**
    * Test to check if the UI changes window when the "Log in"-button is clicked.
+   * 
+   * @throws InterruptedException
    */
   @Test
-  public void testLogInButton() {
+  public void testLogInButton() throws InterruptedException {
+    clickOn("#usernameField").write("TestUser");
+    clickOn("#passwordField").write("password1");
+    Thread.sleep(2000);
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
     for (Window window : before) {
       beforeRoot = window.getScene().getRoot();
     }
+    StartpageControllerTest.setTestLogIn(true);
     clickOn("#logInButton");
+    StartpageControllerTest.setTestLogIn(false);
     try {
-      Thread.sleep(10000);
+      Thread.sleep(3000);
     } catch (Exception e) {
       fail();
     }
@@ -90,9 +73,12 @@ public class LogInControllerTest extends ApplicationTest {
 
   /**
    * Test to check if the UI changes Window when the "Register"-button is clicked.
+   * 
+   * @throws InterruptedException
    */
   @Test
-  public void testRegisterButton() {
+  public void testRegisterButton() throws InterruptedException {
+    Thread.sleep(2000);
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
     for (Window window : before) {
@@ -100,7 +86,7 @@ public class LogInControllerTest extends ApplicationTest {
     }
     clickOn("#RegisterButton");
     try {
-      Thread.sleep(10000);
+      Thread.sleep(3000);
     } catch (Exception e) {
       fail();
     }

@@ -35,7 +35,7 @@ public class RegisterControllerTest extends ApplicationTest {
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("RegistrationPage.fxml"));
     final Parent root = loader.load();
     this.controller = loader.getController();
-    directDataAccess.readUsers();
+    this.controller.setDataAccess(directDataAccess);
     stage.setScene(new Scene(root));
     stage.show();
   }
@@ -43,57 +43,70 @@ public class RegisterControllerTest extends ApplicationTest {
   /**
    * Set up a User to use in the test
    */
-  @BeforeEach
-  public void setupUser() throws InterruptedException {
+  //@BeforeEach
+  //public void setupUser() throws InterruptedException {
+    //Thread.sleep(500);
+    //clickOn("#emailField").write("test1@mail.com");
+    //clickOn("#usernameField").write("Usertwo");
+    //clickOn("#passwordField").write("password2");
+  //}
+
+  /**
+   * Test to check if the label shows correct label when unsuccessfull register of
+   * an User.
+   * 
+   * @throws InterruptedException
+   */
+  @Test
+  public void checkUnsuccsessfullRegister() throws InterruptedException {
     Thread.sleep(500);
     clickOn("#emailField").write("test1@mail.com");
     clickOn("#usernameField").write("Usertwo");
-    clickOn("#passwordField").write("password2");
+    clickOn("#passwordField").write("pass");
+    clickOn("#registerButton");
+    Thread.sleep(1500);
+    assertEquals(unsuccessfullRegister, controller.getFeedbackText());
   }
 
   /**
    * Test to check if the label shows correct label when successfull register of
    * an User.
+   * 
+   * @throws InterruptedException
    */
   @Test
-  public void checkSuccessfullRegister() {
+  public void checkSuccessfullRegister() throws InterruptedException {
+    Thread.sleep(500);
+    clickOn("#emailField").write("test1@mail.com");
+    clickOn("#usernameField").write("Usertwo");
+    clickOn("#passwordField").write("password2");
     clickOn("#registerButton");
+    Thread.sleep(1500);
     assertEquals(successfullRegister, controller.getFeedbackText());
-  }
-
-  /**
-   * Test to check if the label shows correct label when unsuccessfull register of
-   * an User.
-   */
-  @Test
-  public void checkUnsuccsessfullRegister() {
-    clickOn("#passwordField").write("pass");
-    clickOn("#registerButton");
-    assertEquals(controller.getFeedbackText(), unsuccessfullRegister);
-  }
-
-  /**
-   * Click "Register"-button
-   */
-  @Test
-  public void checkRegister() {
-    clickOn("#registerButton");
   }
 
   /**
    * Test to check if the UI changes Window and Scene when the "Register"-button
    * is clicked.
+   * 
+   * @throws InterruptedException
    */
   @Test
-  public void testRegisterButton() {
+  public void testRegisterButton() throws InterruptedException {
+    clickOn("#emailField").write("test1@mail.com");
+    clickOn("#usernameField").write("Userthree");
+    clickOn("#passwordField").write("password2");
+    clickOn("#registerButton");
+    Thread.sleep(1500);
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
     for (Window window : before) {
       beforeRoot = window.getScene().getRoot();
     }
-    clickOn("#registerButton");
+    clickOn("OK");
+
     try {
-      Thread.sleep(10000);
+      Thread.sleep(1000);
     } catch (Exception e) {
       fail();
     }
