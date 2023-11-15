@@ -18,6 +18,7 @@ public class DirectDataAccess implements DataAccess {
 
     public DirectDataAccess() {
         this.usersPersistence = new UsersPersistence();
+        this.libraryPersistence = new LibraryPersistence();
         this.usersPersistence.setFile(new File("../ui/src/test/java/ui/resources/test_users.json"));
         this.users = readUsers();
     }
@@ -65,6 +66,10 @@ public class DirectDataAccess implements DataAccess {
             System.out.println(e);
             throw new IllegalStateException("Unable to read from test_users.json");
         }
+    }
+
+    public BookShelf getLibrary() throws IOException{
+        return libraryPersistence.readFromLibrary();
     }
 
     @Override
