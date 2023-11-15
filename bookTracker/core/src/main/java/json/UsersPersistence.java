@@ -40,8 +40,4 @@ public class UsersPersistence {
         }
     }
 
-    public void setFile(File file){
-        this.file = file;
-    }
-
 }
