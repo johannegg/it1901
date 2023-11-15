@@ -36,4 +36,8 @@ public class UsersService {
         this.usersPersistence.setFile(new File(fileName));
     }
 
+    public void deleteUsers() throws IOException {
+        usersPersistence.writeToUsers(new Users());
+    }
+
 }
