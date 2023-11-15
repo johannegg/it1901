@@ -177,7 +177,7 @@ public class StartpageController {
     }
 
     public void handleHomePageButton(ActionEvent event) throws IOException {
-        changeScene("/ui/HomePage.fxml", event);
+        changeScene("/ui/Startpage.fxml", event);
     }
 
     private void handleImgClicked(ImageView imageView) throws IOException {

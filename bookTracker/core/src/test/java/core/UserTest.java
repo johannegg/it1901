@@ -72,16 +72,17 @@ public class UserTest {
     }
 
     /**
-     * Tests if setPasswors() throws illegalArgumentException when the password is invalid
+     * Tests if setPasswors() throws illegalArgumentException when the password is
+     * invalid
      */
     @Test
     public void testFailsWhenSetPassword() {
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camilla@ntnu.no", "camilla123", "passordd"));
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camilla@ntnu.no", "camilla123", "pass123"));
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camilla@ntnu.no", "camilla123", "12345678"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camilla@ntnu.no", "camilla123", "passordd"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camilla@ntnu.no", "camilla123", "pass123"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camilla@ntnu.no", "camilla123", "12345678"));
     }
 
     /**
@@ -89,8 +90,8 @@ public class UserTest {
      */
     @Test
     public void testFailsWhenSetUsername() {
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camilla@ntnu.no", "", "passord1234"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camilla@ntnu.no", "", "passord1234"));
     }
 
     /**
@@ -98,16 +99,15 @@ public class UserTest {
      */
     @Test
     public void testFailsWhenSetEmail() {
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camilla", "camilla123", "passord1234"));
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camilla@ntnuno", "camilla123", "passord1234"));
-        Assertions.assertThrows(IllegalArgumentException.class, 
-        () -> new User("camillantnu.no", "camilla123", "passord1234"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camilla", "camilla123", "passord1234"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camilla@ntnuno", "camilla123", "passord1234"));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new User("camillantnu.no", "camilla123", "passord1234"));
     }
 
-
-     @Test
+    @Test
     public void testSetAndGetLoggedIn() {
         User user = new User();
         assertFalse(user.isLoggedIn());

@@ -50,14 +50,6 @@ public class BookShelf implements Iterable<Book> {
         return books.iterator();
     }
 
-    @Override
-    public String toString() {
-        String bookString = "";
-        for (Book book : books) {
-            bookString += book.getTitle();
-        }
-        return bookString;
-    }
 
     /*
      * BookShelf-klasse:

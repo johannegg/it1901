@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Class to handle the users.The users are saved in an ArrayList as
@@ -64,14 +63,6 @@ public class Users implements Iterable<User> {
      */
     public void removeUser(User user) {
         this.users.remove(user);
-    }
-
-    /**
-     * ToString method for Users
-     */
-    @Override
-    public String toString() {
-        return "" + users.stream().map(user -> user.toString()).collect(Collectors.toList());
     }
 
     /**
