@@ -5,12 +5,22 @@ Prosjektet er konfigurert med **maven** som byggesystem. Det har i hovedssak de 
 
 Kodeprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen inneholder også en **[readme-fil](bookTracker/README.md)** som fungerer som en mer forklarende fil om hvordan selve applikasjonen er bygget opp og fungerer, samt brukerhistorier som beskriver litt av prosjektfremgangen. 
 
-## Bygging og kjøring av prosjekt 
-Til bygging og kjøring av prosjektet benyttes maven. For å kunne kjøre prosjektet må man først kjøre `mvn clean install` i bookTracker-mappen for å rense, bygge og installere prosjektet lokalt. Etter dette kan man gå inn i ui-mappen og kjøre `mvn javafx:run` for å kjøre applikasjonen og `mvn test` for å for å kjøre testene.
+## Bygging og kjøring av prosjektet 
+Til bygging og kjøring av prosjektet benyttes maven. For å kunne kjøre prosjektet må man først kjøre `mvn clean install` i bookTracker-mappen for å rense, bygge og installere prosjektet lokalt. Alle testene vil da bli sjekket og en kvalitetssjekking av prosjektet vil bli gjort. For å få igang restserveren må kommandoen `mvn spring-boot:run` i restserver-mappen kjøres, i en egen terminal. Etter dette kan man gå inn i ui-mappen og kjøre `mvn javafx:run` for å kjøre applikasjonen, i en annen terminal. Begge kommandoene må kjøres inne i `workspace/gr2323/bookTracker`, førstenevnte i `workspace/bookTracker/restserver` og sistnevnte i `workspace/bookTracker/ui`. For å komme seg til bookTracker kan man bruke `cd bookTracker` fra `workspace/gr2323`. Kommandoen `mvn test` brukes for å bare kjøre testene. Hvis det er ønskelig å kjøre applikasjonen uten å kjøre testene, kan 'mvn clean install -DskipTests' brukes. Dette vil også spare tid.<br />
 
 ## Organisering 
-## core 
-core-moduelen er delt inn i tre packages:
+
+### modul organiseringen av koden
+
+Modulene i prosjektet inneholder fire mapper for kildekode, koden selv, tester for koden, og ressurser for både hovedkoden og testene:
+
+- **src/main/java** befinner koden til applikasjonen seg
+- **src/main/resources** ressurser for hovedkoden som er nyttig for applikasjonen, f.eks. FXML-filer, data-filer og bilde-filer.
+- **src/test/java** inneholder testkoden
+- **src/test/resources** ressurser som tilhører testkoden og som brukes av de. Dette kan være FXML-filer, data-filer og bilde-filer.
+
+### core 
+core-moduelen er delt inn i to packages:
 - **[core](bookTracker/core/src/main/java/core/)** 
 - **[json](bookTracker/core/src/main/java/json/)** 
 
@@ -18,19 +28,19 @@ core-moduelen er delt inn i tre packages:
 
 **[json](bookTracker/json)** inneholder klasser som brukes til å serialisere og deserialisere java-objekter til og fra json. Til dette har vi benyttet oss av Jackson-biblioteket.
 
-## ui
+### ui
 **[ui](bookTracker/ui)** inneholder én pacage, **[ui](bookTracker/ui/src/main/java/ui)**. Denne inneholder alle kontrollerne til brukergrensesnitett i applikasjonen vår. Vi har i prosjektet benyttet JavaFX og FXML. Hver scene i appen vår har en tilhørende FXML-fil med en tilhørende kontroller. FXML-filene er plassert i en egen resources-mappe i ui-modulen.
 
-## restserver
+### restserver
 Prosjektet er konfigurert med Spring Boot og inneholder en restserver-modul. **[restserver](bookTracker/restserver)**  inneholder én package med klasser som er ansvarlige for å håndtere de forskjellige HTTP-forespørslene til og fra serveren. I ui-modulen befinner det seg en RemoteDataAccess-klasse som inneholder metoder for å utføre HTTP-kall. Serveren kjøres på `localhost:8080`
 
-## arkitektur-oversikt
+### arkitektur-oversikt
 Her er pakkediagram som viser arkitekturen til prosjektet vårt. Diagrammet illustrere modulene i prosjektet og hvordan de avhenger av hverandre 
 
 ![Componentdiagram](bookTracker/images/componentdiagram.png)
 
 
-## testdekningsgrad 
+## Testdekningsgrad 
 ### jacoco
 Jacoco er et verktøy som sjekker prosjektets testdekningsgrad.  gir detaljert innsikt i hvilken del av koden som testes i løpet av kjøretiden. Dette kan hjelpe med å identifisere områder av koden som mangler testdekning, slik at kvaliteten på koden kan forbedres. 
 
