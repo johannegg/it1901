@@ -26,6 +26,7 @@ public class BookShelfTest {
         book1.setBookId("abc");
         book1.setDescription("Description1");
         book1.setPages("1");
+        book2.setBookId("def");
     }
 
     @Test
@@ -43,10 +44,10 @@ public class BookShelfTest {
     @Test
     void testRemoveBook() {
         bookShelf.addBook(book1);
-        //bookShelf.removeBook(book1);
+        bookShelf.removeBookById("abc");
         assertFalse(bookShelf.getBooks().contains(book1));
         bookShelf.addBook(book1);
-        bookShelf.removeBook(book2);
+        bookShelf.removeBookById("def");
         assertEquals(1, bookShelf.getBooks().size());
 
     }
