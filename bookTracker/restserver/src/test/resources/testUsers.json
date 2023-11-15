@@ -1,15 +1,9 @@
 {
-    "users" : [ {
-      "username" : "test",
-      "email" : "test@gmail.com",
-      "password" : "test1234",
-      "loggedIn" : false,
-      "bookShelf" : null
-    }, {
-        "username" : "test2",
-        "email" : "test2@gmail.com",
-        "password" : "test1234",
-        "loggedIn" : false,
-        "bookShelf" : null
-      } ]
-  }
+  "users" : [ {
+    "username" : "test",
+    "email" : "test@gmail.com",
+    "password" : "test1234",
+    "loggedIn" : false,
+    "bookShelf" : null
+  } ]
+}
