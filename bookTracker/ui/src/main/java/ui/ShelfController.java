@@ -33,12 +33,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ShelfController {
+public class ShelfController extends DataAccessController{
 
     private String bookId;
     private Book book;
     private User loggedInUser;
-    private RemoteDataAccess dataAccess = new RemoteDataAccess();
 
     @FXML
     private Button profileButton;
@@ -62,8 +61,8 @@ public class ShelfController {
     private Label usernameTag;
 
     public void initialize() {
-        this.loggedInUser = dataAccess.getLoggedInUser();
-        usernameTag.setText(loggedInUser.getUsername());
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
+        usernameTag.setText(this.loggedInUser.getUsername());
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Disable horizontal scrollbar
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Enable vertical scrollbar if needed
@@ -165,7 +164,7 @@ public class ShelfController {
 
     private void handleImgClicked(Button button) throws IOException {
         this.bookId = button.getId();
-        this.book = dataAccess.getBookById(bookId);
+        this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
@@ -223,7 +222,7 @@ public class ShelfController {
     public void removeBookFromShelf() throws IOException {
         User newUser = this.loggedInUser;
         newUser.getBookShelf().removeBookById(book.getBookId());
-        dataAccess.putUser(newUser);
+        this.getDataAccess().putUser(newUser);
         System.out.println(book.getTitle() + " removed from shelf");
     }
 

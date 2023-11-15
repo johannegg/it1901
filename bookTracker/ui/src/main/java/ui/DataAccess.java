@@ -1,5 +1,9 @@
 package ui;
 
+import java.io.IOException;
+
+import core.Book;
+import core.BookShelf;
 import core.User;
 import core.Users;
 
@@ -11,8 +15,12 @@ public interface DataAccess {
 
     public Users getUsers();
 
-    public void postUser(User user);
+    public void postUser(User user) throws IOException;
 
-    public void putUser(User user);
+    public void putUser(User user) throws IOException;
+
+    public Book getBookById(String bookId) throws IOException;
+
+    public BookShelf getLibrary() throws IOException;
 
 }

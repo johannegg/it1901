@@ -1,14 +1,25 @@
 package ui;
 
+import java.io.File;
+import java.io.IOException;
+
+import core.Book;
+import core.BookShelf;
 import core.User;
 import core.Users;
+import json.LibraryPersistence;
 import json.UsersPersistence;
 
-public class DirectDataAccess implements DataAccess{
-    private UsersPersistence usersPersistence = new UsersPersistence();
+public class DirectDataAccess implements DataAccess {
+
+    private UsersPersistence usersPersistence;
+    private LibraryPersistence libraryPersistence;
     private Users users;
 
     public DirectDataAccess() {
+        this.usersPersistence = new UsersPersistence();
+        this.libraryPersistence = new LibraryPersistence();
+        this.usersPersistence.setFile(new File("../ui/src/test/java/ui/resources/test_users.json"));
         this.users = readUsers();
     }
 
@@ -34,14 +45,16 @@ public class DirectDataAccess implements DataAccess{
         return this.users;
     }
 
-    public void postUser(User user) {
+    public void postUser(User user) throws IOException {
         this.users.addUser(user);
+        usersPersistence.writeToUsers(users);
     }
 
-    public void putUser(User user) {
+    public void putUser(User user) throws IOException {
         User oldUser = users.getUser(user.getUsername());
         this.users.removeUser(oldUser);
         this.users.addUser(user);
+        usersPersistence.writeToUsers(users);
     }
 
     public Users readUsers() {
@@ -50,8 +63,24 @@ public class DirectDataAccess implements DataAccess{
             return users;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new IllegalStateException("Unable to read from users.json");
+            System.out.println(e);
+            throw new IllegalStateException("Unable to read from test_users.json");
         }
+    }
+
+    public BookShelf getLibrary() throws IOException{
+        return libraryPersistence.readFromLibrary();
+    }
+
+    @Override
+    public Book getBookById(String bookId) throws IOException {
+        BookShelf bookShelf = libraryPersistence.readFromLibrary();
+        for (Book book : bookShelf) {
+            if (book.getBookId().equals(bookId)) {
+                return book;
+            }
+        }
+        return null;
     }
 
 }

@@ -21,7 +21,9 @@ import javafx.stage.Stage;
 /**
  * Controller connected to RegistrationPage.fxml
  */
-public class RegisterController {
+public class RegisterController extends DataAccessController{
+
+    private String feedbackLabel;
 
     @FXML
     TextField emailField;
@@ -32,13 +34,11 @@ public class RegisterController {
     @FXML
     TextField passwordField;
 
-    @FXML
-    Label feedbackLabel;
+    // @FXML
+    // Label feedbackLabel;
 
     @FXML
-    Button RegisterButton;
-
-    RemoteDataAccess dataAccess = new RemoteDataAccess();
+    Button registerButton;
 
     /**
      * Creates a new user if createNewUser() does not throw an
@@ -50,12 +50,13 @@ public class RegisterController {
      */
     @FXML
     public void handleRegisterButton(ActionEvent event) throws IOException {
-        feedbackLabel.setText("");
+        // feedbackLabel.setText("");
         try {
             createNewUser();
 
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Successfull registration");
+            this.feedbackLabel = "Successfull registration";
             alert.setHeaderText("The registration was Successfull");
             alert.setContentText(
                     "The registration of a new user was successfull. Log in to get the full Book Tracker experience");
@@ -63,8 +64,10 @@ public class RegisterController {
 
             changeScene(event);
         } catch (IllegalArgumentException e) {
+            System.out.println(e);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Unsuccessfull registration");
+            this.feedbackLabel = "Unsuccessfull registration";
             alert.setHeaderText("The registration was unsuccessfull");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -88,9 +91,10 @@ public class RegisterController {
         user.setUsername(usernameField.getText());
         user.setPassword(passwordField.getText());
         user.setBookShelf(new BookShelf());
-        Users users = dataAccess.getUsers();
+        Users users = this.getDataAccess().getUsers();
         users.checkUsername(user.getUsername());
-        dataAccess.postUser(user);
+        this.getDataAccess().postUser(user);
+        createUserForTest(user);
     }
 
     /**
@@ -109,5 +113,21 @@ public class RegisterController {
         window.setScene(registerUserScene);
         window.show();
     }
+
+    /**
+     * Getter for the feedback text when register of new user for UI test.
+     *
+     * @return text feedback from label
+     */
+    public String getFeedbackText() {
+        return this.feedbackLabel;
+    }
+
+    public void createUserForTest(User user) throws IOException {
+        DirectDataAccess directDataAccess = new DirectDataAccess();
+        directDataAccess.postUser(user);
+    }
+
+
 
 }

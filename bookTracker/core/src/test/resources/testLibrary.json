@@ -1,0 +1,25 @@
+{
+    "books": [
+        {
+            "title": "Trust",
+            "author": "Hernan Diaz",
+            "pages": "416",
+            "bookId": "diaz",
+            "description": "A compelling novel that won the Pulitzer Prize for Fiction in 2023."
+        },
+        {
+            "title": "Demon Copperhead",
+            "author": "Barbara Kingslover",
+            "pages": "560",
+            "bookId": "kingslover",
+            "description": "This Pulitzer Prize-winning book is a powerful work of fiction that captivates readers."
+        },
+        {
+            "title": "Freedom’s Dominion: A Saga of White Resistance to Federal Power",
+            "author": "Jefferson Cowie",
+            "pages": "512",
+            "bookId": "cowie",
+            "description": "An award-winning historical exploration of white resistance to federal authority, recognized with the Pulitzer Prize in History in 2023."
+        }
+    ]
+}

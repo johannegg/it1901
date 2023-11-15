@@ -16,8 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ProfileController {
-    private RemoteDataAccess dataAccess = new RemoteDataAccess();
+public class ProfileController extends DataAccessController{
+    
     private User loggedInUser;
 
     @FXML
@@ -48,7 +48,7 @@ public class ProfileController {
     private Label showEmail;
 
     public void initialize() {
-        this.loggedInUser = dataAccess.getLoggedInUser();
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
         showUsername.setText("Username: " + loggedInUser.getUsername());
         showEmail.setText("E-mail: " + loggedInUser.getEmail());
@@ -66,19 +66,19 @@ public class ProfileController {
         changeScene("/ui/Startpage.fxml", event);
     }
 
-    public void handleChangePassword() {
+    public void handleChangePassword() throws IOException {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Change password");
         alert.setHeaderText("Are you sure you want to change your password?");
         alert.showAndWait();
 
         loggedInUser.setPassword(passwordField.getText());
-        dataAccess.putUser(loggedInUser);
+        this.getDataAccess().putUser(loggedInUser);
     }
 
     public void handleLogoutButton(ActionEvent event) throws IOException {
         loggedInUser.setLoggedIn(false);
-        dataAccess.putUser(loggedInUser);
+        this.getDataAccess().putUser(loggedInUser);
         changeScene("/ui/LogInPage.fxml", event);
     }
 
@@ -97,5 +97,23 @@ public class ProfileController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+    }
+
+    /**
+     * Getter for test-methods.
+     *
+     * @return the username currently showing in the showUsername label
+     */
+    public String getLabelName() {
+        return showUsername.getText();
+    }
+
+    /**
+     * Getter for test method.
+     *
+     * @return the email currently showing in the showEmail label
+     */
+    public String getLabelEmail() {
+        return showEmail.getText();
     }
 }

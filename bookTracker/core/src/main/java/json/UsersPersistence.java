@@ -16,6 +16,11 @@ public class UsersPersistence {
     private File file = new File("../core/src/main/java/resources/users.json");
     private ObjectMapper objectMapper;
 
+    //for test purposes
+    public void setFile(File file) {
+        this.file = file;
+    }
+
     /**
      * Creates a new UsersPersistence instance and sets the objectMapper with a module for handling
      * serialization and deserialization of User and Users.

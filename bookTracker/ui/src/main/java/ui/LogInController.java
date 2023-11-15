@@ -18,9 +18,8 @@ import javafx.scene.Node;
 /**
  * Controller connectet to LogInPage.fxml
  */
-public class LogInController {
+public class LogInController extends DataAccessController{
 
-    private RemoteDataAccess dataAccess = new RemoteDataAccess();
     private User user;
 
     @FXML
@@ -30,7 +29,7 @@ public class LogInController {
     TextField passwordField;
 
     @FXML
-    Button LogInButton;
+    Button logInButton;
 
     @FXML
     Button RegisterButton;
@@ -58,9 +57,9 @@ public class LogInController {
         try {
             this.user = this.logIn(usernameField.getText(), passwordField.getText());
             this.user.setLoggedIn(true);
-            dataAccess.putUser(user);
-            feedbackLabel.setText("Successfull log in");
+            this.getDataAccess().putUser(user);
             changeScene("Startpage.fxml", event);
+            feedbackLabel.setText("Successfull log in");
         } catch (IllegalArgumentException e) {
             feedbackLabel.setText(e.getMessage());
         }
@@ -68,16 +67,16 @@ public class LogInController {
     }
 
     private User logIn(String username, String passwordInput) {
-        Users users = dataAccess.getUsers();
+        Users users = this.getDataAccess().getUsers();
         if (users.getUser(username) == null) {
             throw new IllegalArgumentException("Wrong username or password");
         }
-        User user = dataAccess.getUserByUsername(username);
+        User user = this.getDataAccess().getUserByUsername(username);
         String password = user.getPassword();
         if (!passwordInput.equals(password)) {
             throw new IllegalArgumentException("Wrong username or password");
         }
-        return dataAccess.getUserByUsername(username);
+        return this.getDataAccess().getUserByUsername(username);
     }
 
     /**
