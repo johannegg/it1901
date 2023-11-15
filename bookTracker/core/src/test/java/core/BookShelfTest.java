@@ -45,6 +45,10 @@ public class BookShelfTest {
         bookShelf.addBook(book1);
         //bookShelf.removeBook(book1);
         assertFalse(bookShelf.getBooks().contains(book1));
+        bookShelf.addBook(book1);
+        bookShelf.removeBook(book2);
+        assertEquals(1, bookShelf.getBooks().size());
+
     }
 
     @Test
@@ -69,4 +73,11 @@ public class BookShelfTest {
         assertFalse(iterator.hasNext());
     }
 
+    @Test
+    void testGetBook() {
+        bookShelf.addBook(book1);
+        assertEquals(bookShelf.getBook("abc").getTitle(), "Title1");
+        assertThrows(IllegalArgumentException.class, () -> bookShelf.getBook(null), "ID cannot be null");
+        assertThrows(IllegalArgumentException.class, () -> bookShelf.getBook("xyz"), "invalid ID");
+    }
 }

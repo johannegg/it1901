@@ -48,8 +48,8 @@ public class BookTest {
         book1.setPages("10");
         book2.setPages("20");
 
-        assertEquals(10, book1.getPages());
-        assertEquals(20, book2.getPages());
+        assertEquals("10", book1.getPages());
+        assertEquals("20", book2.getPages());
     }
 
     @Test

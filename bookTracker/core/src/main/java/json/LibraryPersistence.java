@@ -11,9 +11,14 @@ import core.BookShelf;
  * Persistence class for reading from library
  */
 public class LibraryPersistence {
-    
+
     private File file = new File("../core/src/main/java/resources/library.json");
     private ObjectMapper objectMapper;
+
+    //for test purposes
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     /**
      * Creates a new LibraryPersistence instance and sets the objectMapper
@@ -27,5 +32,5 @@ public class LibraryPersistence {
     public BookShelf readFromLibrary() throws IOException {
         return objectMapper.readerFor(BookShelf.class).readValue(file);
     }
-    
+
 }

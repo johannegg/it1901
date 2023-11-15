@@ -1,6 +1,5 @@
 package core;
 
-
 /**
  * User class. Each User has an email, username and password.
  */
@@ -14,16 +13,16 @@ public class User {
     /**
      * Creates a new User object and sets every parameter to null.
      */
-    public User(){
-        
+    public User() {
+
     }
 
     /**
      * Creates a new User object
      * 
-     * @param email     String email
-     * @param username  String username
-     * @param password  String password
+     * @param email    String email
+     * @param username String username
+     * @param password String password
      */
     public User(String email, String username, String password) {
         setEmail(email);
@@ -43,12 +42,13 @@ public class User {
     }
 
     /**
-     * Checks if the email is in valid format. Which means it contains an '@' and '.'
+     * Checks if the email is in valid format. Which means it contains an '@' and
+     * '.'
      * 
      * @param email the email to check
      */
-    public void checkEmail(String email){
-        if(!(email.contains("@") && email.contains(".")) || email.isEmpty()){
+    public void checkEmail(String email) {
+        if (!(email.contains("@") && email.contains(".")) || email.isEmpty()) {
             throw new IllegalArgumentException("The email is invalid");
         }
     }
@@ -59,7 +59,7 @@ public class User {
      * @param username the new username
      */
     public void setUsername(String username) {
-        if (username.isEmpty()){
+        if (username.isEmpty()) {
             throw new IllegalArgumentException("You need an username");
         }
         this.username = username;
@@ -76,27 +76,27 @@ public class User {
     }
 
     /**
-     * Checks if a password is valid. That means it contains at least eight characters and contains at least 
+     * Checks if a password is valid. That means it contains at least eight
+     * characters and contains at least
      * one letter and one number.
      * 
      * @param password
      */
-    public void checkPassword(String password){
+    public void checkPassword(String password) {
         if (password.length() < 8) {
             throw new IllegalArgumentException("Password requires at least 8 characters");
         }
         int numberOfDigits = 0;
-            char[] chars = password.toCharArray();
-            for (char c : chars) {
-                if (Character.isDigit(c)){
-                    numberOfDigits ++;
-                }
+        char[] chars = password.toCharArray();
+        for (char c : chars) {
+            if (Character.isDigit(c)) {
+                numberOfDigits++;
             }
-        if (numberOfDigits < 1 || numberOfDigits == password.length()){
+        }
+        if (numberOfDigits < 1 || numberOfDigits == password.length()) {
             throw new IllegalArgumentException("Password requires at least one letter and one digit");
         }
     }
-    
 
     public String getEmail() {
         return email;
@@ -126,20 +126,15 @@ public class User {
         this.bookShelf = bookShelf;
     }
 
-    @Override
-    public String toString() {
-    return "username: " + username + ", email: " + email + "password: " + password;
-    }
-
     // public static void main(String[] args) {
-    //     User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
-    //     BookShelf b1 = new BookShelf();
-    //     Book book = new Book("book", "austin");
-    //     Book book2 = new Book("book2", "ally");
-    //     b1.addBook(book);
-    //     b1.addBook(book2);
-    //     u1.setBookShelf(b1);
-    //     System.out.println(u1.getBookShelf());
+    // User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
+    // BookShelf b1 = new BookShelf();
+    // Book book = new Book("book", "austin");
+    // Book book2 = new Book("book2", "ally");
+    // b1.addBook(book);
+    // b1.addBook(book2);
+    // u1.setBookShelf(b1);
+    // System.out.println(u1.getBookShelf());
     // }
 
 }
