@@ -1,6 +1,5 @@
 package core;
 
-
 /**
  * User class. Each User has an email, username and password.
  */
@@ -22,7 +21,7 @@ public class User {
     /**
      * Creates a new User object.
      * 
-     * @param email     String email.
+     * @param email  String email.
      * @param username  String username.
      * @param password  String password.
      */
@@ -36,7 +35,7 @@ public class User {
     /**
      * Sets a new email if email is valid.
      * 
-     * @param email the email to set.
+     * @param email  the email to set.
      */
     public void setEmail(String email) {
         checkEmail(email);
@@ -46,8 +45,8 @@ public class User {
     /**
      * Checks if the email is valid. A valid email must contain both '@' and '.' symbols.
      * 
-     * @param email the email to check.
-     * @throws IllegalArgumentException if email is invalid or empty.
+     * @param email  the email to check.
+     * @throws IllegalArgumentException  if email is invalid or empty.
      */
     public void checkEmail(String email){
         if(!(email.contains("@") && email.contains(".")) || email.isEmpty()){
@@ -58,8 +57,8 @@ public class User {
     /**
      * Sets a new username if the username is not empty.
      * 
-     * @param username the new username.
-     * @throws IllegalArgumentException if username is empty.
+     * @param username  the new username.
+     * @throws IllegalArgumentException  if username is empty.
      */
     public void setUsername(String username) {
         if (username.isEmpty()){
@@ -71,7 +70,7 @@ public class User {
     /**
      * Sets a new password if it is valid.
      * 
-     * @param password the password to set.
+     * @param password  the password to set.
      */
     public void setPassword(String password) {
         checkPassword(password);
@@ -82,8 +81,8 @@ public class User {
      * Checks if a password is valid. That means it contains at least eight characters and contains at least 
      * one letter and one number.
      * 
-     * @param password the password to check
-     * @throws IllegalArgumentException if password is invalid. 
+     * @param password  the password to check.
+     * @throws IllegalArgumentException  if password is invalid. 
      */
     public void checkPassword(String password){
         if (password.length() < 8) {
@@ -104,7 +103,7 @@ public class User {
     /**
      * Gets email.
      * 
-     * @return user's email.
+     * @return  user's email.
      */
     public String getEmail() {
         return email;
@@ -113,7 +112,7 @@ public class User {
     /**
      * Gets username.
      * 
-     * @return user's username.
+     * @return  user's username.
      */
     public String getUsername() {
         return username;
@@ -122,7 +121,7 @@ public class User {
     /**
      * Gets password. 
      * 
-     * @return user's password.
+     * @return  user's password.
      */
     public String getPassword() {
         return password;
@@ -131,7 +130,7 @@ public class User {
     /**
      * Checks if user is logged in. 
      * 
-     * @return true if user is logged in, false otherwise.
+     * @return  true if user is logged in, false otherwise.
      */
     public boolean isLoggedIn() {
         return loggedIn;
@@ -140,7 +139,7 @@ public class User {
     /**
      * Sets user as logged in. 
      * 
-     * @param loggedIn true if the user is logged in.
+     * @param loggedIn  true if the user is logged in.
      */
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
@@ -149,7 +148,7 @@ public class User {
     /**
      * Gets the user's bookshelf. 
      * 
-     * @return a book list.
+     * @return  a book list.
      */
     public BookShelf getBookShelf() {
         return bookShelf;
@@ -158,7 +157,7 @@ public class User {
     /**
      * Sets user's bookshelf.
      * 
-     * @param bookShelf the users book list.
+     * @param bookShelf  the users book list.
      */
     public void setBookShelf(BookShelf bookShelf) {
         this.bookShelf = bookShelf;

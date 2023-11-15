@@ -1,8 +1,7 @@
 package core;
 
-
 /**
- * Book class. Each book has a title, author, book ID and image source
+ * Book class. Each book has a title, author, book ID and image source.
  */
 public class Book {
 
@@ -22,7 +21,7 @@ public class Book {
      /**
      * Gets the book title. 
      * 
-     * @return title of the book.
+     * @return  title of the book.
      */
     public String getTitle() {
         return title;
@@ -31,7 +30,7 @@ public class Book {
     /**
      * Sets the book title to the given parameter.
      * 
-     * @param title title of the book.
+     * @param title  title of the book.
      */
     public void setTitle(String title) {
         this.title = title;
@@ -40,7 +39,7 @@ public class Book {
     /**
      * Gets the author. 
      * 
-     * @return the author of the book.
+     * @return  the author of the book.
      */
     public String getAuthor() {
         return author;
@@ -49,7 +48,7 @@ public class Book {
     /**
      * Sets the author. 
      * 
-     * @param author the author of the book.
+     * @param author  the author of the book.
      */
     public void setAuthor(String author) {
         this.author = author;
@@ -58,7 +57,7 @@ public class Book {
     /**
      * Gets the ID of the book.
      * 
-     * @return the book ID. 
+     * @return  the book ID. 
      */
     public String getBookId() {
         return bookId;
@@ -67,7 +66,7 @@ public class Book {
     /**
      * Set the ID of the book.
      * 
-     * @param bookId the book ID. 
+     * @param bookId  the book ID. 
      */
     public void setBookId(String bookId) {
         this.bookId = bookId;
@@ -76,7 +75,7 @@ public class Book {
     /**
      * Gets the number of pages in the book.
      * 
-     * @return number of pages in the book.
+     * @return  number of pages in the book.
      */
     public String getPages() {
         return pages;
@@ -85,7 +84,7 @@ public class Book {
     /**
      * Set the number of pages in the book.
      * 
-     * @param pages number of pages in the book.
+     * @param pages  number of pages in the book.
      */
     public void setPages(String pages) {
         this.pages = pages;
@@ -94,7 +93,7 @@ public class Book {
     /**
      * Gets the description of the book.
      * 
-     * @return the book description.
+     * @return  the book description.
      */
     public String getDescription() {
         return description;
@@ -103,7 +102,7 @@ public class Book {
     /**
      * Set the description of the book.
      * 
-     * @param description the book description.
+     * @param description  the book description.
      */
     public void setDescription(String description) {
         this.description = description;

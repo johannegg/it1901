@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 /**
  * Represents a bookshelf that holds a collection of books.
  */
@@ -22,7 +21,7 @@ public class BookShelf implements Iterable<Book> {
     /**
      * Retrives a copy of the book list.
      * 
-     * @return a new list containing the books.
+     * @return  a new list containing the books.
      */
     public List<Book> getBooks() {
         return new ArrayList<>(books);
@@ -31,8 +30,8 @@ public class BookShelf implements Iterable<Book> {
     /**
      * Adds book to book list. 
      * 
-     * @param book to add in book list. 
-     * @throws IllegalStateException if the book with the same ID is already present in the list.
+     * @param book  to add in book list. 
+     * @throws IllegalStateException  if the book with the same ID is already present in the list.
      */
     public void addBook(Book book) {
         for (Book b : books) {
@@ -46,7 +45,7 @@ public class BookShelf implements Iterable<Book> {
     /**
      * Sets the book list. 
      * 
-     * @param books to set as book list. 
+     * @param books  to set as book list. 
      */
     public void setBooks(List<Book> books) {
         this.books = books;
@@ -56,7 +55,7 @@ public class BookShelf implements Iterable<Book> {
     /**
      * Removes book from book list with the book ID.
      * 
-     * @param bookId ID to find the book to remove.
+     * @param bookId  ID to find the book to remove.
      */
     public void removeBookById(String bookId) {
         for (Book book : books) {
@@ -70,9 +69,9 @@ public class BookShelf implements Iterable<Book> {
     /**
      * Gets a specific book from book list. 
      * 
-     * @param bookId ID of wanted book.
-     * @return the wanted book. 
-     * @throws IllegalArgumentException if the book ID is invalid. 
+     * @param bookId  ID of wanted book.
+     * @return   the wanted book. 
+     * @throws IllegalArgumentException  if the book ID is invalid. 
      */
     public Book getBook(String bookId){
         for (Book book : books) {
@@ -86,27 +85,12 @@ public class BookShelf implements Iterable<Book> {
     /**
      * Makes an iterator over the books in book list. 
      * 
-     * @return a book list iterator.
+     * @return  a book list iterator.
      */
     @Override
     public Iterator<Book> iterator() {
         return books.iterator();
     }
-/* 
-    @Override
-    public String toString() {
-        String bookString = "";
-        for (Book book : books) {
-            bookString += book.getTitle();
-        }
-        return bookString;
-    }
-
-    /*
-     * BookShelf-klasse:
-     * én bookshelf har flere bookobjekter
-     * gjøre slik at vi kan fjerne og legge til bøker
-     * ha en liste over bøker
-     */
 
 }
+   
