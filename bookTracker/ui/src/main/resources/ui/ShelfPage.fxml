@@ -4,27 +4,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController" style="-fx-background-color: #FFFFFF;">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="22.0" layoutY="76.0" prefHeight="510.0" prefWidth="957.0">
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="22.0" layoutY="76.0" prefHeight="510.0" prefWidth="957.0" style="-fx-background-color: #FFFFFF;">
          <content>
             <TilePane fx:id="shelfTilepane" prefColumns="4" prefHeight="508.0" prefWidth="1094.0" />
          </content>
       </ScrollPane>
-      <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0">
+      <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="189.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="LOGO">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
+                  <ImageView fitHeight="71.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@AppLogo/Book.png" />
+                     </image>
+                  </ImageView>
                </children>
             </HBox>
             <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#handleHomePageButton" prefHeight="71.0" prefWidth="200.0" style="-fx-background-color: #00000000;" text="HOME PAGE">
@@ -42,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Label fx:id="usernameTag" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="200.0" text="Brukernavn">
                      <font>
