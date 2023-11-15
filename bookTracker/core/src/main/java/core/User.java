@@ -10,6 +10,7 @@ public class User {
     private boolean loggedIn;
     private BookShelf bookShelf;
 
+    
     /**
      * Creates a new User object and sets every parameter to null.
      */
@@ -18,11 +19,11 @@ public class User {
     }
 
     /**
-     * Creates a new User object
+     * Creates a new User object.
      * 
-     * @param email    String email
-     * @param username String username
-     * @param password String password
+     * @param email  String email.
+     * @param username  String username.
+     * @param password  String password.
      */
     public User(String email, String username, String password) {
         setEmail(email);
@@ -32,9 +33,9 @@ public class User {
     }
 
     /**
-     * Sets a new email if email is in valid format
+     * Sets a new email if email is valid.
      * 
-     * @param email the emial to set
+     * @param email  the email to set.
      */
     public void setEmail(String email) {
         checkEmail(email);
@@ -42,10 +43,10 @@ public class User {
     }
 
     /**
-     * Checks if the email is in valid format. Which means it contains an '@' and
-     * '.'
+     * Checks if the email is valid. A valid email must contain both '@' and '.' symbols.
      * 
-     * @param email the email to check
+     * @param email  the email to check.
+     * @throws IllegalArgumentException  if email is invalid or empty.
      */
     public void checkEmail(String email) {
         if (!(email.contains("@") && email.contains(".")) || email.isEmpty()) {
@@ -54,9 +55,10 @@ public class User {
     }
 
     /**
-     * Sets a new username if the username is not empty
+     * Sets a new username if the username is not empty.
      * 
-     * @param username the new username
+     * @param username  the new username.
+     * @throws IllegalArgumentException  if username is empty.
      */
     public void setUsername(String username) {
         if (username.isEmpty()) {
@@ -66,9 +68,9 @@ public class User {
     }
 
     /**
-     * Sets an new password if it is valid
+     * Sets a new password if it is valid.
      * 
-     * @param password the password to set
+     * @param password  the password to set.
      */
     public void setPassword(String password) {
         checkPassword(password);
@@ -80,7 +82,8 @@ public class User {
      * characters and contains at least
      * one letter and one number.
      * 
-     * @param password
+     * @param password  the password to check.
+     * @throws IllegalArgumentException  if password is invalid. 
      */
     public void checkPassword(String password) {
         if (password.length() < 8) {
@@ -97,44 +100,68 @@ public class User {
             throw new IllegalArgumentException("Password requires at least one letter and one digit");
         }
     }
-
+    
+    /**
+     * Gets email.
+     * 
+     * @return  user's email.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Gets username.
+     * 
+     * @return  user's username.
+     */
     public String getUsername() {
         return username;
     }
-    
+
+    /**
+     * Gets password. 
+     * 
+     * @return  user's password.
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Checks if user is logged in. 
+     * 
+     * @return  true if user is logged in, false otherwise.
+     */
     public boolean isLoggedIn() {
         return loggedIn;
     }
 
+    /**
+     * Sets user as logged in. 
+     * 
+     * @param loggedIn  true if the user is logged in.
+     */
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
 
+    /**
+     * Gets the user's bookshelf. 
+     * 
+     * @return  a book list.
+     */
     public BookShelf getBookShelf() {
         return bookShelf;
     }
 
+    /**
+     * Sets user's bookshelf.
+     * 
+     * @param bookShelf  the users book list.
+     */
     public void setBookShelf(BookShelf bookShelf) {
         this.bookShelf = bookShelf;
     }
-
-    // public static void main(String[] args) {
-    // User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
-    // BookShelf b1 = new BookShelf();
-    // Book book = new Book("book", "austin");
-    // Book book2 = new Book("book2", "ally");
-    // b1.addBook(book);
-    // b1.addBook(book2);
-    // u1.setBookShelf(b1);
-    // System.out.println(u1.getBookShelf());
-    // }
 
 }
