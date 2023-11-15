@@ -1,5 +1,6 @@
 package restserver;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class UsersService {
         usersPersistence.writeToUsers(users);
     }
 
-    public void putUser(User user) throws IOException{
+    public void putUser(User user) throws IOException {
         this.users = usersPersistence.readFromUsers();
         User oldUser = users.getUser(user.getUsername());
         this.users.removeUser(oldUser);
@@ -31,5 +32,12 @@ public class UsersService {
         usersPersistence.writeToUsers(users);
     }
 
-  }
+    public void setUsersJsonFileName(String fileName) {
+        this.usersPersistence.setFile(new File(fileName));
+    }
 
+    public void deleteUsers() throws IOException {
+        usersPersistence.writeToUsers(new Users());
+    }
+
+}
