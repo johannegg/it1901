@@ -8,28 +8,8 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 import core.Book;
 
-/**
- * Serializer for Book objects.
- * Converts Book objects to json string.
- */
 public class BookSerializer extends JsonSerializer<Book> {
 
-    /**
-     * Writes a specified instance of Book object as a json string to a json generator.
-     * 
-     * Format for the 'book' paramter:
-     * {"title": "..."
-     *  "author": "..."
-     *  "pages": "..."
-     *  "bookID": "..."
-     *  "description": "..."
-     * }
-     * 
-     * @param book  Book object to convert to json string.
-     * @param gen  Assigned generator to use during serialization.
-     * @param serializers  SerializerProvider to store the handled serialized json string.
-     * @throws IOException  if an I/O error occurs during serialization.
-     */
     @Override
     public void serialize(Book book, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         gen.writeStartObject();
