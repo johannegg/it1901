@@ -61,8 +61,8 @@ public class ShelfController extends DataAccessController{
     private Label usernameTag;
 
     public void initialize() {
-        this.loggedInUser = dataAccess.getLoggedInUser();
-        usernameTag.setText(loggedInUser.getUsername());
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
+        usernameTag.setText(this.loggedInUser.getUsername());
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Disable horizontal scrollbar
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Enable vertical scrollbar if needed
@@ -164,7 +164,7 @@ public class ShelfController extends DataAccessController{
 
     private void handleImgClicked(Button button) throws IOException {
         this.bookId = button.getId();
-        this.book = dataAccess.getBookById(bookId);
+        this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
@@ -222,7 +222,7 @@ public class ShelfController extends DataAccessController{
     public void removeBookFromShelf() throws IOException {
         User newUser = this.loggedInUser;
         newUser.getBookShelf().removeBookById(book.getBookId());
-        dataAccess.putUser(newUser);
+        this.getDataAccess().putUser(newUser);
         System.out.println(book.getTitle() + " removed from shelf");
     }
 

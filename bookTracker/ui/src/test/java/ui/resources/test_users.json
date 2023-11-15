@@ -1,13 +1,11 @@
 {
-  "users": [
-    {
-      "username": "Usertwo",
-      "email": "test1@mail.com",
-      "password": "password2",
-      "loggedIn": false,
-      "bookShelf": {
-        "books": []
-      }
+  "users" : [  {
+    "username" : "TestUser",
+    "email" : "test@mail.com",
+    "password" : "password1",
+    "loggedIn" : false,
+    "bookShelf" : {
+      "books" : [ ]
     }
-  ]
+  } ]
 }

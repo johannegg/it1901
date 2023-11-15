@@ -41,6 +41,7 @@ public class StartpageController extends DataAccessController{
 
     private Book book;
     private User loggedInUser;
+    private static boolean TestDataAccess = false;
 
     @FXML
     private HBox PopHBox;
@@ -69,9 +70,8 @@ public class StartpageController extends DataAccessController{
     @FXML
     private ListView<String> listView;
 
-    private Book book;
-    private RemoteDataAccess dataAccess;
-    private User loggedInUser;
+    //private Book book;
+    //private User loggedInUser;
     private HashMap<String, String> bookIds;
     private BookShelf library;
 
@@ -86,12 +86,16 @@ public class StartpageController extends DataAccessController{
 
     /**
      * Sets up the Start Page by showing the book images
+     * @throws IOException
      */
-    public void initialize() {
-        dataAccess = new RemoteDataAccess();
-        this.library = dataAccess.getLibrary();
-        this.loggedInUser = dataAccess.getLoggedInUser();
+    public void initialize() throws IOException {
+        if (TestDataAccess == true){
+            DataAccess dataAccess = new DirectDataAccess();
+            this.setDataAccess(dataAccess);
+        }
+        this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
+        this.library = this.getDataAccess().getLibrary();
 
         listView.setOnMouseClicked((MouseEvent event) -> {
             String selectedBook = listView.getSelectionModel().getSelectedItem();
@@ -174,6 +178,11 @@ public class StartpageController extends DataAccessController{
         }
     }
 
+    //for test purposes
+    public static void setTestDataAccess(boolean bool) {
+        TestDataAccess = bool;
+      }
+
     public void handleSearchButton(ActionEvent event) {
         String searchText = searchBar.getText().toLowerCase();
 
@@ -200,7 +209,7 @@ public class StartpageController extends DataAccessController{
     }
 
     private void handleListClicked(String bookId) throws IOException {
-        this.book = dataAccess.getBookById(bookId);
+        this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 

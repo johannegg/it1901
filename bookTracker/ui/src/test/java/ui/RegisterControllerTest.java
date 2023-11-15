@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -43,13 +42,13 @@ public class RegisterControllerTest extends ApplicationTest {
   /**
    * Set up a User to use in the test
    */
-  //@BeforeEach
-  //public void setupUser() throws InterruptedException {
-    //Thread.sleep(500);
-    //clickOn("#emailField").write("test1@mail.com");
-    //clickOn("#usernameField").write("Usertwo");
-    //clickOn("#passwordField").write("password2");
-  //}
+  // @BeforeEach
+  // public void setupUser() throws InterruptedException {
+  // Thread.sleep(500);
+  // clickOn("#emailField").write("test1@mail.com");
+  // clickOn("#usernameField").write("Usertwo");
+  // clickOn("#passwordField").write("password2");
+  // }
 
   /**
    * Test to check if the label shows correct label when unsuccessfull register of
@@ -59,12 +58,12 @@ public class RegisterControllerTest extends ApplicationTest {
    */
   @Test
   public void checkUnsuccsessfullRegister() throws InterruptedException {
-    Thread.sleep(500);
+    Thread.sleep(10);
     clickOn("#emailField").write("test1@mail.com");
     clickOn("#usernameField").write("Usertwo");
     clickOn("#passwordField").write("pass");
     clickOn("#registerButton");
-    Thread.sleep(1500);
+    Thread.sleep(10);
     assertEquals(unsuccessfullRegister, controller.getFeedbackText());
   }
 
@@ -76,12 +75,12 @@ public class RegisterControllerTest extends ApplicationTest {
    */
   @Test
   public void checkSuccessfullRegister() throws InterruptedException {
-    Thread.sleep(500);
+    Thread.sleep(10);
     clickOn("#emailField").write("test1@mail.com");
     clickOn("#usernameField").write("Usertwo");
     clickOn("#passwordField").write("password2");
     clickOn("#registerButton");
-    Thread.sleep(1500);
+    Thread.sleep(10);
     assertEquals(successfullRegister, controller.getFeedbackText());
   }
 
@@ -97,7 +96,7 @@ public class RegisterControllerTest extends ApplicationTest {
     clickOn("#usernameField").write("Userthree");
     clickOn("#passwordField").write("password2");
     clickOn("#registerButton");
-    Thread.sleep(1500);
+    Thread.sleep(10);
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
     for (Window window : before) {
@@ -106,7 +105,7 @@ public class RegisterControllerTest extends ApplicationTest {
     clickOn("OK");
 
     try {
-      Thread.sleep(1000);
+      Thread.sleep(500);
     } catch (Exception e) {
       fail();
     }

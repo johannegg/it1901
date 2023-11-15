@@ -49,15 +49,14 @@ public class LogInControllerTest extends ApplicationTest {
   public void testLogInButton() throws InterruptedException {
     clickOn("#usernameField").write("TestUser");
     clickOn("#passwordField").write("password1");
-    Thread.sleep(2000);
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
     for (Window window : before) {
       beforeRoot = window.getScene().getRoot();
     }
-    StartpageControllerTest.setTestLogIn(true);
+    StartpageController.setTestDataAccess(true);
     clickOn("#logInButton");
-    StartpageControllerTest.setTestLogIn(false);
+    StartpageController.setTestDataAccess(false);
     try {
       Thread.sleep(3000);
     } catch (Exception e) {
@@ -78,7 +77,6 @@ public class LogInControllerTest extends ApplicationTest {
    */
   @Test
   public void testRegisterButton() throws InterruptedException {
-    Thread.sleep(2000);
     List<Window> before = Window.getWindows();
     Parent beforeRoot = null;
     for (Window window : before) {

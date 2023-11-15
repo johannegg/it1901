@@ -22,7 +22,6 @@ public class StartpageControllerTest extends ApplicationTest {
 
   private StartpageController controller;
   private DirectDataAccess directDataAccess;
-  private static boolean TestLogIn = false;
 
   /**
    * Set up for testing StartpageController.java
@@ -30,21 +29,16 @@ public class StartpageControllerTest extends ApplicationTest {
   @Override
   public void start(final Stage stage) throws Exception {
     directDataAccess = new DirectDataAccess();
-    if (TestLogIn == true) {
-      this.controller.setDataAccess(directDataAccess);
-    }
+    StartpageController.setTestDataAccess(true);
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("Startpage.fxml"));
     final Parent root = loader.load();
     this.controller = loader.getController();
     this.controller.setDataAccess(directDataAccess);
-    directDataAccess.readUsers();
     stage.setScene(new Scene(root));
     stage.show();
+    StartpageController.setTestDataAccess(false);
   }
 
-  public static void setTestLogIn(boolean bool) {
-    TestLogIn = bool;
-  }
 
   /**
    * Test to check if pop up shows up when a book is clicked.
