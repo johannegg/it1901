@@ -3,10 +3,11 @@
 # BookTracker - Oversikt og Struktur
 Prosjektet er konfigurert med **maven** som byggesystem. Det har i hovedssak de tre modulene core, ui og restserver. Brukergrensesnittet befinner seg i modulen ui. Prosjektet benytter javafx version 17.0.8 og Apache Maven 3.9.4.
 
-Kodeprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen inneholder en **[readme-fil](bookTracker/README.md)** som fungerer som en mer forklarende fil om hvordan selve applikasjonen er bygget opp og fungerer, samt brukerhistorier som beskriver litt av prosjektfremgangen. 
+Kodeprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen inneholder en **[readme-fil](bookTracker/README.md)** som fungerer som en mer forklarende fil om hvordan selve applikasjonen er bygget opp og fungerer. 
 
 ## Bygging og kjøring av prosjektet 
 Til bygging og kjøring av prosjektet benyttes maven. For å kunne kjøre prosjektet må man først kjøre `mvn clean install` i bookTracker-mappen for å rense, bygge og installere prosjektet lokalt. Alle testene vil da bli sjekket og en kvalitetssjekking av prosjektet vil bli gjort. For å få igang restserveren må kommandoen `mvn spring-boot:run` i restserver-mappen kjøres, i en egen terminal. Etter dette kan man gå inn i ui-mappen og kjøre `mvn javafx:run` for å kjøre applikasjonen, i en annen terminal. Begge kommandoene må kjøres inne i `workspace/gr2323/bookTracker`, førstenevnte i `workspace/bookTracker/restserver` og sistnevnte i `workspace/bookTracker/ui`. For å komme seg til bookTracker kan man bruke `cd bookTracker` fra `workspace/gr2323`. Kommandoen `mvn test` brukes for å bare kjøre testene. Hvis det er ønskelig å kjøre applikasjonen uten å kjøre testene, kan `mvn clean install -DskipTests` brukes. Dette vil også spare tid.<br />
+Testene for JavaFx er noen ganger ustabile. Om testene feiler kan løsningen være å måtte kjøre `mvn clean install` og/eller `mvn clean install -DskipTests` flere ganger. Noen ganger fungerer det å kjøre applikasjonen flere ganger. En mer detaljert forklaring rundt dette er i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md) i "Kommentarer til prosjektet".
 
 ## maven
 byggesystemet vårt har tillegg for: 
@@ -41,11 +42,11 @@ core-moduelen er delt inn i to packages:
 **[ui](bookTracker/ui)** inneholder én package, **[ui](bookTracker/ui/src/main/java/ui)** . Denne inneholder alle kontrollerne til brukergrensesnitett i applikasjonen vår, samt implementasjonene våre av dataaccess. <br />
 Vi har i prosjektet benyttet JavaFX og FXML. Hver scene i appen vår har en tilhørende FXML-fil med en tilhørende kontroller. FXML-filene er plassert i en egen resources-mappe i ui-modulen. FXML-filene er i  **[ui-resources](bookTracker/ui/src/main/resources/ui)**. Kontrollerne som FXML-filene er knyttet opp til ligger i **[ui](bookTracker/ui/src/main/java/ui)**. Registrering og Logging inn av bruker, profilside til brukere og bibliotek er en del av brukerinteraksjonen med vårt brukergrensesnitt. <br />
 
-Klassene DirectDataAccess og RemoteDataAccess har ulike metoder for å hente data. DirectDataAccess benytter seg direkte av  persistence for å lese og skrive fra fil. Denne klassen brukes til testing av ui og lagrer lokalt.
+Klassene **[DirectDataAccess](bookTracker/ui/src/main/java/ui/DirectDataAccess.java)** og **[RemoteDataAccess](bookTracker/ui/src/main/java/ui/RemotetDataAccess.java)**  har ulike metoder for å hente data. DirectDataAccess benytter seg direkte av  persistence for å lese og skrive fra fil. Denne klassen brukes til testing av ui og lagrer lokalt.
 RemoteDataAccess har metoder som kaller på REST API-et for å lese og skrive til fil, og brukes mens appen og serveren kjører.
 
 ### restserver
-Prosjektet er konfigurert med Spring Boot og inneholder en restserver-modul. **[restserver](bookTracker/restserver)**  inneholder én package med klasser som er ansvarlige for å håndtere de forskjellige HTTP-forespørslene til og fra serveren. I ui-modulen befinner det seg en RemoteDataAccess-klasse som inneholder metoder for å utføre HTTP-kall. Serveren kjøres på `localhost:8080`
+Prosjektet er konfigurert med SpringBoot og inneholder en restserver-modul. **[restserver](bookTracker/restserver)**  inneholder én package med klasser som er ansvarlige for å håndtere de forskjellige HTTP-forespørslene til og fra serveren. I ui-modulen befinner det seg en RemoteDataAccess-klasse som inneholder metoder for å utføre HTTP-kall. Serveren kjøres på `localhost:8080`
 
 
 ## Testdekningsgrad 
@@ -57,7 +58,7 @@ Jacoco er et verktøy som sjekker prosjektets testdekningsgrad.  gir detaljert i
 For å få mest mulig ut av Jacoco i Visual Studio Code, har det i dette prosjektet blitt brukt to extensions; Live Server og Coverage Gutters. Liver Server gjør at man kan åpne opp en detaljert oversikt i nettleseren, mens Code Gutters gjør at man kan se hvilke deler som er testet, direkte i koden. 
 
 ### javadoc
-For å klare å sette seg enklere inn i prosjektet er det lagt til kommentarer til alle klassene og metodene. Dette vil gi en bredere forståelse over hvordan prosjektet er bydg opp og fungerer. Mer informasjon om akkurat dette er i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md) 
+For å klare å sette seg enklere inn i prosjektet er det lagt til kommentarer til alle klassene og metodene. Dette vil gi en bredere forståelse over hvordan prosjektet er bydg opp og fungerer. Mer informasjon om akkurat dette er i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md) i "Kommentarer til prosjektet".
 
 ### spotbugs 
 Spotbugs er et statisk analyse verktøy som tester koden for vanlige feil. Den identifiserer potensielle problemer, bugs og svake punkter i koden. For så å gi innsikt og tilbakemelding om hvordan kodekvaliteten og sikkerheten til softwaren kan forbedres. Spotbugs sørger for at koden er sikker, forutsigbar og lesbar. 
