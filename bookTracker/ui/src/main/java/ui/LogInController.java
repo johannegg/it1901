@@ -18,9 +18,10 @@ import javafx.scene.Node;
 /**
  * Controller connectet to LogInPage.fxml
  */
-public class LogInController extends DataAccessController{
+public class LogInController extends DataAccessController {
 
     private User user;
+    private String wrongPassword;
 
     @FXML
     TextField usernameField;
@@ -69,11 +70,13 @@ public class LogInController extends DataAccessController{
     private User logIn(String username, String passwordInput) {
         Users users = this.getDataAccess().getUsers();
         if (users.getUser(username) == null) {
+            setWrongPassword("Wrong username or password");
             throw new IllegalArgumentException("Wrong username or password");
         }
         User user = this.getDataAccess().getUserByUsername(username);
         String password = user.getPassword();
         if (!passwordInput.equals(password)) {
+            setWrongPassword("Wrong username or password");
             throw new IllegalArgumentException("Wrong username or password");
         }
         return this.getDataAccess().getUserByUsername(username);
@@ -84,7 +87,7 @@ public class LogInController extends DataAccessController{
      * 
      * @param filePath the scene to change to
      * @param event    the click
-     * @throws IOException if it cannot find the fxml file
+     * @throws IOException if it cannot find the fxml file.
      */
     private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -95,4 +98,25 @@ public class LogInController extends DataAccessController{
         window.setScene(scene);
         window.show();
     }
+
+    /**
+     * Getter for the String that shows in the UI if the password is wrong.
+     * For UI test.
+     * 
+     * @return message if the password is wrong.
+     */
+    public String getWrongPassword() {
+        return wrongPassword;
+    }
+
+    /**
+     * Getter for the String that shows in the UI if the password is wrong.
+     * For UI test.
+     * 
+     * @param wrongPassword message that shows when password is wrong.
+     */
+    public void setWrongPassword(String wrongPassword) {
+        this.wrongPassword = wrongPassword;
+    }
+
 }

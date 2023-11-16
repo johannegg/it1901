@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class ProfileController extends DataAccessController{
     
     private User loggedInUser;
+    private static boolean TestDataAccess = false;
 
     @FXML
     private Button profileButton;
@@ -47,11 +48,20 @@ public class ProfileController extends DataAccessController{
     @FXML
     private Label showEmail;
 
-    public void initialize() {
+    public void initialize() throws IOException {
+        if (TestDataAccess == true) {
+            User newUser = new User("test@mail.com", "TestUser111", "password1");
+            this.setDataAccess(new DirectDataAccess(newUser));
+        }
         this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
         showUsername.setText("Username: " + loggedInUser.getUsername());
         showEmail.setText("E-mail: " + loggedInUser.getEmail());
+    }
+
+    // for test purposes
+    public static void setTestDataAccess(boolean bool) {
+        TestDataAccess = bool;
     }
 
     public void handleProfileButton(ActionEvent event) throws IOException {

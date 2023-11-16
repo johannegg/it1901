@@ -33,11 +33,12 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ShelfController extends DataAccessController{
+public class ShelfController extends DataAccessController {
 
     private String bookId;
     private Book book;
     private User loggedInUser;
+    private static boolean TestDataAccess = false;
 
     @FXML
     private Button profileButton;
@@ -60,7 +61,11 @@ public class ShelfController extends DataAccessController{
     @FXML
     private Label usernameTag;
 
-    public void initialize() {
+    public void initialize() throws IOException {
+        if (TestDataAccess == true) {
+            // User newUser = new User("test@mail.com", "TestUser111", "password1");
+            this.setDataAccess(new DirectDataAccess());
+        }
         this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(this.loggedInUser.getUsername());
 
@@ -76,6 +81,11 @@ public class ShelfController extends DataAccessController{
         }
     }
 
+    // for test purposes
+    public static void setTestDataAccess(boolean bool) {
+        TestDataAccess = bool;
+    }
+
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/ProfilePage.fxml", event);
     }
@@ -87,7 +97,6 @@ public class ShelfController extends DataAccessController{
     public void handleHomePageButton(ActionEvent event) throws IOException {
         changeScene("/ui/Startpage.fxml", event);
     }
-
 
     private Node createBookButton(Book book) {
         GridPane outerGrid = new GridPane();
@@ -116,10 +125,10 @@ public class ShelfController extends DataAccessController{
         button.hoverProperty().addListener((observable, oldValue, isHovered) -> {
             if (isHovered) {
                 button.setCursor(Cursor.HAND);
-                button.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 1);"); 
+                button.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 1);");
             } else {
                 button.setCursor(Cursor.DEFAULT);
-                button.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);"); 
+                button.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);");
             }
         });
 
@@ -153,7 +162,7 @@ public class ShelfController extends DataAccessController{
     }
 
     public void addBookShelf(TilePane tilePane) throws IOException {
-        BookShelf bookShelf = loggedInUser.getBookShelf();
+        BookShelf bookShelf = this.loggedInUser.getBookShelf();
         System.out.println(bookShelf);
         for (Book book : bookShelf) {
             this.book = book;
@@ -178,6 +187,7 @@ public class ShelfController extends DataAccessController{
         Label description = new Label("Description: " + this.book.getDescription());
 
         Button removeButton = new Button("Remove book");
+        removeButton.setId("removeBook");
         removeButton.setOnAction(e -> {
             System.out.println("Book removed from shelf");
             try {
@@ -189,10 +199,15 @@ public class ShelfController extends DataAccessController{
         });
 
         Button doneButton = new Button("Done");
+        doneButton.setId("doneBtn");
         doneButton.setOnAction(e -> {
             stage.close();
             shelfTilepane.getChildren().clear();
-            initialize();
+            try {
+                initialize();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
         VBox labels = new VBox(10, title, author, pages, description);
@@ -211,7 +226,11 @@ public class ShelfController extends DataAccessController{
 
         stage.setOnCloseRequest(event -> {
             shelfTilepane.getChildren().clear();
-            initialize();
+            try {
+                initialize();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
         Scene scene = new Scene(layout, 500, 300);
