@@ -253,6 +253,7 @@ public class ShelfController extends DataAccessController {
         Label author = new Label("Author: " + this.book.getAuthor());
         Label pages = new Label("Pages: " + this.book.getPages());
         Label description = new Label("Description: " + this.book.getDescription());
+        description.setWrapText(true);
 
         Button removeButton = new Button("Remove book");
         removeButton.setId("removeBook");
