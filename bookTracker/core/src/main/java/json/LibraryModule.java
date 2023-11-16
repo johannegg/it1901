@@ -22,7 +22,6 @@ public class LibraryModule extends SimpleModule {
   public LibraryModule() {
     super(NAME, Version.unknownVersion());
 
-    // Add serializers and deserializers for objects related to Users
     addDeserializer(Book.class, new BookDeserializer());
     addDeserializer(BookShelf.class, new BookShelfDeserializer());
     addSerializer(Book.class, new BookSerializer());
