@@ -15,5 +15,21 @@ Vi har integrert prosjektet med Spring Boot og implementert en restserver-modul.
 Vi har fikset slik at vi lagrer objekter til og fra json ved hjelp av serializers og deserializers. 
 
 ## Testing
-Vi har opprettet tester for alle moduelene... Jacoco...
+**Testdekningsgrad**
 
+Alle modulene i prosjektet har fått opprettet et sett med tilhørende testklasser, som tester at klassene i modulene fungerer slik de skal. Vi var i dialog med studassen vår om hvorvidt det var viktig å få høy testscore på missed branches, og ble fortalt at det ikke var så viktig. Derfor har vi valgt å ikke legge så mye vekt på akkurat det.
+
+**core:**
+
+core-testene tester de to packagene: core og json. Ifølge rapporten fra jacoco ligger total testdekningsgrad på 99%, hvilket vi anser som bra nok.
+
+![coreJacoco](bookTracker/images/coreJacoco.png)
+
+**ui:**
+
+ui-testene er ment å dekke alle funksjoner og handlinger i appen. Total jacoco-testdekningsgrad for ui ligger på 74%. Grunnen til at den ikke er høyere er at vi ikke tester remoteDataAccess() i det hele tatt, ettersom restserver ikke skal trenge å kjøre for å kunne kjøre testene. Siden restserver ikke skal trenge å kjøre under testene har vi laget en egen directDataAccess-klasse, dedikert til testing, som skal returnere det samme som remoteDataAccess, uten å benytte seg av restAPI-et. Vi opplever dessverre ui-testene som tidvis ustabile. Mer om dette under **[README]**
+
+![uiJacoco](bookTracker/images/uiJacoco1.png)
+![uiJacoco](bookTracker/images/uiJacoco2.png)
+
+**restserver:**
