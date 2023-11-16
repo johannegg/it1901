@@ -15,11 +15,19 @@ import core.User;
 import core.Users;
 import json.UsersModule;
 
+/**
+ * Implements of the DataAccess interface for remote data access.
+ * The class communicates with a remote API to retrieve and manipulate data.
+ */
 public class RemoteDataAccess implements DataAccess {
-    
+
     private URI baseURI;
     private ObjectMapper objectMapper;
 
+    /**
+     * Construct a new instance with the default base URI, and
+     * initiliazes the object mappwer with a custom module.
+     */
     public RemoteDataAccess() {
         this.baseURI = URI.create("http://localhost:8080/api/");
         this.objectMapper = new ObjectMapper();
@@ -27,9 +35,11 @@ public class RemoteDataAccess implements DataAccess {
     }
 
     /**
-     * Method for getting a user by its email from the server.
+     * Method for getting a user by its username from the server.
+     * 
+     * @param username the username of the wanted user.
+     * @throws IllegalArgumentException if user is not can not be found.
      */
-
     public User getUserByUsername(String username) {
         try {
             HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("users/" + username))
@@ -47,6 +57,14 @@ public class RemoteDataAccess implements DataAccess {
         }
     }
 
+    /**
+     * Gets the current logged-in user from the server.
+     * 
+     * @return the User object representing the logged-in user.
+     * @throws IllegalArgumentException if logged-in user is not found.
+     * @RuntimeException if sn HTTP error occurs during the request or if
+     *                   there's an issue with the server.
+     */
     public User getLoggedInUser() {
         try {
             HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("users"))
@@ -66,7 +84,7 @@ public class RemoteDataAccess implements DataAccess {
                     return user;
                 }
             }
-            return null; //TODO: Add exception
+            return null;
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -74,6 +92,15 @@ public class RemoteDataAccess implements DataAccess {
         }
     }
 
+    /**
+     * Gets a list of all the users from the server.
+     * 
+     * @return the Users object representing the list of users.
+     * @throws IllegalArgumentExcrption if the users are not found.
+     * @throws RuntimeException         if if sn HTTP error occurs during the
+     *                                  request or if
+     *                                  there's an issue with the server.
+     */
     public Users getUsers() {
         try {
             HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("users"))
@@ -94,6 +121,14 @@ public class RemoteDataAccess implements DataAccess {
         }
     }
 
+    /**
+     * Sendes a POST request to the server to create or update a user.
+     * 
+     * @param user the User object to be sent to the server.
+     * @throws IllegalArgumentException if the server has an issue with the request.
+     * @throws IllegalArgumentException if an error occurs during the process of
+     *                                  sending the user object to the server.
+     */
     public void postUser(User user) {
         try {
             String json = objectMapper.writeValueAsString(user);
@@ -110,6 +145,15 @@ public class RemoteDataAccess implements DataAccess {
         }
     }
 
+    /**
+     * Sends a PUT request to the server to update an existing user.
+     * 
+     * @param user the User object containing the updated information to be sent to
+     *             the server.
+     * @throws IllegalArgumentException if the server has an issue with the request.
+     * @throws IllegalArgumentException if an error occurs during the process of
+     *                                  updating the user object to the server.
+     */
     public void putUser(User user) {
         try {
             String json = objectMapper.writeValueAsString(user);
@@ -126,8 +170,17 @@ public class RemoteDataAccess implements DataAccess {
         }
     }
 
-    public Book getBookById(String bookId){
-         try {
+    /**
+     * Gets a book from the server based on its book ID.
+     * 
+     * @param bookId the identifier of the book to be retrieved.
+     * @return the Book object representing the book with the specified ID.
+     * @IllegalArgumentException if the book with the gived ID is not found.
+     * @IllegalArgumentException if an error occurs during the process of retrieving
+     *                           the book from the server.
+     */
+    public Book getBookById(String bookId) {
+        try {
             HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("library/" + bookId))
                     .header("Accept", "application/json").GET().build();
             HttpResponse<String> response = HttpClient.newBuilder().build().send(request,
@@ -143,7 +196,15 @@ public class RemoteDataAccess implements DataAccess {
         }
     }
 
-    public BookShelf getLibrary(){
+    /**
+     * Gets the entire library from the server.
+     * 
+     * @return the BookShelf object representing library.
+     * @throws IllegalArgumentException if the library is not found.
+     * @throws RuntimeExcrption         if an error occurs during the request or if
+     *                                  there's an issue with the server.
+     */
+    public BookShelf getLibrary() {
         try {
             HttpRequest request = HttpRequest.newBuilder(baseURI.resolve("library"))
                     .header("Accept", "application/json").GET().build();

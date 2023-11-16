@@ -16,7 +16,8 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 /**
- * Controller connectet to LogInPage.fxml
+ * Controller connectet to LogInPage.fxml.
+ * Manages the interactions on the login page.
  */
 public class LogInController extends DataAccessController {
 
@@ -39,20 +40,20 @@ public class LogInController extends DataAccessController {
     Label feedbackLabel;
 
     /**
-     * Changes scene to the registration page
+     * Changes scene to the registration page.
      * 
-     * @param event click on registerButton
-     * @throws IOException if it cannot find the fxml file
+     * @param event click on registerButton.
+     * @throws IOException if it cannot find the fxml file.
      */
     public void handleRegisterButton(ActionEvent event) throws IOException {
         changeScene("RegistrationPage.fxml", event);
     }
 
     /**
-     * Checks if the user exists and changes the scene to StartPage.fxml if it does
+     * Checks if the user exists and changes the scene to StartPage.fxml if it does.
      * 
-     * @param event click on logInButton
-     * @throws IOException if it cannot find the fxml file
+     * @param event click on logInButton.
+     * @throws IOException if it cannot find the fxml file.
      */
     public void handleLogInButton(ActionEvent event) throws IOException {
         try {
@@ -67,6 +68,16 @@ public class LogInController extends DataAccessController {
 
     }
 
+    /**
+     * Gives the user acceess to the application if provided with
+     * correct username and password.
+     * 
+     * @param username      the username entered by user.
+     * @param passwordInput the password entered by user.
+     * @return the user connected to the given username.
+     * @throws IllegalArgumentException when provided with wrong username and
+     *                                  password.
+     */
     private User logIn(String username, String passwordInput) {
         Users users = this.getDataAccess().getUsers();
         if (users.getUser(username) == null) {
@@ -83,10 +94,10 @@ public class LogInController extends DataAccessController {
     }
 
     /**
-     * Changes the scene
+     * Changes the scene.
      * 
-     * @param filePath the scene to change to
-     * @param event    the click
+     * @param filePath the scene to change to.
+     * @param event    the click.
      * @throws IOException if it cannot find the fxml file.
      */
     private void changeScene(String filePath, ActionEvent event) throws IOException {

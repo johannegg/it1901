@@ -33,6 +33,10 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Controller for the StartPage.fxml.
+ * Manages the interactions on the shelf page.
+ */
 public class ShelfController extends DataAccessController {
 
     private String bookId;
@@ -61,17 +65,23 @@ public class ShelfController extends DataAccessController {
     @FXML
     private Label usernameTag;
 
+    /**
+     * Sets up the shelf page by displaying the books that are in the user's
+     * bookshelf.
+     * 
+     * @throws IOException If an I/O error occurs while handling the initialization
+     *                     process.
+     */
     public void initialize() throws IOException {
         if (TestDataAccess == true) {
-            // User newUser = new User("test@mail.com", "TestUser111", "password1");
             this.setDataAccess(new DirectDataAccess());
         }
         this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(this.loggedInUser.getUsername());
 
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Disable horizontal scrollbar
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED); // Enable vertical scrollbar if needed
-        shelfTilepane.setVgap(80); // Adjust the vertical gap as needed
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        shelfTilepane.setVgap(80);
         shelfTilepane.setHgap(30);
 
         try {
@@ -81,23 +91,61 @@ public class ShelfController extends DataAccessController {
         }
     }
 
-    // for test purposes
+    /**
+     * Sets the test data access mode, and controlls whether the application uses
+     * test data.
+     * 
+     * @param bool true to enable test data access, false otherwise.
+     */
     public static void setTestDataAccess(boolean bool) {
         TestDataAccess = bool;
     }
 
+    /**
+     * Handles the action when profile button is clicked on by switching to the
+     * profile page.
+     * 
+     * @param event ActionEvent triggered by the profile button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     profile page.
+     */
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/ProfilePage.fxml", event);
     }
 
+    /**
+     * Handles the action when shelf button is clicked on by switching to the shelf
+     * page.
+     * 
+     * @param event ActionEvent triggered by the shelf button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     shelf page.
+     */
     public void handleShelfButton(ActionEvent event) throws IOException {
         changeScene("/ui/ShelfPage.fxml", event);
     }
 
+    /**
+     * Handles the action when homepage button is clicked on by switching to the
+     * homepage.
+     * 
+     * @param event ActionEvent triggered by the homepage button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     homepage.
+     */
     public void handleHomePageButton(ActionEvent event) throws IOException {
         changeScene("/ui/Startpage.fxml", event);
     }
 
+    /**
+     * Creates a graphical representation of a book button with associated labels
+     * for title and author.
+     * The button displays the book's cover image and triggers an action when
+     * clicked.
+     *
+     * @param book The Book object for which the button is created.
+     * @return A Node representing the book button with title and author labels.
+     */
     private Node createBookButton(Book book) {
         GridPane outerGrid = new GridPane();
         Button button = new Button();
@@ -161,6 +209,12 @@ public class ShelfController extends DataAccessController {
 
     }
 
+    /**
+     * Adds the the logged in user's bookshelf so it can be displayed in shelf page.
+     * 
+     * @throws IOException if an I/O error occurs during the process of adding the
+     *                     user's bookshelf to the shelf page.
+     */
     public void addBookShelf(TilePane tilePane) throws IOException {
         BookShelf bookShelf = this.loggedInUser.getBookShelf();
         System.out.println(bookShelf);
@@ -171,12 +225,26 @@ public class ShelfController extends DataAccessController {
         }
     }
 
+    /**
+     * Handles the event when a button representing a book cover is clicked.
+     * 
+     * @param button the button clicked on, representing a book cover.
+     * @throws IOException if an I/O error occurs during the process of handling the
+     *                     click event.
+     */
     private void handleImgClicked(Button button) throws IOException {
         this.bookId = button.getId();
         this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
+    /**
+     * Displays a popup with information about the selected book,
+     * with the ability to remove the book from shelf.
+     * 
+     * @throws IOException if an I/O error occurs during the process of dispalying a
+     *                     book popup.
+     */
     private void displayBookPopup() {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -238,6 +306,12 @@ public class ShelfController extends DataAccessController {
         stage.showAndWait();
     }
 
+    /**
+     * Removes the currently selected book from the users's shelf.
+     * 
+     * @throws IOException if an I/O error occurs during the process of removing the
+     *                     book from user's shelf.
+     */
     public void removeBookFromShelf() throws IOException {
         User newUser = this.loggedInUser;
         newUser.getBookShelf().removeBookById(book.getBookId());
@@ -246,11 +320,11 @@ public class ShelfController extends DataAccessController {
     }
 
     /**
-     * Changes the scene to the given file path
+     * Changes the scene to the given file path.
      * 
-     * @param filePath the fxml file to change to
-     * @param event    the mouse click
-     * @throws IOException if the file cannot be found
+     * @param filePath the fxml file to change to.
+     * @param event    the mouse click.
+     * @throws IOException if the file cannot be found.
      */
     private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
