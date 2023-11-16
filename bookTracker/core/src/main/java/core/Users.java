@@ -23,16 +23,6 @@ public class Users implements Iterable<User> {
         this.users.add(user);
     }
 
-    /**
-     * Method to add users without actually saving them in json.
-     * It is only here temporary until we move the persistence elsewhere
-     * 
-     * @param user User user
-     */
-    public void addUserForTest(User user) throws IOException {
-        this.users.add(user);
-    }
-
     public void checkUsername(String username) {
         for (User u : this.users) {
             if (u.getUsername().equals(username)) {

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for testing User
+ * Test class for testing the User class and its methods.
  */
 public class UserTest {
     private User user1;
@@ -17,7 +17,7 @@ public class UserTest {
     private User user3;
 
     /**
-     * Method for setting up the test correctly before running each test.
+     * Method for setting up the test evironment before running each tests.
      */
     @BeforeEach
     public void setUp() {
@@ -27,7 +27,7 @@ public class UserTest {
     }
 
     /**
-     * Tests getEmail()
+     * Method that tests getEmail().
      */
     @Test
     public void testGetEmail() {
@@ -36,7 +36,7 @@ public class UserTest {
     }
 
     /**
-     * Test getUsernam()
+     * Method that tests getUserName().
      */
     @Test
     public void testGetUsername() {
@@ -45,7 +45,7 @@ public class UserTest {
     }
 
     /**
-     * Tests getPasswors()
+     * Method that tests getPassword().
      */
     @Test
     public void testGetPassword() {
@@ -54,7 +54,7 @@ public class UserTest {
     }
 
     /**
-     * Tests setUsername()
+     * Method that tests setUsername().
      */
     @Test
     public void testSetUsername() {
@@ -63,7 +63,7 @@ public class UserTest {
     }
 
     /**
-     * Tests setEmail()
+     * Method that tests setEmail().
      */
     @Test
     public void testSetEmail() {
@@ -72,8 +72,34 @@ public class UserTest {
     }
 
     /**
-     * Tests if setPasswors() throws illegalArgumentException when the password is
-     * invalid
+     * Method that tests setBookShelf() and getBookShelf().
+     */
+    @Test
+    public void testSetAndGetBookShelf() {
+        User user = new User();
+        BookShelf bookShelf = new BookShelf();
+        user.setBookShelf(bookShelf);
+        assertEquals(bookShelf, user.getBookShelf());
+    }
+
+    /**
+     * Method that tests setLoggedIn() and isLoggedIn().
+     */
+    @Test
+    public void testSetAndIsLoggedIn() {
+        User user = new User();
+        assertFalse(user.isLoggedIn());
+
+        user.setLoggedIn(true);
+        assertTrue(user.isLoggedIn());
+
+        user.setLoggedIn(false);
+        assertFalse(user.isLoggedIn());
+    }
+
+    /**
+     * Method that tests if setPasswors() throws illegalArgumentException when
+     * thepassword is invalid.
      */
     @Test
     public void testFailsWhenSetPassword() {
@@ -86,7 +112,8 @@ public class UserTest {
     }
 
     /**
-     * Test if setUsername() throws IllegalArgumentException when username is empty
+     * Method that tests if setUsername() throws IllegalArgumentException when
+     * username is empty.
      */
     @Test
     public void testFailsWhenSetUsername() {
@@ -95,7 +122,8 @@ public class UserTest {
     }
 
     /**
-     * Tests if setEmail throws illegalArgumentException when it is invalid
+     * Method that tests if setEmail throws illegalArgumentException when it is
+     * invalid.
      */
     @Test
     public void testFailsWhenSetEmail() {
@@ -107,23 +135,4 @@ public class UserTest {
                 () -> new User("camillantnu.no", "camilla123", "passord1234"));
     }
 
-    @Test
-    public void testSetAndGetLoggedIn() {
-        User user = new User();
-        assertFalse(user.isLoggedIn());
-
-        user.setLoggedIn(true);
-        assertTrue(user.isLoggedIn());
-
-        user.setLoggedIn(false);
-        assertFalse(user.isLoggedIn());
-    }
-
-    @Test
-    public void testSetAndGetBookShelf() {
-        User user = new User();
-        BookShelf bookShelf = new BookShelf();
-        user.setBookShelf(bookShelf);
-        assertEquals(bookShelf, user.getBookShelf());
-    }
 }

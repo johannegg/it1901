@@ -12,11 +12,17 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Test class for testing the UsersPersistence class and its methods.
+ */
 public class UsersPersistenceTest {
 
     private UsersPersistence usersPersistence;
     private File file;
 
+    /**
+     * Method for setting up the test evironment before running each tests.
+     */
     @BeforeEach
     public void setUp() throws IOException {
         usersPersistence = new UsersPersistence();
@@ -26,6 +32,10 @@ public class UsersPersistenceTest {
         }
     }
 
+    /**
+     * Method that deletes the test file if it exists to ensure a clean environment
+     * for each test.
+     */
     @AfterEach
     public void tearDown() {
         if (file.exists()) {
@@ -33,6 +43,9 @@ public class UsersPersistenceTest {
         }
     }
 
+    /**
+     * Method that tests readFromUsers() and writeToUsers().
+     */
     @Test
     public void testWriteToAndReadFromUsers() throws IOException {
         usersPersistence.setFile(new File("../core/src/test/resources/testUsers.json"));
@@ -45,8 +58,7 @@ public class UsersPersistenceTest {
         usersPersistence.writeToUsers(expectedUsers);
         Users actualUsers = usersPersistence.readFromUsers();
 
-        assertNotNull(actualUsers, "Users object should not be null after reading from file");
-        assertEquals(expectedUsers.getUsers().size(), actualUsers.getUsers().size(),
-                "The size of the Users object should match after writing to and reading from the file");
+        assertNotNull(actualUsers);
+        assertEquals(expectedUsers.getUsers().size(), actualUsers.getUsers().size());
     }
 }

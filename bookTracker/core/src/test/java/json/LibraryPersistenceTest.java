@@ -11,10 +11,16 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Test class for testing the LibraryPersistence class and its methods.
+ */
 public class LibraryPersistenceTest {
 
     private LibraryPersistence libraryPersistence;
 
+    /**
+     * Method for setting up the test evironment before running each tests.
+     */
     @BeforeEach
     public void setUp() {
         File testFile = new File("../core/src/test/resources/testLibrary.json");
@@ -22,12 +28,17 @@ public class LibraryPersistenceTest {
         libraryPersistence.setFile(testFile);
     }
 
+    /**
+     * Mathod that tests the reading functionality of the LibraryPersistence class.
+     *
+     * @throws IOException if an error occurs during reading the file.
+     */
     @Test
     public void testReadFromLibrary() throws IOException {
         BookShelf bookShelf = libraryPersistence.readFromLibrary();
 
-        assertNotNull(bookShelf, "The bookshelf should not be null after reading from the test file");
-        assertEquals(3, bookShelf.getBooks().size(), "The bookshelf should have three books as expected");
+        assertNotNull(bookShelf);
+        assertEquals(3, bookShelf.getBooks().size());
 
         Book firstBook = bookShelf.getBooks().get(0);
         assertEquals("Trust", firstBook.getTitle());
