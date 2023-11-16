@@ -39,9 +39,8 @@
             <artifactId>junit-jupiter-engine</artifactId>
         </dependency>
 
-        <!-- Her kommer web-server-avhengighetene -->
 
-<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -79,117 +78,43 @@
     </dependencies>
 
    <build>
-        <pluginManagement>
-            <plugins>
-
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>2.7.17</version>
-                    <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.1.2</version>
-                    <configuration>
-                        <skipTests>${skipTests}</skipTests>
-                    </configuration>
-                </plugin>
-
-                <!-- Run the checkstyle code quality tool -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.2.0</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>10.3.4</version>
-                        </dependency>
-                    </dependencies>
-                    <configuration>
-                        <configLocation>google_checks.xml</configLocation>
-                        <consoleOutput>true</consoleOutput>
-                        <failsOnError>true</failsOnError>
-                        <linkXRef>false</linkXRef>
-                    </configuration>
-                    <executions>
-                        <execution>
-                        <id>checkstyle-check</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- Run the spotbugs code quality tool -->
-                <plugin>
-                    <groupId>com.github.spotbugs</groupId>
-                    <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.7.1.1</version>
-                    <configuration>
-                        <xmlOutput>true</xmlOutput>
-                        <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
-                    </configuration>
-                    <dependencies>
-                        <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
-                        <dependency>
-                            <groupId>com.github.spotbugs</groupId>
-                            <artifactId>spotbugs</artifactId>
-                            <version>4.7.2</version>
-                        </dependency>
-                    </dependencies>
-                    <executions>
-                        <execution>
-                        <id>spotbugs-check</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- Configure jacoco code coverage -->
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.8</version>
-                    <executions>
-                        <execution>
-                            <id>prepare-agent</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>report</id>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                    @{jaCoCoArgLine} --add-opens bookTracker.restserver/restserver=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+            <!-- Run the checkstyle code quality tool -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <!-- Run the spotbugs code quality tool -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+            </plugin>
+            <!-- Configure jacoco code coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <configuration>
+                    <propertyName>jaCoCoArgLine</propertyName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.4</version>
+            </plugin>
+        </plugins>
     </build>
 </project>
