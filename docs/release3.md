@@ -35,3 +35,8 @@ ui-testene er ment å dekke alle funksjoner og handlinger i appen. Total jacoco-
 ![uijacoco2](../bookTracker/images/uijacoco2.png)
 
 ### restserver:
+
+I restserveren er det én test klasse, denne heter BookTrackerApplicationTest. Klassen er ment å sjekke alle GET, PUT, POST og DELETE metodene i restserveren. Altså tester den metodene i BookTrackerController direkte, og metodene fra service klassene UsersService og LibraryService indirekte. Vi tenker at den total testdekningsgraden på 93% er god nok, da den sikrer at de mest sentrale delene av API-et blir testet grundig.
+
+![restserverJacoco1](../bookTracker/images/restserverJacoco1.png)<br />
+![restserverJacoco2](../bookTracker/images/restserverJacoco2.png)
