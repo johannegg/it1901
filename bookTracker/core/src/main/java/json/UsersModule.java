@@ -14,7 +14,7 @@ import core.Users;
 @SuppressWarnings("serial")
 public class UsersModule extends SimpleModule {
 
-  private static final String NAME = "SalonModule";
+  private static final String NAME = "UsersModule";
 
   /**
    * Constructor that registers all desired serializers and deserializers.
