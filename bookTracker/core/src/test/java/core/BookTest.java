@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for testing Book.
+ * Test class for testing the BookShelf class and its methods.
  */
 public class BookTest {
 
@@ -14,7 +14,7 @@ public class BookTest {
     private Book book2;
 
     /**
-     * Method for setting up the test correctly before running each test.
+     * Method for setting up the test evironment before running each tests.
      */
     @BeforeEach
     public void setUp() {
@@ -23,7 +23,7 @@ public class BookTest {
     }
 
     /**
-     * Tests setBookId() and getBookId()
+     * Method that tests setBookId() and getBookId().
      */
     @Test
     public void testSetAndGetBookId() {
@@ -34,6 +34,9 @@ public class BookTest {
         assertEquals("test2", book2.getBookId());
     }
 
+    /**
+     * Method that tests setBookTitle() and getBookTitle().
+     */
     @Test
     public void testSetAndGetTitle() {
         book1.setTitle("TitleTest1");
@@ -43,6 +46,9 @@ public class BookTest {
         assertEquals("TitleTest2", book2.getTitle());
     }
 
+    /**
+     * Method that tests setPages() and getPages().
+     */
     @Test
     public void testSetAndGetPages() {
         book1.setPages("10");
@@ -52,6 +58,9 @@ public class BookTest {
         assertEquals("20", book2.getPages());
     }
 
+    /**
+     * Method that tests setDescriptin() and getDescription().
+     */
     @Test
     public void testSetAndGetDescription() {
         book1.setDescription("TestDescription1");
@@ -61,6 +70,9 @@ public class BookTest {
         assertEquals("TestDescription2", book2.getDescription());
     }
 
+    /**
+     * Method that tests setAuthor() and getAuthor().
+     */
     @Test
     public void testSetAndGetAuthor() {
         book1.setAuthor("TestAuthor1");

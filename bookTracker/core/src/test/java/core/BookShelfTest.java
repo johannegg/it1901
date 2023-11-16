@@ -11,11 +11,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Iterator;
 
+/**
+ * Test class for testing the BookShelf class and its methods.
+ */
 public class BookShelfTest {
     private BookShelf bookShelf;
     private Book book1;
     private Book book2;
 
+    /**
+     * Method for setting up the test evironment before running each tests.
+     */
     @BeforeEach
     void setUp() {
         bookShelf = new BookShelf();
@@ -29,18 +35,19 @@ public class BookShelfTest {
         book2.setBookId("def");
     }
 
+    /**
+     * Method that tests addBook().
+     */
     @Test
     void testAddBook() {
         bookShelf.addBook(book1);
         assertTrue(bookShelf.getBooks().contains(book1));
-    }
-
-    @Test
-    void testAddDuplicateBook() {
-        bookShelf.addBook(book1);
         assertThrows(IllegalStateException.class, () -> bookShelf.addBook(book1));
     }
 
+    /**
+     * Method that tests removeBook().
+     */
     @Test
     void testRemoveBook() {
         bookShelf.addBook(book1);
@@ -52,6 +59,9 @@ public class BookShelfTest {
 
     }
 
+    /**
+     * Method that tests setBooks().
+     */
     @Test
     void testSetBooks() {
         bookShelf.addBook(book1);
@@ -62,6 +72,9 @@ public class BookShelfTest {
         assertEquals(bookShelf.getBooks(), bookShelf2.getBooks());
     }
 
+    /**
+     * Method that tests iterator().
+     */
     @Test
     void testIterator() {
         bookShelf.addBook(book1);
@@ -74,11 +87,14 @@ public class BookShelfTest {
         assertFalse(iterator.hasNext());
     }
 
+    /**
+     * Method that tests getBook().
+     */
     @Test
     void testGetBook() {
         bookShelf.addBook(book1);
         assertEquals(bookShelf.getBook("abc").getTitle(), "Title1");
-        assertThrows(IllegalArgumentException.class, () -> bookShelf.getBook(null), "ID cannot be null");
-        assertThrows(IllegalArgumentException.class, () -> bookShelf.getBook("xyz"), "invalid ID");
+        assertThrows(IllegalArgumentException.class, () -> bookShelf.getBook(null));
+        assertThrows(IllegalArgumentException.class, () -> bookShelf.getBook("xyz"));
     }
 }
