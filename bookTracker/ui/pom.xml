@@ -81,10 +81,19 @@
         		<artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <argLine>
-                    --add-opens bookTracker.ui/ui=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                    @{jaCoCoArgLine} --add-opens bookTracker.ui/ui=ALL-UNNAMED --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
                     </argLine>
                 </configuration>
 	        </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <propertyName>
+                        jaCoCoArgLine
+                    </propertyName>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -143,10 +152,6 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <configuration>
-                    <failOnError>false</failOnError>
-                </configuration>
-
             </plugin>
 
             <!-- Configure jacoco code coverage -->

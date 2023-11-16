@@ -23,6 +23,19 @@ public class DirectDataAccess implements DataAccess {
         this.users = readUsers();
     }
 
+    public DirectDataAccess(User user) throws IOException {
+        this.usersPersistence = new UsersPersistence();
+        this.libraryPersistence = new LibraryPersistence();
+        this.usersPersistence.setFile(new File("../ui/src/test/java/ui/resources/test_users.json"));
+        this.users = readUsers();
+        user.setLoggedIn(true); // Setter brukeren som logget inn
+        if (user.getBookShelf() == null) {
+            user.setBookShelf(new BookShelf());
+        }
+        this.postUser(user); // Legger til brukeren
+        this.users = readUsers(); // Leser brukerne på nytt
+    }
+
     public User getUserByUsername(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
@@ -42,6 +55,7 @@ public class DirectDataAccess implements DataAccess {
     }
 
     public Users getUsers() {
+        // readUsers();
         return this.users;
     }
 
@@ -68,7 +82,7 @@ public class DirectDataAccess implements DataAccess {
         }
     }
 
-    public BookShelf getLibrary() throws IOException{
+    public BookShelf getLibrary() throws IOException {
         return libraryPersistence.readFromLibrary();
     }
 
@@ -81,6 +95,12 @@ public class DirectDataAccess implements DataAccess {
             }
         }
         return null;
+    }
+
+    // for testing
+    public void deleteAllUsers() throws IOException {
+        Users emptyUsers = new Users();
+        usersPersistence.writeToUsers(emptyUsers);
     }
 
 }

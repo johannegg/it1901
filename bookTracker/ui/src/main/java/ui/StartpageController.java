@@ -31,13 +31,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import json.LibraryPersistence;
-import json.UsersPersistence;
 
 /**
  * Controller connected to Startpage.fxml
  */
-public class StartpageController extends DataAccessController{
+public class StartpageController extends DataAccessController {
 
     private Book book;
     private User loggedInUser;
@@ -65,13 +63,11 @@ public class StartpageController extends DataAccessController{
     private TextField searchBar;
 
     @FXML
-    Button search;
+    Button searchBtn;
 
     @FXML
     private ListView<String> listView;
 
-    //private Book book;
-    //private User loggedInUser;
     private HashMap<String, String> bookIds;
     private BookShelf library;
 
@@ -86,12 +82,12 @@ public class StartpageController extends DataAccessController{
 
     /**
      * Sets up the Start Page by showing the book images
+     * 
      * @throws IOException
      */
     public void initialize() throws IOException {
-        if (TestDataAccess == true){
-            DataAccess dataAccess = new DirectDataAccess();
-            this.setDataAccess(dataAccess);
+        if (TestDataAccess == true) {
+            this.setDataAccess(new DirectDataAccess());
         }
         this.loggedInUser = this.getDataAccess().getLoggedInUser();
         usernameTag.setText(loggedInUser.getUsername());
@@ -129,7 +125,8 @@ public class StartpageController extends DataAccessController{
             imageView.hoverProperty().addListener((observable, oldValue, isHovered) -> {
                 if (isHovered) {
                     imageView.setCursor(Cursor.HAND);
-                    imageView.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
+                    imageView.setStyle(
+                            "-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
                 } else {
                     imageView.setCursor(Cursor.DEFAULT);
                     imageView.setStyle("");
@@ -163,7 +160,8 @@ public class StartpageController extends DataAccessController{
             imageView.hoverProperty().addListener((observable, oldValue, isHovered) -> {
                 if (isHovered) {
                     imageView.setCursor(Cursor.HAND);
-                    imageView.setStyle("-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
+                    imageView.setStyle(
+                            "-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-border-color: black; -fx-border-width: 3px;");
                 } else {
                     imageView.setCursor(Cursor.DEFAULT);
                     imageView.setStyle("");
@@ -178,10 +176,11 @@ public class StartpageController extends DataAccessController{
         }
     }
 
-    //for test purposes
+    // for test purposes
     public static void setTestDataAccess(boolean bool) {
         TestDataAccess = bool;
-      }
+    }
+
 
     public void handleSearchButton(ActionEvent event) {
         String searchText = searchBar.getText().toLowerCase();
@@ -198,12 +197,11 @@ public class StartpageController extends DataAccessController{
                 bookFound = true;
             }
         }
-        
-        if (!bookFound){
+
+        if (!bookFound) {
             String textDisplay = "Book not found";
             bookList.add(textDisplay);
         }
-
         listView.getItems().clear();
         listView.getItems().addAll(bookList);
     }
@@ -242,7 +240,7 @@ public class StartpageController extends DataAccessController{
         description.setWrapText(true);
 
         Button addButton = new Button("Add book");
-        addButton.setId("addButton");
+        addButton.setId("addBook");
         addButton.setOnAction(e -> {
             try {
                 addBookToShelf();
@@ -284,7 +282,7 @@ public class StartpageController extends DataAccessController{
 
     private void addBookToUser() {
         try {
-            loggedInUser.getBookShelf().addBook(this.book);
+            this.loggedInUser.getBookShelf().addBook(this.book);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText("Book successfully added");
