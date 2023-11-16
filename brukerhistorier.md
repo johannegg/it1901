@@ -1,9 +1,9 @@
 Brukerhistorier som har til hensikt å dekke kravene som tilfredstiller systemet vårt, altså applikasjonen vår.
 Brukerhistoriene våre følger formatet; 
 
-Som en [bruker]
-Ønsker jeg en [funksjon]
-Slik at jeg [oppnår en verdi]
+Som en [bruker]<br />
+ønsker jeg en [funksjon] <br />
+slik at jeg [oppnår en verdi]
 
 ## Brukerhistorier
 1. Som en bruker ønsker jeg å kunne registrere meg og logge inn slik at informasjonen min blir lagret
@@ -15,3 +15,5 @@ Slik at jeg [oppnår en verdi]
 7. Som en bruker ønsker jeg å kunne se mitt brukernavn og min e-postadresse 
 8. Som en bruker ønsker jeg å kunne endre passordet mitt
 9. Som en bruker ønsker jeg å kunne logge ut av brukeren min
+
+I **[docs](docs)** er det tre Release filer som går enda nærmere innpå de ulike brukerhistoreiene som løses. Hver Release løser hver sine egne brukerhistorier.  
