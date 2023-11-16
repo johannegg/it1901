@@ -23,6 +23,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 
+/**
+ * Test class for testing the restserver. Uses MockMvc to simulate the server,
+ * so it does not have to be started before every test.
+ */
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = { BookTrackerController.class, UsersService.class, LibraryService.class,
         BookTrackerApplication.class })
@@ -36,18 +40,30 @@ public class BookTrackerApplicationTest {
     private MockMvc mockMvc;
 
     private static ObjectMapper usersMapper;
-    
+
+    /**
+     * Sets up the objectmapper at the beginning.
+     */
     @BeforeAll
-    public static void setUp(){
+    public static void setUp() {
         usersMapper = new ObjectMapper();
         usersMapper.registerModule(new UsersModule());
     }
 
+    /**
+     * Sets the filename to the testUsers.json-file before each test, to try to make
+     * each test run in a clean state
+     */
     @BeforeEach
     public void beforeEach() throws Exception {
         controller.setUsersFileName("../restserver/src/test/resources/testUsers.json");
     }
 
+    /**
+     * Deletes all the users after each test before trying to put the default user.
+     * 
+     * @throws Exception
+     */
     @AfterEach
     public void afterEach() throws Exception {
         testDeleteAllMapping();
@@ -58,12 +74,20 @@ public class BookTrackerApplicationTest {
         }
     }
 
+    /**
+     * Tests the deleteUsers() method by checking the status after trying to delete
+     * all the users. Throws an exception if something goes wrong.
+     */
     @Test
     public void testDeleteAllMapping() throws Exception {
         this.mockMvc.perform(delete("/api/users/delete"))
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Tests the Postuser() method by checking the status after trying to post
+     * the user. Throws an exception if something goes wrong.
+     */
     @Test
     public void testPostUser() throws Exception {
         User postUser = new User("post@mail.com", "postUser", "password123");
@@ -74,6 +98,10 @@ public class BookTrackerApplicationTest {
                 .andExpect(status().isCreated());
     }
 
+    /**
+     * Tests the GetUser() method by checking the status after trying to get
+     * the user. Throws an exception if something goes wrong.
+     */
     @Test
     public void testGetUser() throws Exception {
         System.out.println("test");
@@ -83,13 +111,21 @@ public class BookTrackerApplicationTest {
                 .andExpect(jsonPath("$.username").exists());
     }
 
+    /**
+     * Tests the GetUser() method by checking the status after trying to get
+     * the wrong user.
+     */
     @Test
     public void testGetUserFail() throws Exception {
         String username = "doesntexist";
         this.mockMvc.perform(get("/api/users/" + username))
                 .andExpect(status().isNotFound());
     }
-    
+
+    /**
+     * Test the PutUser() method by checking the status after trying to put
+     * the wrong user.
+     */
     @Test
     public void testPutUser() throws Exception {
         User putUser = new User("put@mail.com", "putUser", "password1234");
@@ -100,13 +136,20 @@ public class BookTrackerApplicationTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Test the getLibrary() method by checking the status after trying to get
+     * the library, checking the status and seeing if "books" is a field in it.
+     */
     @Test
-    public void testgetLibrary() throws Exception{
+    public void testgetLibrary() throws Exception {
         this.mockMvc.perform(get("/api/library"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.books").exists());
     }
 
+    /**
+     * Utility method to put a default user. Used to set up before each test.
+     */
     public void putDefaultUser() throws Exception {
         User putUser = new User("test@gmail.com", "test", "test1234");
         this.mockMvc.perform(put("/api/users/" + putUser.getUsername())
