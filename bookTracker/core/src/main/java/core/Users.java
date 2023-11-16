@@ -10,6 +10,7 @@ import java.util.List;
  * User-objects. The class has methods to save, add, remove and get users.
  */
 public class Users implements Iterable<User> {
+
     private List<User> users = new ArrayList<>();
 
     /**
@@ -23,6 +24,12 @@ public class Users implements Iterable<User> {
         this.users.add(user);
     }
 
+    /**
+     * Checks if username is already used.
+     * 
+     * @param username the username to check.
+     * @throws IllegalArgumentException if username already exists.
+     */
     public void checkUsername(String username) {
         for (User u : this.users) {
             if (u.getUsername().equals(username)) {
@@ -64,10 +71,14 @@ public class Users implements Iterable<User> {
         return new ArrayList<>(users);
     }
 
+    /**
+     * Makes an iterator over the users in users list.
+     * 
+     * @return a users list iterator.
+     */
     @Override
     public Iterator<User> iterator() {
         return users.iterator();
     }
-
 
 }
