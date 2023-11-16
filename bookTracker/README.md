@@ -11,8 +11,8 @@ I `Shelf` kan man finne bokhyllene som inneholder de tilhørende bøkene til bru
 Det finnes også en brukerprofil side, `Profile`, som innholder brukernavn og emailen til brukeren som er logget inn. Muligheten til å bytte passord er også her. Ved passordbytte vil serveren lagre det nye passordet og forkaste det gamle. 
 
 **Innholdet i denne readme-filen:**
-Endelig brukergrensesnitt 
-Kommentarer til prosjektet
+- Endelig brukergrensesnitt 
+- Kommentarer til prosjektet
 
 Selve oversikten over koden og kodens oppbygging, er i **[readme](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/readme.md)**. <br />
 
