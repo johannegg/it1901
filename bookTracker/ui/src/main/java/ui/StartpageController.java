@@ -34,6 +34,7 @@ import javafx.stage.Stage;
 
 /**
  * Controller connected to Startpage.fxml
+ * Manages the interactions on the homepage.
  */
 public class StartpageController extends DataAccessController {
 
@@ -81,9 +82,11 @@ public class StartpageController extends DataAccessController {
                     "seuss"));
 
     /**
-     * Sets up the Start Page by showing the book images
+     * Sets up the homepage by handling mouse events, and showing the images of the
+     * book covers.
      * 
-     * @throws IOException
+     * @throws IOException If an I/O error occurs while handling the initialization
+     *                     process.
      */
     public void initialize() throws IOException {
         if (TestDataAccess == true) {
@@ -176,12 +179,23 @@ public class StartpageController extends DataAccessController {
         }
     }
 
-    // for test purposes
+    /**
+     * Sets the test data access mode, and controlls whether the application uses
+     * test data.
+     * 
+     * @param bool true to enable test data access, false otherwise.
+     */
     public static void setTestDataAccess(boolean bool) {
         TestDataAccess = bool;
     }
 
-
+    /**
+     * Handles the activites related to the search button by looking through the
+     * library
+     * for books that match the search text
+     * 
+     * @param event the ActionEvent triggered by the search button.
+     */
     public void handleSearchButton(ActionEvent event) {
         String searchText = searchBar.getText().toLowerCase();
 
@@ -206,29 +220,75 @@ public class StartpageController extends DataAccessController {
         listView.getItems().addAll(bookList);
     }
 
+    /**
+     * Handles the book that is cliccked on in the list after using the search
+     * field.
+     * Showcases a pop up with book information if book exists.
+     * 
+     * @param bookId the ID of the book that is clicked on.
+     * @throws IOException if an I/O error occurs while retrieving book information.
+     */
     private void handleListClicked(String bookId) throws IOException {
         this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
+    /**
+     * Handles the action when profile button is clicked on by switching to the
+     * profile page.
+     * 
+     * @param event ActionEvent triggered by the profile button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     profile page.
+     */
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/ProfilePage.fxml", event);
     }
 
+    /**
+     * Handles the action when shelf button is clicked on by switching to the shelf
+     * page.
+     * 
+     * @param event ActionEvent triggered by the shelf button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     shelf page.
+     */
     public void handleShelfButton(ActionEvent event) throws IOException {
         changeScene("/ui/ShelfPage.fxml", event);
     }
 
+    /**
+     * Handles the action when homepage button is clicked on by switching to the
+     * homepage.
+     * 
+     * @param event ActionEvent triggered by the homepage button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     homepage.
+     */
     public void handleHomePageButton(ActionEvent event) throws IOException {
         changeScene("/ui/Startpage.fxml", event);
     }
 
+    /**
+     * Handles the event when an ImageView representing a book cover is clicked.
+     * 
+     * @param imageView the ImageView clicked, representing a book cover.
+     * @throws IOException if an I/O error occurs during the process of handling the
+     *                     click event.
+     */
     private void handleImgClicked(ImageView imageView) throws IOException {
         String bookId = imageView.getId();
         this.book = this.getDataAccess().getBookById(bookId);
         displayBookPopup();
     }
 
+    /**
+     * Displays a popup with information about the selected book,
+     * with the ability to add book to shelf.
+     * 
+     * @throws IOException if an I/O error occurs during the process of dispalying a
+     *                     book popup.
+     */
     private void displayBookPopup() {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -274,12 +334,22 @@ public class StartpageController extends DataAccessController {
         stage.showAndWait();
     }
 
+    /**
+     * Adds the currently selected book to the users's shelf.
+     * 
+     * @throws IOException if an I/O error occurs during the process of adding the
+     *                     book to user's shelf.
+     */
     public void addBookToShelf() throws IOException {
         this.loggedInUser = this.getDataAccess().getLoggedInUser();
         addBookToUser();
         this.getDataAccess().putUser(loggedInUser);
     }
 
+    /**
+     * Adds the current book to the user's bookshelf.
+     * Displays an informational alert on whether the book was added or not.
+     */
     private void addBookToUser() {
         try {
             this.loggedInUser.getBookShelf().addBook(this.book);
@@ -298,11 +368,11 @@ public class StartpageController extends DataAccessController {
     }
 
     /**
-     * Changes the scne to the given file path
+     * Changes the scene to the given file path.
      * 
-     * @param filePath the fxml file to change to
-     * @param event    the mouse click
-     * @throws IOException if the file cannot be found
+     * @param filePath the fxml file to change to.
+     * @param event    the mouse click.
+     * @throws IOException if the file cannot be found.
      */
     private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();

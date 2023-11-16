@@ -7,7 +7,7 @@ abstract class DataAccessController {
     /**
      * Sets data access instance.
      *
-     * @param dataAccess Direct- or RemoteDataAccess instance
+     * @param dataAccess Direct- or RemoteDataAccess instance.
      */
     public void setDataAccess(DataAccess dataAccess) {
         this.dataAccess = dataAccess;
@@ -16,7 +16,7 @@ abstract class DataAccessController {
     /**
      * Gets the instance of DataAccess.
      *
-     * @return DataAccess
+     * @return DataAccess.
      */
     public DataAccess getDataAccess() {
         return this.dataAccess;

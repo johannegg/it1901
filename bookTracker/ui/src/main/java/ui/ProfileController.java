@@ -16,8 +16,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ProfileController extends DataAccessController{
-    
+/**
+ * Controller for the ProfielPage.fxml.
+ * Manages the interactions on the profile page.
+ */
+public class ProfileController extends DataAccessController {
+
     private User loggedInUser;
     private static boolean TestDataAccess = false;
 
@@ -48,6 +52,10 @@ public class ProfileController extends DataAccessController{
     @FXML
     private Label showEmail;
 
+    /**
+     * Sets up the profile page by displaying the user's username and email.
+     * User can also change password.
+     */
     public void initialize() throws IOException {
         if (TestDataAccess == true) {
             User newUser = new User("test@mail.com", "TestUser111", "password1");
@@ -59,23 +67,59 @@ public class ProfileController extends DataAccessController{
         showEmail.setText("E-mail: " + loggedInUser.getEmail());
     }
 
-    // for test purposes
+    /**
+     * Sets the test data access mode, and controlls whether the application uses
+     * test data.
+     * 
+     * @param bool true to enable test data access, false otherwise.
+     */
     public static void setTestDataAccess(boolean bool) {
         TestDataAccess = bool;
     }
 
+    /**
+     * Handles the action when profile button is clicked on by switching to the
+     * profile page.
+     * 
+     * @param event ActionEvent triggered by the profile button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     profile page.
+     */
     public void handleProfileButton(ActionEvent event) throws IOException {
         changeScene("/ui/ProfilePage.fxml", event);
     }
 
+    /**
+     * Handles the action when shelf button is clicked on by switching to the shelf
+     * page.
+     * 
+     * @param event ActionEvent triggered by the shelf button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     shelf page.
+     */
     public void handleShelfButton(ActionEvent event) throws IOException {
         changeScene("/ui/ShelfPage.fxml", event);
     }
 
+    /**
+     * Handles the action when homepage button is clicked on by switching to the
+     * homepage.
+     * 
+     * @param event ActionEvent triggered by the homepage button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     homepage.
+     */
     public void handleHomePageButton(ActionEvent event) throws IOException {
         changeScene("/ui/Startpage.fxml", event);
     }
 
+    /**
+     * Handles the action when user wants to change password.
+     * 
+     * @throws IOException if an I/O error occurs during the during the process
+     *                     of changig password.
+     * 
+     */
     public void handleChangePassword() throws IOException {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Change password");
@@ -86,6 +130,14 @@ public class ProfileController extends DataAccessController{
         this.getDataAccess().putUser(loggedInUser);
     }
 
+    /**
+     * Handles the action when logout button is clicked on by switching to the login
+     * page.
+     * 
+     * @param event ActionEvent triggered by the logout button.
+     * @throws IOException if an I/O error occurs during the scene change to the
+     *                     login page.
+     */
     public void handleLogoutButton(ActionEvent event) throws IOException {
         loggedInUser.setLoggedIn(false);
         this.getDataAccess().putUser(loggedInUser);
@@ -93,11 +145,11 @@ public class ProfileController extends DataAccessController{
     }
 
     /**
-     * Changes the scne to the given file path
+     * Changes the scene to the given file path.
      * 
-     * @param filePath the fxml file to change to
-     * @param event    the mouse click
-     * @throws IOException if the file cannot be found
+     * @param filePath the fxml file to change to.
+     * @param event    the mouse click.
+     * @throws IOException if the file cannot be found.
      */
     private void changeScene(String filePath, ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -112,7 +164,7 @@ public class ProfileController extends DataAccessController{
     /**
      * Getter for test-methods.
      *
-     * @return the username currently showing in the showUsername label
+     * @return the username currently showing in the showUsername label.
      */
     public String getLabelName() {
         return showUsername.getText();
@@ -121,7 +173,7 @@ public class ProfileController extends DataAccessController{
     /**
      * Getter for test method.
      *
-     * @return the email currently showing in the showEmail label
+     * @return the email currently showing in the showEmail label.
      */
     public String getLabelEmail() {
         return showEmail.getText();
