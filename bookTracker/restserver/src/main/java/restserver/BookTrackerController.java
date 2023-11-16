@@ -67,7 +67,7 @@ public class BookTrackerController {
    * Posts a new user to the application.
    * 
    * @param username the users username.
-   * @param user the new User object.
+   * @param user     the new User object.
    * @return ResponseEntity indicating a successful user post, or an error.
    * @throws IOException if the writing of user data fails.
    */
@@ -82,7 +82,7 @@ public class BookTrackerController {
    * Puts an excisting user to the application.
    * 
    * @param username the users username.
-   * @param user the new User object
+   * @param user     the new User object
    * @return ResponseEntity indicating a successful user put, or an error.
    * @throws IOException if the writing of user data fails.
    */

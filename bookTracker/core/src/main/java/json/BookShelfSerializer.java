@@ -18,11 +18,13 @@ public class BookShelfSerializer extends JsonSerializer<BookShelf> {
     private final BookSerializer bookSerializer = new BookSerializer();
 
     /**
-     * Writes a specified instance of Book object as a json string to a json generator.
+     * Writes a specified instance of Book object as a json string to a json
+     * generator.
      * 
-     * @param bookShelf BookShelf object to convert to json string.
-     * @param gen assigned generator to use during serialization.
-     * @param serializers SerializerProvider to store the handled serialized json string.
+     * @param bookShelf   BookShelf object to convert to json string.
+     * @param gen         assigned generator to use during serialization.
+     * @param serializers SerializerProvider to store the handled serialized json
+     *                    string.
      * @throws IOException if an I/O error occurs during serialization.
      */
     @Override

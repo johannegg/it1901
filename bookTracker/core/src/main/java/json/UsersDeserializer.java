@@ -14,7 +14,7 @@ import core.User;
 import core.Users;
 
 /**
- *Deserializer for Users objects.
+ * Deserializer for Users objects.
  * Converts the Users json data to Users objects.
  */
 public class UsersDeserializer extends JsonDeserializer<Users> {

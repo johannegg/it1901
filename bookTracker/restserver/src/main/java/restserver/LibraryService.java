@@ -21,7 +21,7 @@ public class LibraryService {
      * @return the library as a BookShelf object.
      * @throws IOException if the reading of book data fron persistence fails.
      */
-    public BookShelf getLibrary() throws IOException{
+    public BookShelf getLibrary() throws IOException {
         return persistence.readFromLibrary();
     }
 

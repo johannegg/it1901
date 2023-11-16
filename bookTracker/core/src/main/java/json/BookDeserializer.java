@@ -21,11 +21,15 @@ public class BookDeserializer extends JsonDeserializer<Book> {
     /**
      * Deserializes a Json representation of a Book object.
      * 
-     * @param p JsonParser for reading json content.
-     * @param ctxt DeserializationContext for handling deserialization configuration.
-     * @return an instance of the deserialized Book object, or null if deserialization fails.
-     * @throws IOException if an I/O error occurs during deserialization.
-     * @throws JsonProcessingException if a json processing error occurs during deserialization.
+     * @param p    JsonParser for reading json content.
+     * @param ctxt DeserializationContext for handling deserialization
+     *             configuration.
+     * @return an instance of the deserialized Book object, or null if
+     *         deserialization fails.
+     * @throws IOException             if an I/O error occurs during
+     *                                 deserialization.
+     * @throws JsonProcessingException if a json processing error occurs during
+     *                                 deserialization.
      */
     @Override
     public Book deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
