@@ -98,43 +98,67 @@ public class User {
         }
     }
 
+    /**
+     * Gets email.
+     * 
+     * @return user's email.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Gets username.
+     * 
+     * @return user's username.
+     */
     public String getUsername() {
         return username;
     }
-    
+
+    /**
+     * Gets password.
+     * 
+     * @return user's password.
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Checks if user is logged in.
+     * 
+     * @return true if user is logged in, false otherwise.
+     */
     public boolean isLoggedIn() {
         return loggedIn;
     }
 
+    /**
+     * Sets user as logged in.
+     * 
+     * @param loggedIn true if the user is logged in.
+     */
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
 
+    /**
+     * Gets the user's bookshelf.
+     * 
+     * @return a book list.
+     */
     public BookShelf getBookShelf() {
         return bookShelf;
     }
 
+    /**
+     * Sets user's bookshelf.
+     * 
+     * @param bookShelf the users book list.
+     */
     public void setBookShelf(BookShelf bookShelf) {
         this.bookShelf = bookShelf;
     }
-
-    // public static void main(String[] args) {
-    // User u1 = new User("johanne@ntnu.no", "johannegg", "1234567l");
-    // BookShelf b1 = new BookShelf();
-    // Book book = new Book("book", "austin");
-    // Book book2 = new Book("book2", "ally");
-    // b1.addBook(book);
-    // b1.addBook(book2);
-    // u1.setBookShelf(b1);
-    // System.out.println(u1.getBookShelf());
-    // }
 
 }
