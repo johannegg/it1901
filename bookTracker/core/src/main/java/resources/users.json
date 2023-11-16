@@ -1,70 +1,35 @@
 {
-  "users" : [ {
-    "username" : "exampleUser",
-    "email" : "user@example.com",
-    "password" : "password123",
+  "users" : [ 
+   {
+    "username" : "testbruker",
+    "email" : "test@mail.com",
+    "password" : "passord123",
     "loggedIn" : false,
     "bookShelf" : {
       "books" : [ {
-        "title" : "Book Title",
-        "author" : "Author Name",
-        "pages" : null,
-        "bookId" : "123456",
-        "description" : "Description of the book"
+        "title" : "The Pumpkin Spice Café",
+        "author" : "Laurie Gilmore",
+        "pages" : "384",
+        "bookId" : "gilmore",
+        "description" : "A heartwarming tale set in a cozy cafe with a touch of pumpkin spice."
       }, {
-        "title" : "Book2 Title",
-        "author" : "Author2 Name",
-        "pages" : null,
-        "bookId" : "12",
-        "description" : "Description of the book"
-      } ]
-    }
-  }, {
-    "username" : "suzie",
-    "email" : "suzie@ntnu.no",
-    "password" : "suzie123",
-    "loggedIn" : false,
-    "bookShelf" : {
-      "books" : [ ]
-    }
-  }, {
-    "username" : "anniken",
-    "email" : "anniken@ntnu.no",
-    "password" : "anniken123",
-    "loggedIn" : false,
-    "bookShelf" : {
-      "books" : [ ]
-    }
-  }, {
-    "username" : "jojo",
-    "email" : "jojo@ntnu.no",
-    "password" : "jojo1234",
-    "loggedIn" : false,
-    "bookShelf" : {
-      "books" : [ {
-        "title" : "Before the Coffee Gets Cold",
-        "author" : "Toshikazu Kawaguchi",
-        "pages" : "272",
-        "bookId" : "kawaguchi",
-        "description" : "A captivating tale of time travel and the moments that matter most."
+        "title" : "Beautiful World, Where Are You",
+        "author" : "Sally Rooney",
+        "pages" : "368",
+        "bookId" : "rooney",
+        "description" : "A thought-provoking exploration of friendship, love, and the complexities of the modern world."
       }, {
-        "title" : "My Year of Rest and Relaxation",
-        "author" : "Ottessa Moshfegh",
-        "pages" : "304",
-        "bookId" : "moshfegh",
-        "description" : "A darkly humorous and thought-provoking exploration of a year-long pursuit of rest and self-discovery."
+        "title" : "To Kill a Mockingbird",
+        "author" : "Harper Lee",
+        "pages" : "324",
+        "bookId" : "book2",
+        "description" : "A timeless novel that addresses issues of racial injustice and moral growth in the American South"
       }, {
-        "title" : "Demon Copperhead",
-        "author" : "Barbara Kingslover",
-        "pages" : "560",
-        "bookId" : "kingslover",
-        "description" : "This Pulitzer Prize-winning book is a powerful work of fiction that captivates readers."
-      }, {
-        "title" : "G-Man",
-        "author" : "Beverly Gage",
-        "pages" : "864",
-        "bookId" : "gage",
-        "description" : "Winner of the Pulitzer Prize in Biography, this book provides a fascinating insight into the life of J. Edgar Hoover."
+        "title" : "Harry Potter and the Sorcerer's Stone",
+        "author" : "J.K. Rowling",
+        "pages" : "309",
+        "bookId" : "book8",
+        "description" : "The start of the beloved series about a young wizard's adventures at Hogwarts School of Witchcraft and Wizardry"
       } ]
     }
   } ]
