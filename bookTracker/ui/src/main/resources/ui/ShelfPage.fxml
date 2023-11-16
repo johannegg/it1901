@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController" style="-fx-background-color: #FFFFFF;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ShelfController">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="22.0" layoutY="76.0" prefHeight="510.0" prefWidth="957.0" style="-fx-background-color: #FFFFFF;">
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" layoutX="113.0" layoutY="76.0" prefHeight="622.0" prefWidth="886.0" style="-fx-background-color: #FFFFFF;">
          <content>
-            <TilePane fx:id="shelfTilepane" prefColumns="4" prefHeight="508.0" prefWidth="1094.0" />
+            <TilePane fx:id="shelfTilepane" prefColumns="4" prefHeight="621.0" prefWidth="870.0" style="-fx-background-color: #FFFFFF;" />
          </content>
       </ScrollPane>
       <HBox layoutX="-7.0" layoutY="2.0" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;">
