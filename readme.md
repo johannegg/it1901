@@ -50,7 +50,7 @@ Prosjektet er konfigurert med SpringBoot og inneholder en restserver-modul. **[r
 
 
 ## Testdekningsgrad 
-Hver gang man kjører “mvn clean install” eller “mvn test” vil det i hver modul bygges en target mappe som inneholder en “site” mappe. I denne vil det være en index.html som viser testdekningsgraden i jacoco. I ui viser RemoteDataAccess kun 4%, dette er fordi restserver ikke kjører under testene og RemoteDataAccess kobler ui med rest API. Vi har for ui testene derfor valgt å opprette en DirectDataAccess som etterligner RemoteDataAccess for testene.
+Hver gang man kjører `mvn clean install` eller `mvn test` vil det i hver modul bygges en target mappe som inneholder en “site” mappe. I denne vil det være en index.html som viser testdekningsgraden i jacoco. I ui viser RemoteDataAccess kun 4%, dette er fordi restserver ikke kjører under testene og RemoteDataAccess kobler ui med rest API. Vi har for ui testene derfor valgt å opprette en DirectDataAccess som etterligner RemoteDataAccess for testene.
 
 ### jacoco
 Jacoco er et verktøy som sjekker prosjektets testdekningsgrad.  gir detaljert innsikt i hvilken del av koden som testes i løpet av kjøretiden. Dette kan hjelpe med å identifisere områder av koden som mangler testdekning, slik at kvaliteten på koden kan forbedres. 

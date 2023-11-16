@@ -1,3 +1,5 @@
+# Release 3 
+
 ## Oppdateringer 
 Siden forrige innlevering har vi har utvidet appen med følgende funksjonalitet:
 - En bruker kan trykke på en bok som vises under "Top 50 Popular Reads" og "Pulitzer winners 2022 and 2023" på "HOME PAGE" og få opp et pop-up-vindu med boktittel, forfatter og beskrivelse av boken. I tillegg kan brukeren trykke på add, og boken vil da legges til i brukeren sin bokhylle (shelf) - **brukerhistorie 3, 4** 
@@ -15,21 +17,23 @@ Vi har integrert prosjektet med Spring Boot og implementert en restserver-modul.
 Vi har fikset slik at vi lagrer objekter til og fra json ved hjelp av serializers og deserializers. 
 
 ## Testing
-**Testdekningsgrad**
+
+### Testdekningsgrad
 
 Alle modulene i prosjektet har fått opprettet et sett med tilhørende testklasser, som tester at klassene i modulene fungerer slik de skal. Vi var i dialog med studassen vår om hvorvidt det var viktig å få høy testscore på missed branches, og ble fortalt at det ikke var så viktig. Derfor har vi valgt å ikke legge så mye vekt på akkurat det.
 
-**core:**
+### core:
 
 core-testene tester de to packagene: core og json. Ifølge rapporten fra jacoco ligger total testdekningsgrad på 99%, hvilket vi anser som bra nok.
 
-![coreJacoco](bookTracker/images/coreJacoco.png)
+![corejacoco](../bookTracker/images/corejavadoc.png)
+    
 
-**ui:**
+### ui:
 
-ui-testene er ment å dekke alle funksjoner og handlinger i appen. Total jacoco-testdekningsgrad for ui ligger på 74%. Grunnen til at den ikke er høyere er at vi ikke tester remoteDataAccess() i det hele tatt, ettersom restserver ikke skal trenge å kjøre for å kunne kjøre testene. Siden restserver ikke skal trenge å kjøre under testene har vi laget en egen directDataAccess-klasse, dedikert til testing, som skal returnere det samme som remoteDataAccess, uten å benytte seg av restAPI-et. Vi opplever dessverre ui-testene som tidvis ustabile. Mer om dette under **[README]**
+ui-testene er ment å dekke alle funksjoner og handlinger i appen. Total jacoco-testdekningsgrad for ui ligger på 74%. Grunnen til at den ikke er høyere er at vi ikke tester remoteDataAccess() i det hele tatt, ettersom restserver ikke skal trenge å kjøre for å kunne kjøre testene. Siden restserver ikke skal trenge å kjøre under testene har vi laget en egen directDataAccess-klasse, dedikert til testing, som skal returnere det samme som remoteDataAccess, uten å benytte seg av restAPI-et. Vi opplever dessverre ui-testene som tidvis ustabile. Mer om dette under "Kommentarer til prosjektet" i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md).
 
-![uiJacoco](bookTracker/images/uiJacoco1.png)
-![uiJacoco](bookTracker/images/uiJacoco2.png)
+![uijacoco1](../bookTracker/images/uijacoco1.png)<br />
+![uijacoco2](../bookTracker/images/uijacoco2.png)
 
-**restserver:**
+### restserver:
