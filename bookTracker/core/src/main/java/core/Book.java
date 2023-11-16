@@ -1,7 +1,7 @@
 package core;
 
 /**
- * Book class. Each book has a title, author, book ID and image source
+ * Book class. Each book has a title, author, book ID and image source.
  */
 public class Book {
 

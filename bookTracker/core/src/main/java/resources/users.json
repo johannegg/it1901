@@ -1,6 +1,5 @@
 {
-  "users" : [ 
-   {
+  "users" : [ {
     "username" : "testbruker",
     "email" : "test@mail.com",
     "password" : "passord123",

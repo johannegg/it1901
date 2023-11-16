@@ -8,7 +8,7 @@ Kodeprosjektet er plassert i mappen **[bookTracker](bookTracker)**. Denne mappen
 ## Bygging og kjøring av prosjektet 
 Til bygging og kjøring av prosjektet benyttes maven. For å kunne kjøre prosjektet må man først kjøre `mvn clean install` i bookTracker-mappen for å rense, bygge og installere prosjektet lokalt. Alle testene vil da bli sjekket og en kvalitetssjekking av prosjektet vil bli gjort. For å få igang restserveren må kommandoen `mvn spring-boot:run` i restserver-mappen kjøres, i en egen terminal. Etter dette kan man gå inn i ui-mappen og kjøre `mvn javafx:run` for å kjøre applikasjonen, i en annen terminal. Begge kommandoene må kjøres inne i `workspace/gr2323/bookTracker`, førstenevnte i `workspace/bookTracker/restserver` og sistnevnte i `workspace/bookTracker/ui`. For å komme seg til bookTracker kan man bruke `cd bookTracker` fra `workspace/gr2323`. Kommandoen `mvn test` brukes for å bare kjøre testene. Hvis det er ønskelig å kjøre applikasjonen uten å kjøre testene, kan `mvn clean install -DskipTests` brukes. Dette vil også spare tid.<br />
 For å kjøre restserveren må man kjære `mvn clean install -DskipTests`.<br />
-Testene for JavaFx er noen ganger ustabile. Om testene feiler, har vi av erfaring, opplevd at løsningen kan være å kjøre `mvn clean install -DskipTests` forså å `mvn clean install`, eller bare kjøre begge flere ganger. Noen ganger fungerer det også kjøre applikasjonen flere ganger. En mer detaljert forklaring rundt dette er i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md) i "Kommentarer til prosjektet".
+Testene for JavaFx er noen ganger ustabile. Om testene feiler, har vi av erfaring, opplevd at løsningen kan være å kjøre `mvn clean install -DskipTests` forså å `mvn clean install`, eller bare kjøre begge flere ganger. Noen ganger fungerer det også kjøre applikasjonen flere ganger. En mer detaljert forklaring rundt dette er i **[challenges](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/docs/challenges.md)**.
 
 ## maven
 byggesystemet vårt har tillegg for: 
@@ -58,7 +58,7 @@ Jacoco er et verktøy som sjekker prosjektets testdekningsgrad.  gir detaljert i
 For å få mest mulig ut av Jacoco i Visual Studio Code, har det i dette prosjektet blitt brukt to extensions; Live Server og Coverage Gutters. Liver Server gjør at man kan åpne opp en detaljert oversikt i nettleseren, mens Code Gutters gjør at man kan se hvilke deler som er testet, direkte i koden. 
 
 ### javadoc
-For å klare å sette seg enklere inn i prosjektet er det lagt til kommentarer til alle klassene og metodene. Dette vil gi en bredere forståelse over hvordan prosjektet er bydg opp og fungerer. Mer informasjon om akkurat dette er i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md) i "Kommentarer til prosjektet".
+For å klare å sette seg enklere inn i prosjektet er det lagt til kommentarer til alle klassene og metodene. Dette vil gi en bredere forståelse over hvordan prosjektet er bydg opp og fungerer.
 
 ### spotbugs 
 Spotbugs er et statisk analyse verktøy som tester koden for vanlige feil. Den identifiserer potensielle problemer, bugs og svake punkter i koden. For så å gi innsikt og tilbakemelding om hvordan kodekvaliteten og sikkerheten til softwaren kan forbedres. Spotbugs sørger for at koden er sikker, forutsigbar og lesbar. 
@@ -70,7 +70,7 @@ Checkstyle er et verktøy som bevarer kodekvaliteten og sørger for at en bestem
 
 For å kjøre checkstyle kan man kjøre kommandoene `mvn verify` og  `mvn checkstyle:check`
 
-- I prosjektet har vi fremdeles endel innrykkfeil i checkstyle, som skyldes at checkstyle ikke lar seg endre til innrykk 4 istedet for 2. 
+- I prosjektet har vi fremdeles endel innrykkfeil i checkstyle, som skyldes at checkstyle ikke lar seg endre til innrykk 4 istedet for 2.
 
 Utvidet informasjon om valg rundt implementasjonen av checkstyle og spotbug, befinner seg i [README](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/bookTracker/README.md) i "Kommentarer til prosjektet".
 
