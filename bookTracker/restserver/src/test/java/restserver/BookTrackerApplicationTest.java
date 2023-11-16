@@ -89,7 +89,7 @@ public class BookTrackerApplicationTest {
         this.mockMvc.perform(get("/api/users/" + username))
                 .andExpect(status().isNotFound());
     }
-
+    
     @Test
     public void testPutUser() throws Exception {
         User putUser = new User("put@mail.com", "putUser", "password1234");
@@ -98,6 +98,13 @@ public class BookTrackerApplicationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testgetLibrary() throws Exception{
+        this.mockMvc.perform(get("/api/library"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books").exists());
     }
 
     public void putDefaultUser() throws Exception {
