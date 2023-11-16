@@ -17,8 +17,14 @@ Det finnes også en brukerprofil side, `Profile`, som innholder brukernavn og em
 Selve oversikten over koden og kodens oppbygging, er i **[readme](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/readme.md)**. <br />
 
 ## Endelig brukergrensesnitt 
-![img1](../bookTracker/images/app1.png)
 
+En oversikt over de fem hovedsidene av brukergrensesnittet.
+
+![img2](../bookTracker/images/app2.png)
+![img3](../bookTracker/images/app3.png)
+![img5](../bookTracker/images/app5.png)
+![img9](../bookTracker/images/app9.png)
+![img10](../bookTracker/images/app10.png)
 
 ## Kommentarer til prosjektet
 Vi har laget flere brukerhistorier som dekker ønsket bruksområde til applikasjonen. Brukerhistoriene innholder funksjoner som legges til i applikasjonen. Disse historiene finner man i **[brukerhistorier](https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2323/gr2323/-/blob/master/brukerhistorier.md)** 
