@@ -1,18 +1,18 @@
 package ui;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import core.User;
 import core.Users;
+import core.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,10 +28,11 @@ public class LogInControllerTest extends ApplicationTest {
   private DirectDataAccess directDataAccess = new DirectDataAccess();
 
   /**
-   * Set up for testing LogInController.java
+   * Set up for testing LogInController.java.
    */
   @Override
   public void start(final Stage stage) throws Exception {
+    DataAccess directDataAccess = new DirectDataAccess(this.createTestUserObject());
     final FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
     final Parent root = loader.load();
     this.controller = loader.getController();
@@ -41,9 +42,21 @@ public class LogInControllerTest extends ApplicationTest {
   }
 
   /**
+   * Help method for generating test object.
+   *
+   * @return users objects for use in testing.
+   */
+  public User createTestUserObject() throws IOException {
+    Users users = new Users();
+    User newUser = new User("test@mail.com", "TestUser", "password1");
+    users.addUser(newUser);
+    return newUser;
+  }
+
+  /**
    * Test to check if the UI changes window when the "Log in"-button is clicked.
    * 
-   * @throws InterruptedException
+   * @throws InterruptedException if Thread.sleep() fails.
    */
   @Test
   public void testLogInButton() throws InterruptedException {
@@ -58,7 +71,7 @@ public class LogInControllerTest extends ApplicationTest {
     clickOn("#logInButton");
     StartpageController.setTestDataAccess(false);
     try {
-      Thread.sleep(3000);
+      Thread.sleep(1000);
     } catch (Exception e) {
       fail();
     }
@@ -73,7 +86,7 @@ public class LogInControllerTest extends ApplicationTest {
   /**
    * Test to check if the UI changes Window when the "Register"-button is clicked.
    * 
-   * @throws InterruptedException
+   * @throws InterruptedException if Thread.sleep() fails.
    */
   @Test
   public void testRegisterButton() throws InterruptedException {
@@ -84,7 +97,7 @@ public class LogInControllerTest extends ApplicationTest {
     }
     clickOn("#RegisterButton");
     try {
-      Thread.sleep(3000);
+      Thread.sleep(1000);
     } catch (Exception e) {
       fail();
     }
@@ -96,4 +109,27 @@ public class LogInControllerTest extends ApplicationTest {
     assertNotEquals(afterRoot, beforeRoot);
   }
 
+  /**
+   * Test to check if log in is unsuccessfull.
+   *
+   * @throws InterruptedException if Thread.sleep() fails.
+   */
+  @Test
+  public void checkUnsuccsessfullLogIn() throws InterruptedException {
+    clickOn("#usernameField").write("WrongUsername");
+    clickOn("#passwordField").write("WrongPassword");
+    clickOn("#logInButton");
+    Thread.sleep(1000);
+    assertEquals("Wrong username or password", this.controller.getWrongPassword());
+  }
+
+  /**
+   * Method to delete all User objects in the Users object in test_users.json
+   * 
+   * @throws IOException
+   */
+  @AfterEach
+  public void deleteUsers() throws IOException {
+    directDataAccess.deleteAllUsers();
+  }
 }

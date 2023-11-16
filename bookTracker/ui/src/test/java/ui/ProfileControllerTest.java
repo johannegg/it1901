@@ -2,11 +2,11 @@ package ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.IOException;
-import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
@@ -16,7 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 /**
  * Class for testing ProfileController and its fxml-file.
@@ -24,74 +23,78 @@ import javafx.stage.Window;
 public class ProfileControllerTest extends ApplicationTest {
 
     private ProfileController controller;
-    private User user;
-    private DirectDataAccess directDataAccess = new DirectDataAccess();
+    private DirectDataAccess directDataAccess;
+    private String oldPassword = "password1";
 
+    /**
+     * Set up for testing ProfileController.java.
+     */
     @Override
     public void start(final Stage stage) throws Exception {
-        setUpUser();
+        directDataAccess = new DirectDataAccess(createTestUserObject());
+        ProfileController.setTestDataAccess(true);
         final FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
         final Parent root = loader.load();
         this.controller = loader.getController();
-        directDataAccess.readUsers();
+        this.controller.setDataAccess(directDataAccess);
         stage.setScene(new Scene(root));
         stage.show();
+        ProfileController.setTestDataAccess(false);
     }
 
     /**
-     * Help method for generating test object
+     * Help method for generating test object.
      *
-     * @return users objects for use in testing
+     * @return users objects for use in testing.
      */
-    public Users createTestUserObject() throws IOException {
+    public User createTestUserObject() throws IOException {
         Users users = new Users();
-        User newUser = new User("test@mail.com", "TestUser", "password1");
+        User newUser = new User("test@mail.com", "TestUserProfile", "password1");
         users.addUser(newUser);
-        return users;
+        return newUser;
     }
 
     /**
-     * Set up a User to use in the test
-     */
-    public void setUpUser() {
-        this.user = new User();
-        this.user.setUsername("TestUser");
-        this.user.setPassword("password1");
-        this.user.setEmail("test@gmail.com");
-    }
-
-    /**
-     * Test to check if user information in the fxml-file match the User object
+     * Test to check if user information in the fxml-file match the User object.
      */
     @Test
     public void checkUser() {
-        assertEquals("TestUser", this.controller.getLabelName());
-        assertEquals("test@gmail.com", this.controller.getLabelEmail());
+        assertEquals("TestUserProfile", directDataAccess.getLoggedInUser().getUsername());
+        assertEquals("test@mail.com", directDataAccess.getLoggedInUser().getEmail());
     }
 
     /**
-     * Test to check if the UI shows a pop up scene when the "Submit"-button is
-     * clicked.
+     * Test to check if new password is updated.
+     * 
+     * @throws InterruptedException if Thread.sleep() fails
      */
     @Test
-    public void testSubmitNewPasswordButton() {
-        List<Window> before = Window.getWindows();
-        Parent beforeRoot = null;
-        for (Window window : before) {
-            beforeRoot = window.getScene().getRoot();
-        }
+    public void testSubmitNewPasswordButton() throws InterruptedException {
+        clickOn("#passwordField").write("NewPassword123");
         clickOn("#passwordButton");
-        try {
-            Thread.sleep(10000);
-        } catch (Exception e) {
-            fail();
-        }
-        List<Window> after = Window.getWindows();
-        Parent afterRoot = null;
-        for (Window window : after) {
-            afterRoot = window.getScene().getRoot();
-        }
-        assertNotEquals(afterRoot, beforeRoot);
+        clickOn("OK");
+        assertNotEquals(oldPassword, directDataAccess.getLoggedInUser().getPassword());
     }
 
+    /**
+     * Test to check if User is logged out.
+     * 
+     * @throws InterruptedException if Thread.sleep() fails
+     */
+    @Test
+    public void checkIfLoggedOut() throws InterruptedException {
+        clickOn("#logoutButton");
+        Thread.sleep(1000);
+        assertNull(directDataAccess.getLoggedInUser());
+    }
+
+    /**
+     * Method to delete all User objects in the Users object in test_users.json
+     * 
+     * @throws IOException
+     */
+    @AfterEach
+    public void deleteUsers() throws IOException {
+        directDataAccess.deleteAllUsers();
+    }
 }
