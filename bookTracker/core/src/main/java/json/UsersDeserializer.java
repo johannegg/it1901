@@ -13,6 +13,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import core.User;
 import core.Users;
 
+/**
+ *Deserializer for Users objects.
+ * Converts the Users json data to Users objects.
+ */
 public class UsersDeserializer extends JsonDeserializer<Users> {
 
     private UserDeserializer userDeserializer = new UserDeserializer();

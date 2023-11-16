@@ -13,6 +13,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import core.BookShelf;
 import core.User;
 
+/**
+ * Deserializer for User objects.
+ * Converts the User JSON data to User objects.
+ */
 public class UserDeserializer extends JsonDeserializer<User> {
 
   /**
